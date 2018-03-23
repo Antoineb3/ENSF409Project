@@ -1,0 +1,16 @@
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-03-23 15:11:02.854
+!MESSAGE file:////Users/Ross/Documents/GitHub/ENSF409Project/EclipseProject: not found.
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: file:////Users/Ross/Documents/GitHub/ENSF409Project/EclipseProject: not found.
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:222)
+	at org.eclipse.jgit.api.LsRemoteCommand.call(LsRemoteCommand.java:160)
+	at org.eclipse.egit.core.op.ListRemoteOperation.run(ListRemoteOperation.java:114)
+	at org.eclipse.egit.ui.internal.clone.SourceBranchPage$8.run(SourceBranchPage.java:335)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: org.eclipse.jgit.errors.NoRemoteRepositoryException: file:////Users/Ross/Documents/GitHub/ENSF409Project/EclipseProject: not found.
+	at org.eclipse.jgit.transport.TransportLocal$1.open(TransportLocal.java:148)
+	at org.eclipse.jgit.transport.TransportBundleFile$1.open(TransportBundleFile.java:117)
+	at org.eclipse.jgit.transport.Transport.open(Transport.java:597)
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:188)
+	... 4 more
