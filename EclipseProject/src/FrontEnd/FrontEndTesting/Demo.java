@@ -1,9 +1,5 @@
 package FrontEnd.FrontEndTesting;
 
-/*
-TODO make methods addHorizontalLine and addJLabel have a bigger scope bc right now they are re-implemented in different classes.
-*/
-
 
 public class Demo{
 
