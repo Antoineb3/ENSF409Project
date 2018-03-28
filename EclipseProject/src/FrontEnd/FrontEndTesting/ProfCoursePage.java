@@ -72,12 +72,12 @@ public class ProfCoursePage extends JPanel{
 	 */
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        addJLabel("Course Page: testCourseName");//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
+        add(GuiUtilities.centeredJLabel("Course Page: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
         setButtonPanel();
 
-        addJLabel("Assignments:");
+        add(GuiUtilities.centeredJLabel("Assignments:"));
         setupAssignmentsList();
 
         newAssignmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -131,16 +131,6 @@ public class ProfCoursePage extends JPanel{
 		add(scroller);
     }
     
-    /**
-     * Helper method to add a new cenetered JLabel to the JFrame
-     * @param s the text of the JLabel
-     */
-    private void addJLabel(String s){
-        JLabel label = new JLabel(s);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(label);
-    }
-
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */

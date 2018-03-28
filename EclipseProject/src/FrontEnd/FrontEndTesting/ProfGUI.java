@@ -28,6 +28,7 @@ public class ProfGUI extends JFrame{
      */
     private ProfHomepage profHomePagePanel;
     private ProfCoursePage profCoursePagePanel;
+    private ViewStudents viewStudentsPanel;
 
     public ProfGUI() {
         
@@ -41,6 +42,8 @@ public class ProfGUI extends JFrame{
         profCoursePagePanel = new ProfCoursePage();// TODO set the CoursePage's course every time you go to it 
         cards.add(profCoursePagePanel, "PROFCOURSEPAGE"); //the cardName of the homePagePanel is PROFCOURSEPAGE
 
+        viewStudentsPanel = new ViewStudents();// TODO set the ViewStudents's course every time you go to it 
+        cards.add(viewStudentsPanel, "VIEWSTUDENTS"); //the cardName is VIEWSTUDENTS
 
         add(cards);
 		pack();
@@ -71,6 +74,14 @@ public class ProfGUI extends JFrame{
     public ProfCoursePage getProfCoursePagePanel() {
         return profCoursePagePanel;
     }
+    /**
+     * @return the viewStudentsPanel
+     */
+    public ViewStudents getViewStudentsPanel() {
+        return viewStudentsPanel;
+    }
+    
+    
 
 
 
