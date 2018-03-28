@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class ProfController{
     ProfGUI profGUI;
+    //Model m;
     
     /**
      * Commonly used inner class listener to go back to the homepage
@@ -22,6 +23,11 @@ public class ProfController{
 
         pg.getProfCoursePagePanel().setHomepageButtonListener(new HomepageButtonListener());
         pg.getViewStudentsPanel().setHomepageButtonListener(new HomepageButtonListener());
+        
+        
+        pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentListener(pg.getProfCoursePagePanel(), this));
+        
+       
     }
 
     //TODO in the listener that goes to a course page, use pg.getProfCoursePagePanel().setCourse(theCourse) before setActiveCard()
