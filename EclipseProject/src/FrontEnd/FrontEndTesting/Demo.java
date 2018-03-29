@@ -1,5 +1,7 @@
 package FrontEnd.FrontEndTesting;
 
+import FrontEnd.FrontController.*;
+import FrontEnd.View.*;
 
 public class Demo{
 

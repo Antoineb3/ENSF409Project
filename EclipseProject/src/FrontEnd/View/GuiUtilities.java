@@ -1,4 +1,4 @@
-package FrontEnd.FrontEndTesting;
+package FrontEnd.View;
 
 import java.awt.Component;
 import java.awt.Dimension;

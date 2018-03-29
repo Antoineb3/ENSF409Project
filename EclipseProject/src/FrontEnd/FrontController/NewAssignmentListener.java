@@ -1,6 +1,9 @@
-package FrontEnd.FrontEndTesting;
+package FrontEnd.FrontController;
 
 import javax.swing.*;
+
+import FrontEnd.View.ProfCoursePage;
+
 import java.awt.event.*;
 import java.io.File;
 /**

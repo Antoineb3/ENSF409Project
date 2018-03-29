@@ -1,4 +1,4 @@
-package FrontEnd;
+package FrontEnd.View;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -50,25 +50,16 @@ public class LoginGUI extends JFrame{
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        addJLabel("Welcome! Please enter your login information.");
+        add(GuiUtilities.centeredJLabel("Welcome! Please enter your login information."));
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        addJLabel("Username:");
+        add(GuiUtilities.centeredJLabel("Username:"));
         add(usernameField);
-        addJLabel("Password:");
+        add(GuiUtilities.centeredJLabel("Password:"));
         add(passwordField);
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
         add(loginButton);
     }
     
-    /**
-     * Helper method to add a new cenetered JLabel to the JFrame
-     * @param s the text of the JLabel
-     */
-    private void addJLabel(String s){
-        JLabel label = new JLabel(s);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(label);
-    }
 
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listener
