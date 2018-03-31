@@ -9,10 +9,9 @@ import java.sql.*;
  * @since	2018-03-30
  */
 class StatementExecutor {
-	/**A jdbc connection to a mySQL database. */
+
 	private Connection jdbc_connection;
 	
-	/**Statement used to execute the database operations. */
 	private Statement statement;
 	
 	/**
@@ -35,7 +34,7 @@ class StatementExecutor {
 	/**
 	 * Performs a query on a table in a database and returns the resultset. 
 	 * @param query the query being performed.
-	 * @return the result of the query.
+	 * @return the result of the query as a ResultSet.
 	 */
 	ResultSet preformQuery(String query) {
 		ResultSet result = null;
