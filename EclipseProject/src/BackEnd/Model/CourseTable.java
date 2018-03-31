@@ -1,3 +1,6 @@
+
+ 
+
 package BackEnd.Model;
 
 import java.io.Serializable;
@@ -6,19 +9,18 @@ import java.util.ArrayList;
 
 /**
  * 
- * 
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
  */
-public class UserTable extends Table{
+class CourseTable extends Table {
 
 	/**
-	 * Constructs an object of class UserTable.
+	 * Constructs an object of class CourseTable.
 	 * @param execute
 	 * @param tableName
 	 */
-	UserTable(StatementExecutor execute, String tableName) {
+	public CourseTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
 		// TODO Auto-generated constructor stub
 	}
@@ -40,5 +42,5 @@ public class UserTable extends Table{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }
