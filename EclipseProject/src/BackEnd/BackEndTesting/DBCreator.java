@@ -13,7 +13,7 @@ public class DBCreator {
 	//Configure these variables for your own MySQL environment
 	public String connectionInfo = "jdbc:mysql://localhost:3306",  
 				  login          = "root",
-				  password       = "bacon";
+				  password       = "bacon"; //change password for your own machine
 	
 	//Establishes connection to the DB.
 	public DBCreator()

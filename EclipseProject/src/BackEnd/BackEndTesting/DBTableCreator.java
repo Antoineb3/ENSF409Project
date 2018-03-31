@@ -19,7 +19,7 @@ public class DBTableCreator {
 	//Configure these variables for your own MySQL environment
 	public String connectionInfo = "jdbc:mysql://localhost:3306/LearningPlatformDB?useSSL=false",  
 				  login          = "root",
-				  password       = "bacon";
+				  password       = "bacon";  //change password for your own machine
 	
 	
 
