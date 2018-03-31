@@ -8,7 +8,7 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
 /**
- * Contains helper methods used my many of the JPanel classes to improve code-reuse
+ * Contains helper methods used my many of the JPanel classes to improve code-reuse.
  * class and methods are package-scope
  */
 abstract class GuiUtilities {
@@ -19,7 +19,7 @@ abstract class GuiUtilities {
 	 */
 	static JSeparator horizontalLine() {
 		JSeparator seperator = new JSeparator(SwingConstants.HORIZONTAL);
-        seperator.setMaximumSize( new Dimension(Integer.MAX_VALUE, 1) );
+        seperator.setMaximumSize( new Dimension(Integer.MAX_VALUE, 5) );
         return seperator;
 	}
 	

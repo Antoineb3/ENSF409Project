@@ -28,7 +28,8 @@ public class ProfGUI extends JFrame{
      */
     private ProfHomepage profHomePagePanel;
     private ProfCoursePage profCoursePagePanel;
-    private ViewStudents viewStudentsPanel;
+    private ViewStudentsPage viewStudentsPanel;
+    private ProfAssignmentPage profAssignmentPanel;
 
     public ProfGUI() {
         
@@ -42,9 +43,12 @@ public class ProfGUI extends JFrame{
         profCoursePagePanel = new ProfCoursePage();// TODO set the CoursePage's course every time you go to it 
         cards.add(profCoursePagePanel, "PROFCOURSEPAGE"); //the cardName of the homePagePanel is PROFCOURSEPAGE
 
-        viewStudentsPanel = new ViewStudents();// TODO set the ViewStudents's course every time you go to it 
-        cards.add(viewStudentsPanel, "VIEWSTUDENTS"); //the cardName is VIEWSTUDENTS
+        viewStudentsPanel = new ViewStudentsPage();// TODO set the ViewStudents's course every time you go to it 
+        cards.add(viewStudentsPanel, "VIEWSTUDENTSPAGE"); //the cardName is VIEWSTUDENTSPAGE
 
+        profAssignmentPanel = new ProfAssignmentPage();// TODO set the assignemnt page's file every time you go to it 
+        cards.add(profAssignmentPanel, "PROFASSIGNMENTPAGE"); //the cardName is PROFASSIGNMENTPAGE
+        
         add(cards);
 		pack();
         setResizable(false);
@@ -58,6 +62,7 @@ public class ProfGUI extends JFrame{
     public void setActiveCard(String CARDNAME){
         CardLayout cl = (CardLayout)(cards.getLayout());
         cl.show(cards, CARDNAME);
+        //note: if cardname is passed in that doesnt exist, nothing happens
         //TODO will need to update a card's list items when we switch to it?
     }
 
@@ -77,9 +82,15 @@ public class ProfGUI extends JFrame{
     /**
      * @return the viewStudentsPanel
      */
-    public ViewStudents getViewStudentsPanel() {
+    public ViewStudentsPage getViewStudentsPanel() {
         return viewStudentsPanel;
     }
+    /**
+	 * @return the profAssignmentPanel
+	 */
+	public ProfAssignmentPage getProfAssignmentPanel() {
+		return profAssignmentPanel;
+	}
     
     
 

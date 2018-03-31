@@ -18,11 +18,21 @@ public class ProfController extends ViewController{
     public ProfController(ProfGUI pg){
     		super(pg); // sets the frame to pg 
 
-        pg.getProfCoursePagePanel().setHomepageButtonListener(new HomepageButtonListener());
-        pg.getViewStudentsPanel().setHomepageButtonListener(new HomepageButtonListener());
+    		//set all the back to homepage buttons
+        pg.getProfCoursePagePanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+        pg.getViewStudentsPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+        pg.getProfAssignmentPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
         
+        //set all the back buttons
+        pg.getProfAssignmentPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+        pg.getViewStudentsPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+
         
-        pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentListener(pg.getProfCoursePagePanel(), this));
+        //set other navigator buttons
+        pg.getProfCoursePagePanel().setViewStudentsButtonListener(new CardChangerListener("VIEWSTUDENTSPAGE"));
+        
+        pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentButtonListener(pg.getProfCoursePagePanel(), this));
+        pg.getProfHomePagePanel().setCreateNewCourseButtonListener(new NewCourseButtonListener(pg.getProfHomePagePanel(), this));
         
        
     }
@@ -30,12 +40,19 @@ public class ProfController extends ViewController{
     /**
      * Commonly used inner class listener to go back to the homepage
      */
-    class HomepageButtonListener implements ActionListener {
-    	@Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("homepage button pressed. going back to homepage..");
-            ((ProfGUI) frame).setActiveCard("PROFHOMEPAGE");
-        }
+    class CardChangerListener implements ActionListener {
+    		String card;
+			public CardChangerListener(String c) {
+				card = c;
+			}
+	    	@Override
+	        public void actionPerformed(ActionEvent e) {
+	            System.out.println("Card changer button pressed. going to: "+card);
+	            if(card.equals("PROFASSIGNMENTPAGE")){
+	            		//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
+	            }
+	            ((ProfGUI) frame).setActiveCard(card);
+	        }
 	}
 
     //TODO in the listener that goes to a course page, use pg.getProfCoursePagePanel().setCourse(theCourse) before setActiveCard()

@@ -8,7 +8,7 @@ public class Demo{
     public static void main(String[] args) {
         ProfGUI pg = new ProfGUI();
         ProfController controller = new ProfController(pg);
-        pg.setActiveCard("PROFCOURSEPAGE");
+        pg.setActiveCard("PROFCOURSEPAGE"); //change this arg to set the startup page
         
     }
 }

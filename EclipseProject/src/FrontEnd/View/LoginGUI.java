@@ -89,7 +89,7 @@ public class LoginGUI extends JFrame{
 
 
 
-
+    //Main for testing
     public static void main(String[] args) {
         LoginGUI gui = new LoginGUI();
     }

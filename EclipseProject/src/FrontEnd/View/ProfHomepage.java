@@ -66,7 +66,7 @@ public class ProfHomepage extends JPanel{
 		courseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		courseList.setLayoutOrientation(JList.VERTICAL);
 
-		// courseList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view course page
+		// courseList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view course page. update JLabel of CoursePage to show course name
 
 		JScrollPane scroller = new JScrollPane(courseList);
         scroller.setMaximumSize(new Dimension(400,300));
@@ -92,6 +92,7 @@ public class ProfHomepage extends JPanel{
 	}
 
 
+	//for testing
     public static void main(String[] args) {
         JFrame frame = new JFrame();
 

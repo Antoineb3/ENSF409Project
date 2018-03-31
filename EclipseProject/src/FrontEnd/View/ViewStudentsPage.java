@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 /**
  * Creates the VIewStudents page of the ProfGUI
  */
-public class ViewStudents extends JPanel{
+public class ViewStudentsPage extends JPanel{
 	/**
      * The course represented on the GUI
      */
@@ -53,7 +53,7 @@ public class ViewStudents extends JPanel{
 	/**
 	 * Constructor that creates the visible Frame 
 	 */
-	public ViewStudents() {
+	public ViewStudentsPage() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 
@@ -67,7 +67,7 @@ public class ViewStudents extends JPanel{
 	 */
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Course Page: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
+        add(GuiUtilities.centeredJLabel("Viewing students through course: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
         setButtonPanel();

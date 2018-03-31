@@ -15,9 +15,9 @@ import javax.swing.*;
  */
 public class ProfCoursePage extends JPanel{
     /**
-     * The course rerpesented on the GUI
+     * The course represented on the GUI
      */
-    private String course; // TODO chagne this to class Course
+    private String course; // TODO change this to class Course
 	/**
 	 * The button to return to the prof homepage
 	 */
@@ -75,8 +75,13 @@ public class ProfCoursePage extends JPanel{
         add(GuiUtilities.centeredJLabel("Course Page: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
-        setButtonPanel();
 
+        
+        
+        setButtonPanel();
+        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
+        
+        
         add(GuiUtilities.centeredJLabel("Assignments:"));
         setupAssignmentsList();
 
@@ -108,12 +113,13 @@ public class ProfCoursePage extends JPanel{
      */
     public void setButtonPanel(){
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setMaximumSize(new Dimension(800,50));
+        buttonPanel.setMaximumSize(new Dimension(800,40));
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(homepageButton);
         buttonPanel.add(viewStudentsButton);
         buttonPanel.add(emailButton);
         add(buttonPanel);
+        add(GuiUtilities.horizontalLine());
     }
 
     /**
@@ -124,7 +130,8 @@ public class ProfCoursePage extends JPanel{
 		assignmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		assignmentList.setLayoutOrientation(JList.VERTICAL);
 
-		// assignmentList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view course page
+		// assignmentList.addListSelectionListener(new ListListener(this)); //  TODO make ListListener, double click to go to assignment page. update JLabel of assignmentPage to show the assignment name
+
 
 		JScrollPane scroller = new JScrollPane(assignmentList);
         scroller.setMaximumSize(new Dimension(400,300));
@@ -176,6 +183,7 @@ public class ProfCoursePage extends JPanel{
     }
     
 
+    //for testing
     public static void main(String[] args) {
         JFrame frame = new JFrame();
 

@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Listener class for the Create a New Assignment button
  */
-public class NewAssignmentListener implements ActionListener{
+public class NewAssignmentButtonListener implements ActionListener{
 	/**
 	 * The panel with the button calling this listener
 	 */
@@ -19,7 +19,7 @@ public class NewAssignmentListener implements ActionListener{
 	 */
 	private ProfController controller;
 	/**
-	 * The textFields with which user will input the new client's info 
+	 * The textFields with which user will input the new assignment name
 	 */
 	private JTextField assignmentNameField = new JTextField();
 	/**
@@ -32,7 +32,7 @@ public class NewAssignmentListener implements ActionListener{
 	private JButton chooseFileButton = new JButton("choose file");
 
 	/**
-	 * All the components to display on the frame 
+	 * All the components to display on the frame
 	 * Used for displaying multiple input textFields on frame
 	 */
 	private Object[] items = {"New Assignment", "Name:", assignmentNameField, "File Upload:", chooseFileButton};
@@ -40,10 +40,11 @@ public class NewAssignmentListener implements ActionListener{
 	private File newFile=null;
 
 	/**
-	 * Constructor that inits the calling frame and the listener for the comboBox on the add Frame  
-	 * @param jf
+	 * Constructor that inits the calling JPanel and the listener for the file chooser
+	 * @param p the calling JPanel
+	 * @param c the controller to access the backend
 	 */
-	public NewAssignmentListener(ProfCoursePage p, ProfController c) {
+	public NewAssignmentButtonListener(ProfCoursePage p, ProfController c) {
 		panel = p;
 		controller=c;
 		/**
@@ -78,15 +79,16 @@ public class NewAssignmentListener implements ActionListener{
 		int option = JOptionPane.showConfirmDialog(null, items, "Create a New Assignment", JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			name = assignmentNameField.getText();
-			assignmentNameField.setText(""); //empty the field
 			
 			if(name.equals("")) {
 				JOptionPane.showMessageDialog(null, "Error: assignment name can't be empty", "Error creating assignment", JOptionPane.WARNING_MESSAGE);
+				clearInputs();
 				return;
 			}
 			
 			if(newFile==null) {
 				JOptionPane.showMessageDialog(null, "Error: no assignment file chosen", "Error creating assignment", JOptionPane.WARNING_MESSAGE);
+				clearInputs();
 				return;
 			}
 			
@@ -98,16 +100,23 @@ public class NewAssignmentListener implements ActionListener{
 			
 			//panel.updateAssignmentList(controller.getModel.getAllAssignmentsInCourse());
 			
-			
-//			JOptionPane.showMessageDialog(null, "New Assignment successfully added.", "Assignment Added", JOptionPane.INFORMATION_MESSAGE);
+		
 			System.out.println("Assignment "+name+"from file "+newFile.getName()+" successfuly created.");
 			JOptionPane.showMessageDialog(null, "Assignment "+name+" from file "+newFile.getName()+" successfuly created.", "Assignment Created", JOptionPane.INFORMATION_MESSAGE);
 
 		
 		}
+		clearInputs();
 		
 	}
 
+	/**
+	 * Helper method to clear the nameField and the selected file
+	 */
+	private void clearInputs() {
+		assignmentNameField.setText("");
+		newFile=null;
+	}
 
 
 }
