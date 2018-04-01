@@ -13,7 +13,8 @@ import javax.swing.*;
  * Creates the ProfHomepage GUI panel
  */
 public class ProfHomepage extends JPanel{
-    /**
+   
+	/**
      * The prof that logged in 
      */
     private String prof; //TODO make this class Professor
@@ -90,6 +91,13 @@ public class ProfHomepage extends JPanel{
 		listModel=c;
 		courseList.setModel(listModel);
 	}
+	
+	 /**
+		 * @return the prof
+		 */
+		public String getProf() {
+			return prof;
+		}
 
 
 	//for testing
