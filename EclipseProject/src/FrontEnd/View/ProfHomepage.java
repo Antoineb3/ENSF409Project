@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Professor;
+
 /*
  * Ross Bartlett
  * ENSF 409 - Project
@@ -17,8 +19,9 @@ public class ProfHomepage extends JPanel{
 	/**
      * The prof that logged in 
      */
-    private String prof; //TODO make this class Professor
-	/**
+	 private Professor prof;
+	 
+	 /**
 	 * The create new course button
 	 */
     private JButton createNewCourseButton = new JButton("Create New Course");
@@ -35,7 +38,7 @@ public class ProfHomepage extends JPanel{
 	/**
 	 * Constructor that creates the visible panel 
 	 */
-	public ProfHomepage(String p) { //TODO make this arg type Professor 
+	public ProfHomepage( Professor p) { //TODO make this arg type Professor 
         prof = p;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
@@ -50,8 +53,11 @@ public class ProfHomepage extends JPanel{
 	 * Helper method to add components to the JFrame
 	 */
 	private void fillContentPane() {
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Welcome, "+prof+"!"));//TODO prof.getName():
+        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
+        
+//        add(GuiUtilities.centeredJLabel("Welcome, Professor "+prof.getFirstName()+" "+prof.getLastName()+"!")); //TODO use this, commment out next line
+        add(GuiUtilities.centeredJLabel("Welcome, Professor testProfName!"));
+        
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
         add(GuiUtilities.centeredJLabel("Courses:"));
@@ -95,22 +101,11 @@ public class ProfHomepage extends JPanel{
 	 /**
 		 * @return the prof
 		 */
-		public String getProf() {
+		public Professor getProf() {
 			return prof;
 		}
 
 
-	//for testing
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
 
-		frame.setTitle("B&B Learning");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new ProfHomepage("profName"));
-        frame.pack();
-        frame.setLocationRelativeTo(null); // center the JFrame
-		frame.setResizable(false);
-		frame.setVisible(true);
-    }
 
 }

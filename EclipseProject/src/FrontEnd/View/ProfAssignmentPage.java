@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Assignment;
 import sun.swing.BakedArrayList;
 
 /*
@@ -19,7 +20,7 @@ public class ProfAssignmentPage extends JPanel{
     /**
      * The Assignment represented on the GUI
      */
-    private String Assignment; // TODO change this to class Assignment
+    private Assignment assignment;
 	/**
 	 * The button to return to the prof homepage
 	 */
@@ -156,15 +157,15 @@ public class ProfAssignmentPage extends JPanel{
     /**
      * @return the Assignment
      */
-    public String getAssignment() { //TODO chagne to type Assignment
-        return Assignment;
+    public Assignment getAssignment() { //TODO chagne to type Assignment
+        return assignment;
     }
 
     /**
      * @param c the Assignment to set
      */
-    public void setAssignment(String c) {
-        Assignment = c;
+    public void setAssignment(Assignment c) {
+        assignment = c;
     }
     
 

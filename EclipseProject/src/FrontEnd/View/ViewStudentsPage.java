@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 
+import SharedObjects.Course;
+
 /*
  * Ross Bartlett
  * March 27 2018
@@ -19,12 +21,12 @@ public class ViewStudentsPage extends JPanel{
 	/**
      * The course represented on the GUI
      */
-    private String course; // TODO change this to class Course
+    private Course course;
 	
 	/**
 	 * The buttons on the JPanel
 	 */
-	JButton homepageButton = new JButton("Homepage");
+	JButton homepageButton = new JButton("Back to Homepage");
 	JButton backButton = new JButton("Back");
 	
 	JButton searchButton = new JButton("Search");

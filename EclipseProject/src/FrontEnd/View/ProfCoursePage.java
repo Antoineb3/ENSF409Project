@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Course;
+
 /*
  * Ross Bartlett
  * ENSF 409 - Project
@@ -17,7 +19,7 @@ public class ProfCoursePage extends JPanel{
     /**
      * The course represented on the GUI
      */
-    private String course; // TODO change this to class Course
+    private Course course;
 	/**
 	 * The button to return to the prof homepage
 	 */
@@ -171,14 +173,14 @@ public class ProfCoursePage extends JPanel{
     /**
      * @return the course
      */
-    public String getCourse() { //TODO chagne to type Course
+    public Course getCourse() { 
         return course;
     }
 
     /**
      * @param c the course to set
      */
-    public void setCourse(String c) {
+    public void setCourse(Course c) {
         course = c;
     }
     

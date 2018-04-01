@@ -3,6 +3,8 @@ package FrontEnd.View;
 import java.awt.*;
 import javax.swing.*;
 
+import SharedObjects.Professor;
+
 /*
  * Ross Bartlett
  * ENSF 409 - project
@@ -16,7 +18,7 @@ public class ProfGUI extends JFrame{
     /**
      * The prof that logged in 
      */
-    private String prof; //TODO make this class Professor
+    private Professor prof;
 
     /**
      * The JPanel on the JFrame that can switch between different pages/cards
@@ -37,7 +39,7 @@ public class ProfGUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cards = new JPanel(new CardLayout());
 
-        profHomePagePanel = new ProfHomepage("testProfName"); //TODO use prof.getName()
+        profHomePagePanel = new ProfHomepage(prof); 
         cards.add(profHomePagePanel, "PROFHOMEPAGE"); //the cardName of the homePagePanel is PROFHOMEPAGE
 
         profCoursePagePanel = new ProfCoursePage();// TODO set the CoursePage's course every time you go to it 
@@ -46,7 +48,7 @@ public class ProfGUI extends JFrame{
         viewStudentsPanel = new ViewStudentsPage();// TODO set the ViewStudents's course every time you go to it 
         cards.add(viewStudentsPanel, "VIEWSTUDENTSPAGE"); //the cardName is VIEWSTUDENTSPAGE
 
-        profAssignmentPanel = new ProfAssignmentPage();// TODO set the assignemnt page's file every time you go to it 
+        profAssignmentPanel = new ProfAssignmentPage();// TODO set the assignment page's file every time you go to it 
         cards.add(profAssignmentPanel, "PROFASSIGNMENTPAGE"); //the cardName is PROFASSIGNMENTPAGE
         
         add(cards);
