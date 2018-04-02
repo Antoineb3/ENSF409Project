@@ -51,5 +51,14 @@ public class DBCreator {
 	public static void main(String[] args) {
 		DBCreator DB = new DBCreator();
 		DB.createDB();
+		try {
+			DB.preparedStatement.close();
+			DB.jdbc_connection.close();
+		} 
+		catch (SQLException e) { e.printStackTrace(); }
+		finally
+		{
+			System.out.println("\nThe program is finished running");
+		}
 	}
 }
