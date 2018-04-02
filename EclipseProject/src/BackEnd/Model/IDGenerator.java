@@ -28,7 +28,7 @@ public class IDGenerator {
 	 * @return Highest id value + 1
 	 * @throws SQLException
 	 */
-	synchronized static int generateID() throws SQLException {
+	public synchronized static int generateID() throws SQLException {
 		jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
 		int rv = getCurrentIDValue();
 		setCurrentIDValue(++rv);
@@ -62,8 +62,8 @@ public class IDGenerator {
 		String statement = "UPDATE " + tableName + 
 				" SET  ID=? WHERE ID=?";
 		preparedStatement = jdbc_connection.prepareStatement(statement);
-		preparedStatement.setInt(0, id);
-		preparedStatement.setInt(1, id-1);
+		preparedStatement.setInt(1, id);
+		preparedStatement.setInt(2, id-1);
 		preparedStatement.executeUpdate();
 		
 	}
