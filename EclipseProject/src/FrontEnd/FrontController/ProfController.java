@@ -58,11 +58,20 @@ public class ProfController extends ViewController{
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			ProfGUI pg = ((ProfGUI) frame); 
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
+				//and the JLabel that says this assignment is active/inactive
 			}
-			((ProfGUI) frame).setActiveCard(card);
+			else if(card.equals("PROFCOURSEPAGE")){
+				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update the assignment list
+				//TODO must update the JLabel that says this Course is active/inactive
+			}
+			else if(card.equals("PROFHOMEPAGE")){
+				fillHomePageCourseList(((ProfGUI) frame).getProfHomePagePanel()); // update the course list
+			}
+			pg.setActiveCard(card);
 		}
 	}
 
@@ -74,7 +83,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("prof_id"); // the column in the table to search
 		params.add(Integer.toString(homepagePanel.getProf().getID())); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum,
+		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<?> response = communicator.communicate(msg);
@@ -95,7 +104,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("course_id"); // the column in the table to search
 		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignemntTableNum, searchOpNum,
+		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignemntTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<?> response = communicator.communicate(msg);
