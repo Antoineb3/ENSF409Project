@@ -28,13 +28,20 @@ public class IDGenerator {
 	 * @return Highest id value + 1
 	 * @throws SQLException
 	 */
-	public synchronized static int generateID() throws SQLException {
-		jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
-		int rv = getCurrentIDValue();
-		setCurrentIDValue(++rv);
-		preparedStatement.close();
-		jdbc_connection.close();
-		return rv;
+	public synchronized static int generateID() {
+		int rv = 0;
+		try {
+			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
+			rv = getCurrentIDValue();
+			setCurrentIDValue(++rv);
+			preparedStatement.close();
+			jdbc_connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			return rv;
+		}
 	}
 
 	/**

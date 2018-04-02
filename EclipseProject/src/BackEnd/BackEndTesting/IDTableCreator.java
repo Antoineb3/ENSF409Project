@@ -105,9 +105,9 @@ public class IDTableCreator {
 		
 		DB.addItem(-1);
 		
+		System.out.println(IDGenerator.generateID());
 		
 		try {
-			System.out.println(IDGenerator.generateID());
 			DB.preparedStatement.close();
 			DB.jdbc_connection.close();
 		} 
