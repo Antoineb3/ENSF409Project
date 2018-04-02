@@ -30,13 +30,6 @@ public class UserTable extends Table{
 
 	/* (non-Javadoc)
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
-	 * "ID INT(8) NOT NULL, " +
-			     "PASSWORD VARCHAR(20) NOT NULL, " + 
-			     "EMAIL VARCHAR(50) NOT NULL, " + 
-			     "FIRSTNAME VARCHAR(30) NOT NULL, " + 
-			     "LASTNAME VARCHAR(30) NOT NULL, " + 
-			     "TYPE CHAR(1) NOT NULL, " + 
-			     "PRIMARY KEY ( id ))";
 	 */
 	@Override
 	public <T extends Serializable> int addToDB(T adition) {
@@ -75,18 +68,12 @@ public class UserTable extends Table{
 			while(results.next()) {
 				char type = results.getString(6).charAt(0);
 				if(type == 'S') {
-					users.add(new Student(results.getInt(1),
-										  results.getString(2),
-										  results.getString(3),
-										  results.getString(4),
-										  results.getString(5)));
+					users.add(new Student(results.getInt(1), results.getString(2), results.getString(3),
+										  results.getString(4), results.getString(5)));
 				}
 				else if(type == 'P') {
-					users.add(new Professor(results.getInt(1),
-											results.getString(2),
-											results.getString(3),
-											results.getString(4),
-											results.getString(5)));
+					users.add(new Professor(results.getInt(1),results.getString(2),results.getString(3),
+											results.getString(4),results.getString(5)));
 				}
 				
 			}
@@ -94,7 +81,6 @@ public class UserTable extends Table{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return users;
 	}
 	

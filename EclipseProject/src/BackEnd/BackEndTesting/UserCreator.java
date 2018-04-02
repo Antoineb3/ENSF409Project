@@ -21,7 +21,7 @@ public class UserCreator {
 		User antoine = new Student(-1, "bacon2", "antoine.bizon1@ucalgary.ca", "Antoine", "Bzon");
 		
 		System.out.println("Adding antoine to users");
-		//userTable.addToDB(antoine);
+		userTable.addToDB(antoine);
 		
 		System.out.println("Searching for Antoine");
 		antoine = (User) userTable.search("FIRSTNAME", "Antoine").get(0);
