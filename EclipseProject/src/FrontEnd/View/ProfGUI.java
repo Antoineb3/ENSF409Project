@@ -101,5 +101,14 @@ public class ProfGUI extends JFrame{
     public static void main(String[] args) {
         ProfGUI gui = new ProfGUI();
     }
+
+	/**
+	 * @return the prof
+	 */
+	public Professor getProf() {
+		return prof;
+	}
+
+	
     
 }

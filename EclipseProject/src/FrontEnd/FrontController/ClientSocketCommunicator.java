@@ -26,23 +26,26 @@ public class ClientSocketCommunicator {
 	 * Initializes the socket and its I/O streams
 	 */
 	public ClientSocketCommunicator(String serverName, int portNumber) {
+		System.out.println("Connecting to socket...");
 		try {
 			socket = new Socket(serverName, portNumber);
 			socketOut = new ObjectOutputStream(socket.getOutputStream());
 			socketIn = new ObjectInputStream(socket.getInputStream());
+			System.out.println("Client connected to socket.");
 		} catch (IOException e) {
-			System.err.println(e.getStackTrace());
+			System.err.println("IO Exception connecting to socket: "+e.getStackTrace());
 		}
 	}
 
 
-	//NOTE this returns ArrayList instead of Message as shown on our class diagram
+	//NOTE this returns ArrayList instead of Message as shown on our class diagram. and it now has packge visibility instead of private
 	/**
 	 * sends a message to the socket and returns its response
 	 * @param m the message to send
 	 * @return the response
 	 */
-	private ArrayList<?> communicate(Message m) {
+	ArrayList<?> communicate(Message m) {
+		//do i need a while loop here? or can the ActionListeners just call this method any time to send a message 
 		writeToSocket(m);
 		return getResponse();
 	}

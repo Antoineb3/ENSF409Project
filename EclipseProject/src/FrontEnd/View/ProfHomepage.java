@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Course;
 import SharedObjects.Professor;
 
 /*
@@ -29,21 +30,19 @@ public class ProfHomepage extends JPanel{
     /**
 	 * The list of the prof's Courses
 	 */
-	// private DefaultListModel<Course> listModel = new DefaultListModel<>(); 
-    // private JList<Course> courseList;
-    private DefaultListModel<String> listModel = new DefaultListModel<>(); //TODO make class Course
-    private JList<String> courseList;
+	 private DefaultListModel<Course> listModel = new DefaultListModel<>(); 
+     private JList<Course> courseList;
     
 
 	/**
 	 * Constructor that creates the visible panel 
 	 */
-	public ProfHomepage( Professor p) { //TODO make this arg type Professor 
+	public ProfHomepage(Professor p) { //TODO make this arg type Professor 
         prof = p;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 
-        // listModel=manager.getProfsCourses(); //TODO updates the courseList to show all the profs Courses
+        // listModel=model.getProfsCourses(); //TODO updates the courseList to show all the profs Courses
 
         fillContentPane();
 	}
@@ -93,7 +92,7 @@ public class ProfHomepage extends JPanel{
 	 * helper method to set and update the course list 
 	 * @param c the list of results to display 
 	 */
-	public void updateCourseList(DefaultListModel<String> c) { //TODO change to Course instead of String
+	public void updateCourseList(DefaultListModel<Course> c) { 
 		listModel=c;
 		courseList.setModel(listModel);
 	}

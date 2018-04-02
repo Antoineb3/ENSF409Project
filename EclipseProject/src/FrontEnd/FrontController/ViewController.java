@@ -5,13 +5,13 @@ import javax.swing.JFrame;
 
 
 public abstract class ViewController {
-	protected ArrayList<?> responseItems;
+	protected ArrayList<?> responseItems; //TODO dont need this?
 	protected JFrame frame;
-	private ClientSocketCommunicator communicator;
+	protected ClientSocketCommunicator communicator;
 	
-	public ViewController(JFrame f) {
+	public ViewController(JFrame f, ClientSocketCommunicator c) {
 		this.frame = f;
-//		csc = new ClientSocketCommunicator(serverName, portNumber)
+		communicator = c;
 	}
 
 	/**

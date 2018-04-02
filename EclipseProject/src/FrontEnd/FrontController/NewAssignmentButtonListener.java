@@ -95,10 +95,11 @@ public class NewAssignmentButtonListener implements ActionListener{
 			//construct a new object of type Assignment using the name and the newFile and the panel.getCourse()
 			//Assignment temp = new Assignment(...)
 			
-			//now add the assignment
+			//now add the assignment. this will mean creating and sending a message to the Model
 			//controller.getModel().addAssignment(temp);
 			
-			//panel.updateAssignmentList(controller.getModel.getAllAssignmentsInCourse());
+			//lastly, update the list
+			controller.fillCoursePageAssignmentList(panel);
 			
 		
 			System.out.println("Assignment "+name+"from file "+newFile.getName()+" successfuly created.");

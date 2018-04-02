@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Assignment;
 import SharedObjects.Course;
 
 /*
@@ -49,10 +50,8 @@ public class ProfCoursePage extends JPanel{
     /**
 	 * The list of the course's assignments
 	 */
-	// private DefaultListModel<Assignment> listModel = new DefaultListModel<>(); 
-    // private JList<Assignment> assignmentList;
-    private DefaultListModel<String> listModel = new DefaultListModel<>(); //TODO make class Assignment
-    private JList<String> assignmentList;
+	 private DefaultListModel<Assignment> listModel = new DefaultListModel<>(); 
+     private JList<Assignment> assignmentList;
     
 
 	/**
@@ -165,7 +164,7 @@ public class ProfCoursePage extends JPanel{
 	 * helper method to set and update the course list 
 	 * @param c the list of results to display 
 	 */
-	public void updateAssignmentList(DefaultListModel<String> c) { //TODO change to Assignment instead of String
+	public void updateAssignmentList(DefaultListModel<Assignment> c) { //TODO change to Assignment instead of String
 		listModel=c;
 		assignmentList.setModel(listModel);
     }

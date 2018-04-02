@@ -68,15 +68,16 @@ public class NewCourseButtonListener implements ActionListener{
 
 
 			//construct a new object of type course using the name and the panel.getProf()
-//			Course temp = new Course(panel.getProf().getID(), name, 'n') // 'n' for active = no
+			//Course temp = new Course(panel.getProf().getID(), name, 'n') // 'n' for active = no
 
-					//now add the course
-					//controller.getModel().addCourse(temp);
-
-					//panel.updateCourseist(controller.getModel.getAllProfsCourses());
+			//now add the course : this will mean sending a message that tells model to add course 
+			//controller.getModel().addCourse(temp);
 
 
-					System.out.println("Course "+name+" successfuly created.");
+			//lastly, update the list
+//			controller.fillHomePageCourseList(panel);
+
+			System.out.println("Course "+name+" successfuly created.");
 			JOptionPane.showMessageDialog(null, "Course "+name+" successfuly created.", "Course Created", JOptionPane.INFORMATION_MESSAGE);
 
 		}
