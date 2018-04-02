@@ -18,4 +18,13 @@ public class Professor extends User{
 		super(id, password, email, firstName, lastName);
 	}
 
+
+	@Override
+	public String toString() {
+		return "Professor [id=" + id + ", password=" + password + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + "]";
+	}
+	
+	
+
 }

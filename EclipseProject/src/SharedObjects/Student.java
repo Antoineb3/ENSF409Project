@@ -19,6 +19,12 @@ public class Student extends User{
 		super(id, password, email, firstName, lastName);
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", password=" + password + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + "]";
+	}
+
 	
 }
