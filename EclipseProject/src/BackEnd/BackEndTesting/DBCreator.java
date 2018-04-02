@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBCreator {
-	public Connection jdbc_connection;
-	public PreparedStatement preparedStatement;
-	public String databaseName = "LearningPlatformDB";
+	private Connection jdbc_connection;
+	private PreparedStatement preparedStatement;
+	private String databaseName = "LearningPlatformDB";
 	
 	//Configure these variables for your own MySQL environment
-	public String connectionInfo = "jdbc:mysql://localhost:3306",  
+	private String connectionInfo = "jdbc:mysql://localhost:3306",  
 				  login          = "root",
 				  password       = "bacon"; //change password for your own machine
 	

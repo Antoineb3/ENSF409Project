@@ -12,12 +12,12 @@ import java.sql.SQLException;
  *
  */
 public class DBTableCreator {
-	public Connection jdbc_connection;
-	public PreparedStatement preparedStatement;
-	public String databaseName = "LearningPlatformDB", tableName;
+	private Connection jdbc_connection;
+	private PreparedStatement preparedStatement;
+	private String databaseName = "LearningPlatformDB", tableName;
 	
 	//Configure these variables for your own MySQL environment
-	public String connectionInfo = "jdbc:mysql://localhost:3306/LearningPlatformDB?useSSL=false",  
+	private String connectionInfo = "jdbc:mysql://localhost:3306/LearningPlatformDB?useSSL=false",  
 				  login          = "root",
 				  password       = "bacon";  //change password for your own machine
 	
