@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since	2018-03-30
  */
-abstract class Table {
+public abstract class Table {
 
 	protected StatementExecutor execute;
 	
@@ -36,7 +36,7 @@ abstract class Table {
 	 * @param execute
 	 * @param tableName
 	 */
-	Table(StatementExecutor execute, String tableName) {
+	protected Table(StatementExecutor execute, String tableName) {
 		this.execute = execute;
 		this.tableName = tableName;
 	}
@@ -47,9 +47,9 @@ abstract class Table {
 	 * @param key
 	 * @return
 	 */
-	ArrayList<? extends Serializable> Search(String param, String key){
+	public ArrayList<? extends Serializable> search(String param, String key){
 		String query = "SELECT * FROM " + tableName + 
-					   " WHERE " + param + "=" + key;
+					   " WHERE " + param + "='" + key + "'";
 		ResultSet results = execute.preformQuery(query);
 		return listFromResultSet(results);
 	}
@@ -62,10 +62,10 @@ abstract class Table {
 	 * @param coditionVal the value of the condition.
 	 * @return the number of affected rows.
 	 */
-	int editRow(String param, String key, String condition, String coditionVal) {
+	public int editRow(String param, String key, String condition, String coditionVal) {
 		String update = "UPDATE " + tableName + 
-						" SET " + param + "=" + key +
-						" WHERE " + condition + "=" + coditionVal;
+						" SET " + param + "='" + key +
+						"' WHERE " + condition + "='" + coditionVal + "'";
 		return execute.preformUpdate(update);
 	}
 	

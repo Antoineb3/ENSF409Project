@@ -8,7 +8,7 @@ import java.sql.*;
  * @version 1.0
  * @since	2018-03-30
  */
-class StatementExecutor {
+public class StatementExecutor {
 
 	private Connection jdbc_connection;
 	
@@ -21,7 +21,7 @@ class StatementExecutor {
 	 * @param login the user account login. 
 	 * @param password the user account password.
 	 */
-	StatementExecutor(String connectionInfo, String login, String password) {
+	public StatementExecutor(String connectionInfo, String login, String password) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);

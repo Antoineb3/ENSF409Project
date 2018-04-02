@@ -2,7 +2,12 @@ package BackEnd.Model;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import SharedObjects.User;
+import SharedObjects.Student;
+import SharedObjects.Professor;
 
 /**
  * 
@@ -18,27 +23,79 @@ public class UserTable extends Table{
 	 * @param execute
 	 * @param tableName
 	 */
-	UserTable(StatementExecutor execute, String tableName) {
+	public UserTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
 		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
+	 * "ID INT(8) NOT NULL, " +
+			     "PASSWORD VARCHAR(20) NOT NULL, " + 
+			     "EMAIL VARCHAR(50) NOT NULL, " + 
+			     "FIRSTNAME VARCHAR(30) NOT NULL, " + 
+			     "LASTNAME VARCHAR(30) NOT NULL, " + 
+			     "TYPE CHAR(1) NOT NULL, " + 
+			     "PRIMARY KEY ( id ))";
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T adition) {
-		// TODO Auto-generated method stub
-		return 0;
+	public <T extends Serializable> int addToDB(T adition) {
+		User user = (User) adition;
+		char userType = derterminUserType(user);
+		String update = "INSERT INTO " + tableName +
+				" VALUES ( " + IDGenerator.generateID() + ", '" + 
+				user.getPassword() + "', '" +
+				user.getEmail() + "', '" +
+				user.getFirstName() + "', '" +
+				user.getLastName() + "', '" +
+				userType + "');";
+		return execute.preformUpdate(update);
+	}
+
+	private char derterminUserType(User toInsert) {
+		if(toInsert instanceof Student) {
+			return 'S';
+		}
+		else if(toInsert instanceof Professor) {
+			return 'P';
+		}
+		else {
+			System.err.println("Object Type error");
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see BackEnd.Model.Table#listFromResultSet(java.sql.ResultSet)
 	 */
 	@Override
-	protected ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
+		ArrayList<User> users = new ArrayList<User>();
+		try {
+			while(results.next()) {
+				char type = results.getString(6).charAt(0);
+				if(type == 'S') {
+					users.add(new Student(results.getInt(1),
+										  results.getString(2),
+										  results.getString(3),
+										  results.getString(4),
+										  results.getString(5)));
+				}
+				else if(type == 'P') {
+					users.add(new Professor(results.getInt(1),
+											results.getString(2),
+											results.getString(3),
+											results.getString(4),
+											results.getString(5)));
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return users;
 	}
 	
 }
