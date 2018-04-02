@@ -12,10 +12,6 @@ import java.io.Serializable;
 //class user should be abstract right?
 public abstract class User implements Serializable{
 	static final long serialVersionUID = 00;
-	/**
-	 * Static counter to set the ID to the next ID 
-	 */
-	private static int idCount;
 	protected int id;
 	protected String password;
 	protected String email;
@@ -31,27 +27,7 @@ public abstract class User implements Serializable{
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-	/**
-	 * Constructor that inits all fields and increments idCount, used for creating new user
-	 */
-	public User(String password, String email, String firstName, String lastName) {
-		this.id = idCount++;
-		this.password = password;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-	
-
-	/**
-	 * initialize the ID count to a specified value, used when first reading the DB table in order to get next id to create
-	 */
-	public static void setIdCount(int idCount) {
-		User.idCount = idCount;
-		System.out.println("User idCount set to "+idCount);
-	}
-	
+	}	
 	
 	
 	/**

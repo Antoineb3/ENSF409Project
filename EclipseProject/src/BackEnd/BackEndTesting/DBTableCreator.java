@@ -39,7 +39,7 @@ public class DBTableCreator {
 	}
 	
 	
-	// Create a data table inside of the database to hold tools
+	// Create a data table inside of the database
 	public void createTable(String tableParam)
 	{
 		

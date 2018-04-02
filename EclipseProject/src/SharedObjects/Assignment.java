@@ -11,10 +11,6 @@ import java.io.Serializable;
  */
 public class Assignment implements Serializable{
 	static final long serialVersionUID = 50;
-	/**
-	 * Static counter to set the ID to the next ID 
-	 */
-	private static int idCount;
 	private int id;
 	private int courseID;
 	private String path;
@@ -22,17 +18,7 @@ public class Assignment implements Serializable{
 	private char active;
 	private String dueDate;
 	
-	/**
-	 * Constructor that inits all fields and increments idCount, used for creating new assignments
-	 */
-	public Assignment(int courseID, String path, String title, char active, String dueDate) {
-		this.id = idCount++;
-		this.courseID = courseID;
-		this.path = path;
-		this.title = title;
-		this.active = active;
-		this.dueDate = dueDate;
-	}
+	
 	/**
 	 * Constructor that inits all fields and receives int ID, for creating a temporary Assignment to return from the DB that already has an ID
 	 */
@@ -44,15 +30,6 @@ public class Assignment implements Serializable{
 		this.active = active;
 		this.dueDate = dueDate;
 	}
-	
-	/**
-	 * initialize the ID count to a specified value, used when first reading the DB table in order to get next id to create
-	 */
-	public static void setIdCount(int idCount) {
-		Assignment.idCount = idCount;
-		System.out.println("Assignment idCount set to "+idCount);
-	}
-	
 	
 
 	/**
