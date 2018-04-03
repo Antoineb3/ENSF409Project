@@ -2,6 +2,7 @@ package FrontEnd.FrontController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -91,7 +92,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<?> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = communicator.communicate(msg);
 
 		// convert the returned arraylist to a listmodel
 		DefaultListModel<Course> listModel = new DefaultListModel<>();
@@ -112,7 +113,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignemntTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<?> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = communicator.communicate(msg);
 
 		// convert the returned arraylist to a listmodel 
 		DefaultListModel<Assignment> listModel = new DefaultListModel<>();
@@ -136,7 +137,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<?> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = communicator.communicate(msg);
 		if(response.size()>1) {
 			System.out.println("Unexpected error in updateCoursePageStatusLabel(): search for a course by ID returned "+response.size()+" courses");
 		}
@@ -164,7 +165,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<?> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = communicator.communicate(msg);
 		if(response.size()>1) {
 			System.out.println("Unexpected error in updateAssignmentPageStatusLabel(): search for an assignment by ID returned "+response.size()+" assignments");
 		}

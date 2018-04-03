@@ -9,6 +9,7 @@ import SharedObjects.DBMessage;
 
 import java.awt.event.*;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -77,7 +78,7 @@ public class NewCourseButtonListener implements ActionListener{
 			DBMessage msg = new DBMessage(0, 0, 1, 2, params); // 1,2 is courseTableNum, addOpNum
 
 			//send the message, get response
-			ArrayList<?> response = controller.getCommunicator().communicate(msg); 
+			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg); 
 			checkResponse(response);
 			controller.fillHomePageCourseList(panel); //refresh the courseList
 		}
@@ -88,7 +89,7 @@ public class NewCourseButtonListener implements ActionListener{
 	 * Helper method to determine if add to DB was successfull
 	 * @param response the arrayList returned by addToDB()
 	 */
-	private void checkResponse(ArrayList<?> response) {
+	private void checkResponse(ArrayList<? extends Serializable> response) {
 		if(response.size()>1) {
 			System.out.println("Unexpected error adding a course: addToDB returned "+response.size()+" sized arrayList");
 			JOptionPane.showMessageDialog(null, "Error: Course "+name+" may not have been created.", "Course Creation Error", JOptionPane.WARNING_MESSAGE);

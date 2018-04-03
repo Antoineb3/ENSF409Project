@@ -20,7 +20,7 @@ public class LoginGUI extends JFrame{
     /** 
 	 * text fields
 	 */
-	private JTextField usernameField = new JTextField(20);		
+	private JTextField userIDField = new JTextField(20);		
 	private JTextField passwordField = new JTextField(20);
 
 	/**
@@ -45,15 +45,15 @@ public class LoginGUI extends JFrame{
 	 * Helper method to add components to the JFrame
 	 */
 	private void fillContentPane() {
-        usernameField.setMaximumSize( usernameField.getPreferredSize() );
+		userIDField.setMaximumSize( userIDField.getPreferredSize() );
         passwordField.setMaximumSize( passwordField.getPreferredSize() );
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
         add(GuiUtilities.centeredJLabel("Welcome! Please enter your login information."));
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Username:"));
-        add(usernameField);
+        add(GuiUtilities.centeredJLabel("User ID:"));
+        add(userIDField);
         add(GuiUtilities.centeredJLabel("Password:"));
         add(passwordField);
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
@@ -76,12 +76,12 @@ public class LoginGUI extends JFrame{
 	 * helper method to clear the JTextFields
 	 */
 	public void clearLoginFields(){
-		usernameField.setText("");	
+		userIDField.setText("");	
 		passwordField.setText("");	
     }
     
     public String getUsernameInput(){
-        return usernameField.getText();
+        return userIDField.getText();
     }
     public String getPasswordInput(){
         return passwordField.getText();

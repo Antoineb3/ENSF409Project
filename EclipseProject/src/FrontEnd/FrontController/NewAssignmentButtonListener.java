@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -113,7 +114,7 @@ public class NewAssignmentButtonListener implements ActionListener{
 			FileMessage msg = new FileMessage(3, 2, params, content, ext); // 3, 2 is assignmentTableNum, addOpNum
 
 			//send the message, get response
-			ArrayList<?> response = controller.getCommunicator().communicate(msg);
+			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 			checkResponse(response);
 			
 			//lastly, update the list
@@ -175,7 +176,7 @@ public class NewAssignmentButtonListener implements ActionListener{
 	 * Helper method to determine if add to DB was successfull
 	 * @param response the arrayList returned by addToDB()
 	 */
-	private void checkResponse(ArrayList<?> response) {
+	private void checkResponse(ArrayList<? extends Serializable> response) {
 		//DB will return the number of rows added/affected
 		if(response.size()>1) {
 			System.out.println("Unexpected error adding an Assignment: addToDB returned "+response.size()+" sized arrayList");

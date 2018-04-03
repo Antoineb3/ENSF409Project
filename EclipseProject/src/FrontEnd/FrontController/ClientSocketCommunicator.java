@@ -5,6 +5,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -44,7 +45,7 @@ public class ClientSocketCommunicator {
 	 * @param m the message to send
 	 * @return the response
 	 */
-	ArrayList<?> communicate(Message m) {
+	ArrayList<? extends Serializable> communicate(Message m) {
 		//do i need a while loop here? or can the ActionListeners just call this method any time to send a message 
 		writeToSocket(m);
 		return getResponse();
@@ -56,6 +57,7 @@ public class ClientSocketCommunicator {
 	private void writeToSocket(Message m) {
 		try {
 			socketOut.writeObject(m);
+			socketOut.flush();
 		} catch (IOException ioException) {
 			System.err.println("Error writing to file. - cant send message");
 		} catch (NoSuchElementException elementException) {
@@ -66,9 +68,9 @@ public class ClientSocketCommunicator {
 	/**
 	 * helper method to read a serialized Message object from socket
 	 */
-	private ArrayList<?> getResponse() {
+	private ArrayList<? extends Serializable> getResponse() {
 		try {
-			return (ArrayList<?>) socketIn.readObject();
+			return (ArrayList<? extends Serializable>) socketIn.readObject();
 		} catch (EOFException e) {
 			System.err.println("Error, EOF");
 		} catch (ClassNotFoundException e) {
