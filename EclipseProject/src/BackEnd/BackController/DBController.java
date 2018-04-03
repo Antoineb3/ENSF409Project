@@ -14,14 +14,14 @@ import SharedObjects.Message;
  * @version 1.0
  * @since	2018-04-03
  */
-public class DBController extends ModelController {
+class DBController extends ModelController {
 	private DBMessage theMessage;
 	
 	/**
 	 * Constructs s DBController object by calling the classes super constructor. 
 	 * @param theModel
 	 */
-	public DBController(ModelExecutor theModel) {
+	DBController(ModelExecutor theModel) {
 		super(theModel);
 		// TODO Auto-generated constructor stub
 	}

@@ -13,12 +13,12 @@ import SharedObjects.Message;
  * @author Antoine
  *
  */
-public class EmailController extends ModelController {
+class EmailController extends ModelController {
 
 	/**
 	 * @param theModel
 	 */
-	public EmailController(ModelExecutor theModel) {
+	EmailController(ModelExecutor theModel) {
 		super(theModel);
 		// TODO Auto-generated constructor stub
 	}

@@ -13,12 +13,12 @@ import SharedObjects.Message;
  * @author Antoine
  *
  */
-public class FileController extends ModelController {
+class FileController extends ModelController {
 
 	/**
 	 * @param theModel
 	 */
-	public FileController(ModelExecutor theModel) {
+	FileController(ModelExecutor theModel) {
 		super(theModel);
 		// TODO Auto-generated constructor stub
 	}
