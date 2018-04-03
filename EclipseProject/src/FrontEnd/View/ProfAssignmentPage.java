@@ -78,7 +78,7 @@ public class ProfAssignmentPage extends JPanel{
         addFileArea();
 
 
-        setActiveStatusText(0); // start as saying inactive //TODO remove?
+        setActiveStatusText('0'); // start as saying inactive //TODO remove?
         add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 
 
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,15 +88,6 @@ public class ProfAssignmentPage extends JPanel{
         
     }
 
-    /**
-     * Changes the frame to tell whether the Assignment is active or not
-     * @param status 0 means inactive, else means active
-     */
-    public void setActiveStatusText(int status){
-        String message = "This Assignment is currently ";
-        message+= (status==0)? "INACTIVE":"ACTIVE";
-        statusMessage.setText(message);
-    }
 
     /**
      * make a panel of the top buttons on the frame
@@ -150,6 +141,16 @@ public class ProfAssignmentPage extends JPanel{
 	 */
 	public void updateAssignmentFile(String contents) { //TODO call this in controller whenever changing to assignment page?
 		fileArea.setText(contents);
+    }
+	
+	/**
+     * Changes the frame to tell whether the course is active or not
+     * @param status '1' means active, else means inactive
+     */
+    public void setActiveStatusText(char status){
+        String message = "This course is currently ";
+        message+= (status=='1')? "ACTIVE":"INACTIVE";
+        statusMessage.setText(message);
     }
     
     /**

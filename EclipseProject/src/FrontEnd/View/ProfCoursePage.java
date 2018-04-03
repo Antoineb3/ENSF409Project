@@ -89,7 +89,7 @@ public class ProfCoursePage extends JPanel{
         newAssignmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(newAssignmentButton);
 
-        setActiveStatusText(0); // start as saying inactive //TODO remove?
+        setActiveStatusText('0'); // start as saying inactive //TODO remove?
         add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 
 
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -99,15 +99,7 @@ public class ProfCoursePage extends JPanel{
         
     }
 
-    /**
-     * Changes the frame to tell whether the course is active or not
-     * @param status 0 means inactive, else means active
-     */
-    public void setActiveStatusText(int status){
-        String message = "This course is currently ";
-        message+= (status==0)? "INACTIVE":"ACTIVE";
-        statusMessage.setText(message);
-    }
+    
 
     /**
      * make a panel of the top buttons on the frame
@@ -168,7 +160,17 @@ public class ProfCoursePage extends JPanel{
 		listModel=c;
 		assignmentList.setModel(listModel);
     }
-    
+	
+	/**
+     * Changes the frame to tell whether the course is active or not
+     * @param status '1' means active, else means inactive
+     */
+    public void setActiveStatusText(char status){
+        String message = "This course is currently ";
+        message+= (status=='1')? "ACTIVE":"INACTIVE";
+        statusMessage.setText(message);
+    }
+
     /**
      * @return the course
      */

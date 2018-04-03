@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfGUI;
 import FrontEnd.View.ProfHomepage;
@@ -62,14 +63,14 @@ public class ProfController extends ViewController{
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
-				//and the JLabel that says this assignment is active/inactive
+				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
-				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update the assignment list
-				//TODO must update the JLabel that says this Course is active/inactive
+				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
+				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
 			}
 			else if(card.equals("PROFHOMEPAGE")){
-				fillHomePageCourseList(((ProfGUI) frame).getProfHomePagePanel()); // update the course list
+				fillHomePageCourseList(((ProfGUI) frame).getProfHomePagePanel()); // update/refresh the course list
 			}
 			pg.setActiveCard(card);
 		}
@@ -88,7 +89,7 @@ public class ProfController extends ViewController{
 		//send the message, get response
 		ArrayList<?> response = communicator.communicate(msg);
 
-		// convert the returned arraylist to a listmodel, 
+		// convert the returned arraylist to a listmodel
 		DefaultListModel<Course> listModel = new DefaultListModel<>();
 		for(Object co : response) {
 			listModel.addElement((Course)co);
@@ -109,13 +110,68 @@ public class ProfController extends ViewController{
 		//send the message, get response
 		ArrayList<?> response = communicator.communicate(msg);
 
-		// convert the returned arraylist to a listmodel, 
+		// convert the returned arraylist to a listmodel 
 		DefaultListModel<Assignment> listModel = new DefaultListModel<>();
 		for(Object co : response) {
 			listModel.addElement((Assignment)co);
 		}
 		// then do the update: 
 		coursePage.updateAssignmentList(listModel);
+	}
+	
+	/**
+	 * Helper method to refresh the JLabel on the CoursePage that says whether or not the course is active
+	 * @param coursePage the course page
+	 */
+	void updateCoursePageStatusLabel(ProfCoursePage coursePage) {
+
+		//make a message to query the course status (active/inactive)
+		ArrayList<String> params = new ArrayList<>();
+		params.add("id"); // the column in the table to search
+		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // will have to convert this string to int in the model?
+		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum
+
+		//send the message, get response
+		ArrayList<?> response = communicator.communicate(msg);
+		if(response.size()>1) {
+			System.out.println("Unexpected error in updateCoursePageStatusLabel(): search for a course by ID returned "+response.size()+" courses");
+		}
+		else if (response.size()==0) {
+			System.out.println("Error in updateCoursePageStatusLabel(): course not found");
+			return;
+		}
+		//get the status of the course
+		char status = ((Course) response.get(0)).getActive();
+		// then do the update: 
+		coursePage.setActiveStatusText(status);
+	}
+	
+
+	/**
+	 * Helper method to refresh the JLabel on the AssignmentPage that says whether or not the course is active
+	 * @param assignmentPage the assignment page
+	 */
+	void updateAssignmentPageStatusLabel(ProfAssignmentPage assignmentPage) {
+
+		//make a message to query the course status (active/inactive)
+		ArrayList<String> params = new ArrayList<>();
+		params.add("id"); // the column in the table to search
+		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key // will have to convert this string to int in the model?
+		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
+
+		//send the message, get response
+		ArrayList<?> response = communicator.communicate(msg);
+		if(response.size()>1) {
+			System.out.println("Unexpected error in updateAssignmentPageStatusLabel(): search for an assignment by ID returned "+response.size()+" assignments");
+		}
+		else if (response.size()==0) {
+			System.out.println("Error in updateAssignmentPageStatusLabel(): assignment not found");
+			return;
+		}
+		//get the status of the assignment
+		char status = ((Assignment) response.get(0)).getActive();
+		// then do the update: 
+		assignmentPage.setActiveStatusText(status);
 	}
 
 }
