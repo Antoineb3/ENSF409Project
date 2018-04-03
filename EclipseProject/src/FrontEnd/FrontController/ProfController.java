@@ -38,19 +38,19 @@ public class ProfController extends ViewController{
 		//set other navigator buttons
 		pg.getProfCoursePagePanel().setViewStudentsButtonListener(new CardChangerListener("VIEWSTUDENTSPAGE"));
 
+		//set new item listeners 
 		pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentButtonListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfHomePagePanel().setCreateNewCourseButtonListener(new NewCourseButtonListener(pg.getProfHomePagePanel(), this));
 
 
-
-		fillHomePageCourseList(pg.getProfHomePagePanel());
-		fillCoursePageAssignmentList(pg.getProfCoursePagePanel());
+		//update the courseList on the homepage
+//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
 
 
 
 	/**
-	 * Commonly used inner class listener to go back to the homepage
+	 * Inner class listener to switch the active card on the ProfGUI
 	 */
 	class CardChangerListener implements ActionListener {
 		String card;
@@ -62,6 +62,7 @@ public class ProfController extends ViewController{
 			ProfGUI pg = ((ProfGUI) frame); 
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
+				//the mechanism to assign the assignmentPage's prof will be in the courseList listener, which then calls this CardChanger
 				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
 				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}

@@ -5,9 +5,11 @@ import javax.swing.*;
 import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfHomepage;
 import SharedObjects.Course;
+import SharedObjects.DBMessage;
 
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
 
 /*
@@ -66,22 +68,41 @@ public class NewCourseButtonListener implements ActionListener{
 				return;
 			}
 
+			//construct the new course
+			Course temp = new Course(-1, panel.getProf().getID(), name, '0'); // '0' so the course starts as inactive // TODO change -1 to getHighestID in course table ?? 
 
-			//construct a new object of type course using the name and the panel.getProf()
-			//Course temp = new Course(panel.getProf().getID(), name, 'n') // 'n' for active = no
+			//make a message to tell the DB to add the course
+			ArrayList<Course> params = new ArrayList<>();
+			params.add(temp);
+			DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, addOpNum
 
-			//now add the course : this will mean sending a message that tells model to add course 
-			//controller.getModel().addCourse(temp);
-
-
-			//lastly, update the list
-//			controller.fillHomePageCourseList(panel);
-
-			System.out.println("Course "+name+" successfuly created.");
-			JOptionPane.showMessageDialog(null, "Course "+name+" successfuly created.", "Course Created", JOptionPane.INFORMATION_MESSAGE);
-
+			//send the message, get response
+			ArrayList<?> response = controller.getCommunicator().communicate(msg); //TODO right now the addToDB() in Table.java is returning an int?
+			checkResponse(response);
+			controller.fillHomePageCourseList(panel); //refresh the courseList
 		}
 		courseNameField.setText(""); //empty the field
+	}
+	
+	/**
+	 * Helper method to determine if add to DB was successfull
+	 * @param response the arrayList returned by addToDB()
+	 */
+	private void checkResponse(ArrayList<?> response) {
+		if(response.size()>1) {
+			System.out.println("Unexpected error adding a course: addToDB returned "+response.size()+" sized arrayList");
+			JOptionPane.showMessageDialog(null, "Error: Course "+name+" may not have been created.", "Course Creation Error", JOptionPane.WARNING_MESSAGE);
+		}
+		else if (response.size()==0 || (Integer)response.get(0)!=1) {
+			System.out.println("Error adding course - addToDB returned empty arrayList or returned not 1");
+			JOptionPane.showMessageDialog(null, "Error: Course "+name+" could not be created.", "Course Creation Error", JOptionPane.WARNING_MESSAGE);
+
+		}	
+		else {
+			//success, DB added 1 row 
+			System.out.println("Course "+name+" successfuly created.");
+			JOptionPane.showMessageDialog(null, "Course "+name+" successfuly created.", "Course Created", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 
