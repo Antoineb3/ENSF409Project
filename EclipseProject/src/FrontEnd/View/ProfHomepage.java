@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import SharedObjects.Assignment;
 import SharedObjects.Course;
 import SharedObjects.Professor;
 
@@ -32,13 +33,14 @@ public class ProfHomepage extends JPanel{
 	 */
 	 private DefaultListModel<Course> listModel = new DefaultListModel<>(); 
      private JList<Course> courseList;
+     
+     private JLabel welcomeText= new JLabel();
     
 
 	/**
 	 * Constructor that creates the visible panel 
 	 */
-	public ProfHomepage(Professor p) { 
-        prof = p;
+	public ProfHomepage() { 
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 
@@ -54,8 +56,9 @@ public class ProfHomepage extends JPanel{
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
-//        add(GuiUtilities.centeredJLabel("Welcome, Professor "+prof.getFirstName()+" "+prof.getLastName()+"!")); //TODO use this, commment out next line
-        add(GuiUtilities.centeredJLabel("Welcome, Professor testProfName!"));
+        setWelcomeText("testFirst", "testLast");//TODO remove? the cardChanger sets this when go to this page
+        welcomeText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(welcomeText);
         
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
@@ -85,6 +88,26 @@ public class ProfHomepage extends JPanel{
 	 */
 	public void setCreateNewCourseButtonListener(ActionListener e) {
         createNewCourseButton.addActionListener(e);
+    }
+	
+	/**
+     * sets the panels Assignment and updates the name, dueDate JLabels
+     * @param c the Assignment to set
+     */
+    public void setProf(Professor p) {
+       	prof = p;
+		setWelcomeText(p.getFirstName() , p.getLastName());//update the "welcome, name!" JLabel
+    }
+    
+    /**
+     * Sets the welcome message at top of panel
+     * @param first profs first name
+     * @param last profs last name
+     */
+    private void setWelcomeText(String first, String last) {
+    	 String message = "Welcome, Professor ";
+     message+= first+" "+last+"!";
+     welcomeText.setText(message);
     }
     
 

@@ -39,7 +39,8 @@ public class ProfGUI extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cards = new JPanel(new CardLayout());
 
-        profHomePagePanel = new ProfHomepage(prof); 
+        profHomePagePanel = new ProfHomepage(); 
+        profHomePagePanel.setProf(prof);
         cards.add(profHomePagePanel, "PROFHOMEPAGE"); //the cardName of the homePagePanel is PROFHOMEPAGE
 
         profCoursePagePanel = new ProfCoursePage();// TODO set the CoursePage's course every time you go to it 
@@ -106,6 +107,13 @@ public class ProfGUI extends JFrame{
 	 */
 	public Professor getProf() {
 		return prof;
+	}
+
+	/**
+	 * @param prof the prof to set
+	 */
+	public void setProf(Professor prof) {
+		this.prof = prof;
 	}
 
 	

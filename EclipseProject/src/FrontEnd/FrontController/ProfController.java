@@ -73,6 +73,7 @@ public class ProfController extends ViewController{
 				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
 			}
 			else if(card.equals("PROFHOMEPAGE")){
+				//note: homepage's prof / welcomeText never needs to be refreshed
 				fillHomePageCourseList(((ProfGUI) frame).getProfHomePagePanel()); // update/refresh the course list
 			}
 			pg.setActiveCard(card);
