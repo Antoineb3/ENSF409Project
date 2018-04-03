@@ -29,7 +29,7 @@ public class StudentEnrollmentTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
+	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		StudentEnrollment enrolment = (StudentEnrollment) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 

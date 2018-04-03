@@ -31,7 +31,7 @@ class CourseTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
+	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Course course  = (Course) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
