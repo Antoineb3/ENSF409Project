@@ -62,12 +62,13 @@ public class ProfController extends ViewController{
 			ProfGUI pg = ((ProfGUI) frame); 
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
-				//the mechanism to assign the assignmentPage's prof will be in the courseList listener, which then calls this CardChanger
+				//TODO the mechanism to assign the assignmentPage's prof will be in the coursePage's assignmentList listener, which then calls this CardChanger
 				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
 				//and the assignment name JLabel
 				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
+				//TODO the mechanism to assign the coursePages's course will be in the homepage's courseList listener, which then calls this CardChanger
 				//TODO update the course name JLabel 
 				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
 				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
