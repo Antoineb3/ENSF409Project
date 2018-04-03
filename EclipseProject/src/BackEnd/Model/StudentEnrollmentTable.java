@@ -2,10 +2,14 @@ package BackEnd.Model;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+import SharedObjects.StudentEnrollment;
+
 /**
- * 
+ * This class implements the abstract methods in the Table class for the student enrollment table.
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
@@ -19,7 +23,6 @@ public class StudentEnrollmentTable extends Table {
 	 */
 	public StudentEnrollmentTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -27,8 +30,12 @@ public class StudentEnrollmentTable extends Table {
 	 */
 	@Override
 	protected <T extends Serializable> int addToDB(T adition) {
-		// TODO Auto-generated method stub
-		return 0;
+		StudentEnrollment enrolment = (StudentEnrollment) adition;
+		String update = "INSERT INTO " + tableName +
+				" VALUES ( " + IDGenerator.generateID() + ", " + 
+				enrolment.getStudentID() + ", " +
+				enrolment.getCourseID()+ ");";
+		return execute.preformUpdate(update);
 	}
 
 	/* (non-Javadoc)
@@ -36,8 +43,16 @@ public class StudentEnrollmentTable extends Table {
 	 */
 	@Override
 	protected ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<StudentEnrollment> enrolments = new ArrayList<StudentEnrollment>();
+		try {
+			while(results.next()) {
+				enrolments.add(new StudentEnrollment(results.getInt(1), results.getInt(2), results.getInt(3)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return enrolments;
 	}
 
 }

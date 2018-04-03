@@ -2,10 +2,14 @@ package BackEnd.Model;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import SharedObjects.Grade;
+import SharedObjects.Submission;
+
 /**
- * 
+ * This class implements the abstract methods in the Table class for the submission table.
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
@@ -27,8 +31,17 @@ public class SubmissionTable extends Table {
 	 */
 	@Override
 	protected <T extends Serializable> int addToDB(T adition) {
-		// TODO Auto-generated method stub
-		return 0;
+		Submission submission = (Submission) adition;
+		String update = "INSERT INTO " + tableName +
+				" VALUES ( " + IDGenerator.generateID() + ", " + 
+				submission.getAssignID() + ", " +
+				submission.getStudentID() + ", '" +
+				submission.getPath() + "', '" +
+				submission.getTitle() + "', " +
+				submission.getSubmissionGrade() + ", '" +
+				submission.getComments() + "', '" +
+				submission.getTimestamp()+ "');";
+		return execute.preformUpdate(update);
 	}
 
 	/* (non-Javadoc)
@@ -36,8 +49,17 @@ public class SubmissionTable extends Table {
 	 */
 	@Override
 	protected ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Submission> submissions = new ArrayList<Submission>();
+		try {
+			while(results.next()) {
+				submissions.add(new Submission(results.getInt(1), results.getInt(2), results.getInt(3), results.getString(4),
+						results.getString(5), results.getInt(6), results.getString(7), results.getString(8)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return submissions;
 	}
 
 }

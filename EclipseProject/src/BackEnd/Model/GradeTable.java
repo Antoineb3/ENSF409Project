@@ -2,10 +2,13 @@ package BackEnd.Model;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import SharedObjects.Grade;
+
 /**
- * 
+ * This class implements the abstract methods in the Table class for the grade table.
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
@@ -27,8 +30,14 @@ public class GradeTable extends Table {
 	 */
 	@Override
 	protected <T extends Serializable> int addToDB(T adition) {
-		// TODO Auto-generated method stub
-		return 0;
+		Grade grade = (Grade) adition;
+		String update = "INSERT INTO " + tableName +
+				" VALUES ( " + IDGenerator.generateID() + ", " + 
+				grade.getAssignID() + ", " +
+				grade.getStudentID() + ", " +
+				grade.getCourseID() + ", " +
+				grade.getAssignmentGrade() + ");";
+		return execute.preformUpdate(update);
 	}
 
 	/* (non-Javadoc)
@@ -36,8 +45,17 @@ public class GradeTable extends Table {
 	 */
 	@Override
 	protected ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Grade> grades = new ArrayList<Grade>();
+		try {
+			while(results.next()) {
+				grades.add(new Grade(results.getInt(1), results.getInt(2), results.getInt(3), 
+						results.getInt(4), results.getInt(5)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return grades;
 	}
 
 }

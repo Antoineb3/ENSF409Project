@@ -10,8 +10,7 @@ import SharedObjects.Student;
 import SharedObjects.Professor;
 
 /**
- * 
- * 
+ * This class implements the abstract methods in the Table class for the user table.
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
@@ -25,7 +24,6 @@ public class UserTable extends Table{
 	 */
 	public UserTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -75,7 +73,6 @@ public class UserTable extends Table{
 					users.add(new Professor(results.getInt(1),results.getString(2),results.getString(3),
 											results.getString(4),results.getString(5)));
 				}
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -2,10 +2,14 @@ package BackEnd.Model;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import SharedObjects.Assignment;
+
+
 /**
- * 
+ * This class implements the abstract methods in the Table class for the assignment table.
  * @author 	Antoine Bizon
  * @version 1.0
  * @since	2018-03-30
@@ -27,8 +31,15 @@ public class AssignmentTable extends Table {
 	 */
 	@Override
 	protected <T extends Serializable> int addToDB(T adition) {
-		// TODO Auto-generated method stub
-		return 0;
+		Assignment assgnment = (Assignment) adition;
+		String update = "INSERT INTO " + tableName +
+				" VALUES ( " + IDGenerator.generateID() + ", " + 
+				assgnment.getCourseID() + ", '" +
+				assgnment.getTitle() + "', '" +
+				assgnment.getPath() + "', " +
+				assgnment.getActive() + ", '" +
+				assgnment.getDueDate() + "');";
+		return execute.preformUpdate(update);
 	}
 
 	/* (non-Javadoc)
@@ -36,8 +47,17 @@ public class AssignmentTable extends Table {
 	 */
 	@Override
 	protected ArrayList<? extends Serializable> listFromResultSet(ResultSet results) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Assignment> assignment = new ArrayList<Assignment>();
+		try {
+			while(results.next()) {
+				assignment.add(new Assignment(results.getInt(1), results.getInt(2), results.getString(3),
+						results.getString(4), results.getInt(5), results.getString(6)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return assignment;
 	}
 
 }
