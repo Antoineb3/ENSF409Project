@@ -120,7 +120,7 @@ public class ProfAssignmentPage extends JPanel{
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
-    //TODO in the listeners, use e.getSource.getAssignment() 
+
 	public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
     }
@@ -156,7 +156,7 @@ public class ProfAssignmentPage extends JPanel{
     /**
      * @return the Assignment
      */
-    public Assignment getAssignment() { //TODO chagne to type Assignment
+    public Assignment getAssignment() {
         return assignment;
     }
 

@@ -64,9 +64,11 @@ public class ProfController extends ViewController{
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				//the mechanism to assign the assignmentPage's prof will be in the courseList listener, which then calls this CardChanger
 				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
+				//and the assignment name JLabel
 				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
+				//TODO update the course name JLabel 
 				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
 				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
 			}

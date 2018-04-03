@@ -134,7 +134,7 @@ public class ProfCoursePage extends JPanel{
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
-    //TODO in the listeners, use e.getSource.getCourse() 
+
 	public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
     }
@@ -156,7 +156,7 @@ public class ProfCoursePage extends JPanel{
 	 * helper method to set and update the course list 
 	 * @param c the list of results to display 
 	 */
-	public void updateAssignmentList(DefaultListModel<Assignment> c) { //TODO change to Assignment instead of String
+	public void updateAssignmentList(DefaultListModel<Assignment> c) { 
 		listModel=c;
 		assignmentList.setModel(listModel);
     }

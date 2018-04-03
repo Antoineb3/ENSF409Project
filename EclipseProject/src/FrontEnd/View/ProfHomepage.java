@@ -37,7 +37,7 @@ public class ProfHomepage extends JPanel{
 	/**
 	 * Constructor that creates the visible panel 
 	 */
-	public ProfHomepage(Professor p) { //TODO make this arg type Professor 
+	public ProfHomepage(Professor p) { 
         prof = p;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));

@@ -65,7 +65,6 @@ public class ProfGUI extends JFrame{
         CardLayout cl = (CardLayout)(cards.getLayout());
         cl.show(cards, CARDNAME);
         //note: if cardname is passed in that doesnt exist, nothing happens
-        //TODO will need to update a card's list items when we switch to it?
     }
 
     /**

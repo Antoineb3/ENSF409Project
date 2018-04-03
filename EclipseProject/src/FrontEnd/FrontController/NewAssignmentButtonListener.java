@@ -96,9 +96,17 @@ public class NewAssignmentButtonListener implements ActionListener{
 			}
 			
 			//construct the new assignment
+			
+			
+			//TODO need to send a FileMessage that has the byte[] contents and extension too?
+			// and also a DB message to add the assignment to the assignment table?
+			
 						//TOOD change "path???" - ctor for assignment needs to receive path, but this path is meant to say the path on the server machine once it is saved there
 			Assignment temp = new Assignment(-1, panel.getCourse().getID(), "path???", name, '0', dueDate); // '0' so the assignment starts as inactive // TODO change -1 to getHighestID in assignment table ?? 
 		
+			
+			
+			
 			//make a message to tell the DB to add the Assignment
 			ArrayList<Assignment> params = new ArrayList<>();
 			params.add(temp);
