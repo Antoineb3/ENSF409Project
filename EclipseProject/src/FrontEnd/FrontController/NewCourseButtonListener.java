@@ -68,6 +68,7 @@ public class NewCourseButtonListener implements ActionListener{
 				return;
 			}
 
+			//TODO change active bit to an int intead of a char 
 			//construct the new course
 			Course temp = new Course(-1, panel.getProf().getID(), name, '0'); // '0' so the course starts as inactive // TODO change -1 to getHighestID in course table ?? 
 
