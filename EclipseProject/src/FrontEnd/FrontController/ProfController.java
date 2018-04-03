@@ -63,14 +63,12 @@ public class ProfController extends ViewController{
 			ProfGUI pg = ((ProfGUI) frame); 
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
-				//TODO the mechanism to assign the assignmentPage's prof will be in the coursePage's assignmentList listener, which then calls this CardChanger
-				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING);
-				//and the assignment name JLabel
+				//TODO the mechanism to assign the assignmentPage's assignment will be in the coursePage's assignmentList listener, which then calls this CardChanger. use setAssignment()
+				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING); can do this in the above step
 				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
-				//TODO the mechanism to assign the coursePages's course will be in the homepage's courseList listener, which then calls this CardChanger
-				//TODO update the course name JLabel 
+				//TODO the mechanism to assign the coursePages's course will be in the homepage's courseList listener, which then calls this CardChanger. use setCourse()
 				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
 				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
 			}
@@ -82,9 +80,14 @@ public class ProfController extends ViewController{
 	}
 
 
-	//helper method to fill the homepage courseList using the DB table. package scope so that CreateNewCourseButton listener can use it 
-	void fillHomePageCourseList(ProfHomepage homepagePanel) {
 
+
+	/**	
+	 * helper method to fill the homepage courseList using the DB table. 
+	 * package scope so that CreateNewCourseButton listener can use it helper method to fill the coursePage's assignmentList using the DB table. 
+	 * @param coursePage the course page
+	 */
+	void fillHomePageCourseList(ProfHomepage homepagePanel) {
 		//make a message to query all the courses for this prof
 		ArrayList<String> params = new ArrayList<>();
 		params.add("prof_id"); // the column in the table to search
@@ -103,7 +106,12 @@ public class ProfController extends ViewController{
 		homepagePanel.updateCourseList(listModel);
 	}
 
-	//helper method to fill the coursePage's assignmentList using the DB table. package scope so that CreateNewAssignmentButton listener can use it 
+
+	/**
+	 * helper method to fill the coursePage's assignmentList using the DB table. p
+	 * package scope so that CreateNewAssignmentButton listener can use it 
+	 * @param coursePage the course page
+	 */
 	void fillCoursePageAssignmentList(ProfCoursePage coursePage) {
 
 		//make a message to query all the assignments in a course
@@ -133,7 +141,7 @@ public class ProfController extends ViewController{
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
 		params.add("id"); // the column in the table to search
-		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // TODO will have to convert this string to int in the model?
+		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key 
 		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
@@ -161,7 +169,7 @@ public class ProfController extends ViewController{
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
 		params.add("id"); // the column in the table to search
-		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key // TODO will have to convert this string to int in the model?
+		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key 
 		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response

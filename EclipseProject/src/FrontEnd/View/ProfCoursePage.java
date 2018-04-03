@@ -46,6 +46,10 @@ public class ProfCoursePage extends JPanel{
      *  tells if course is active/inactive
      */
     private JLabel statusMessage = new JLabel();
+    /**
+     *  tells if course name
+     */
+    private JLabel courseNameText = new JLabel();
    
     /**
 	 * The list of the course's assignments
@@ -73,12 +77,12 @@ public class ProfCoursePage extends JPanel{
 	 */
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Course Page: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
+        
+        setCourseNameText("testCourseName"); //TODO remove? the cardChanger sets this when go to this page
+        courseNameText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(courseNameText);
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
-
-        
-        
         setButtonPanel();
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
@@ -89,7 +93,7 @@ public class ProfCoursePage extends JPanel{
         newAssignmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(newAssignmentButton);
 
-        setActiveStatusText('0'); // start as saying inactive //TODO remove?
+        setActiveStatusText(0); // start as saying inactive //TODO remove?
         add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 
 
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -170,6 +174,15 @@ public class ProfCoursePage extends JPanel{
         message+= (status==1)? "ACTIVE":"INACTIVE";
         statusMessage.setText(message);
     }
+    /**
+     * changes the JLabel that tells the course name
+	 * @param name the course name
+	 */
+	private void setCourseNameText(String name) {
+		String message = "Course Page: ";
+        message+= name;
+        courseNameText.setText(message);
+	}
 
     /**
      * @return the course
@@ -183,10 +196,14 @@ public class ProfCoursePage extends JPanel{
      */
     public void setCourse(Course c) {
         course = c;
+        setCourseNameText(c.getName());//update the prof name JLabel
     }
     
 
-    //for testing
+    
+
+
+	//for testing
     public static void main(String[] args) {
         JFrame frame = new JFrame();
 

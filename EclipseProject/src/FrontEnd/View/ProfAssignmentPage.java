@@ -30,7 +30,11 @@ public class ProfAssignmentPage extends JPanel{
     /**
 	 * The button to go to this assignment's dropbox
 	 */
-    private JButton dropbox = new JButton("Dropbox");
+    private JButton dropboxButton = new JButton("Dropbox");
+    /**
+	 * The button to download this assignment's file
+	 */
+    private JButton downloadButton = new JButton("Download");
     /**
 	 * The create new Assignment button
 	 */
@@ -40,6 +44,14 @@ public class ProfAssignmentPage extends JPanel{
      *  tells if Assignment is active/inactive
      */
     private JLabel statusMessage = new JLabel();
+    /**
+     *  tells when the dueDate is
+     */
+    private JLabel dueDateMessage = new JLabel();
+    /**
+     *  tells the assignment name
+     */
+    private JLabel assignmentNameMessage = new JLabel();
    
     /**
 	 * The textArea to display the assignment file 
@@ -64,32 +76,42 @@ public class ProfAssignmentPage extends JPanel{
 	 */
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Assignment Page: testAssignmentName"));//TODO change to Assignment.getName(): //TODO will have to update this JLabel everytime we go to a new Assignmentpage?
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
-
-
         
+        setAssignmentNameText("testAssignmentName");//TODO remove? the cardChanger sets this when go to this page
+        assignmentNameMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(assignmentNameMessage);
         
+
         setButtonPanel();
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
-        
         
         add(GuiUtilities.centeredJLabel("Assignment File"));
         addFileArea();
 
-
-        setActiveStatusText('0'); // start as saying inactive //TODO remove?
-        add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 
-
+        downloadButton.setAlignmentX(CENTER_ALIGNMENT);
+        add(downloadButton);
+        add(GuiUtilities.horizontalLine());
+        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
+        
+        setDueDateText("testDueDate");// start as saying inactive //TODO remove? the cardChanger sets this when go to this page
+        dueDateMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(dueDateMessage);
+        add(Box.createRigidArea(new Dimension(0,20))); //empty spacing 
+        
+        setActiveStatusText(0); // start as saying inactive //TODO remove? the cardChanger sets this when go to this page
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(statusMessage);
+        
         changeActiveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(changeActiveButton);
         
     }
 
 
-    /**
+   
+
+
+	/**
      * make a panel of the top buttons on the frame
      */
     public void setButtonPanel(){
@@ -99,7 +121,7 @@ public class ProfAssignmentPage extends JPanel{
         buttonPanel.add(homepageButton);
         buttonPanel.add(backButton);
         buttonPanel.add(Box.createHorizontalStrut(200)); // empty horizontal spacing between buttons
-        buttonPanel.add(dropbox);
+        buttonPanel.add(dropboxButton);
         add(buttonPanel);
         add(GuiUtilities.horizontalLine());
     }
@@ -113,7 +135,7 @@ public class ProfAssignmentPage extends JPanel{
     		fileArea = new JTextArea();
     		fileArea.setEditable(false);
 		JScrollPane scroller = new JScrollPane(fileArea);
-        scroller.setMaximumSize(new Dimension(500,600));
+        scroller.setMaximumSize(new Dimension(500,350));
 		add(scroller);
     }
     
@@ -128,11 +150,15 @@ public class ProfAssignmentPage extends JPanel{
         backButton.addActionListener(e);
     }
 	public void setDropboxButtonListener(ActionListener e) {
-        dropbox.addActionListener(e);
+        dropboxButton.addActionListener(e);
     }
 	public void setChangeActiveButtonListener(ActionListener e) {
         changeActiveButton.addActionListener(e);
     }
+	public void setDownloadButtonListener(ActionListener e) {
+        downloadButton.addActionListener(e);
+    }
+    
     
 
     /**
@@ -152,6 +178,24 @@ public class ProfAssignmentPage extends JPanel{
         message+= (status==1)? "ACTIVE":"INACTIVE";
         statusMessage.setText(message);
     }
+    /**
+     * Changes JLabel that tells the dueDate
+     * @param date the dueDate
+     */
+    private void setDueDateText(String date){
+        String message = "This assignment's due date is: ";
+        message+= date;
+        dueDateMessage.setText(message);
+    }
+    /**
+     * Changes the assignment name 
+   	 * @param name the new name
+   	 */
+    private void setAssignmentNameText(String name) {
+   		String message = "Assignment Page: ";
+        message+= name;
+        assignmentNameMessage.setText(message);
+   	}
     
     /**
      * @return the Assignment
@@ -161,10 +205,13 @@ public class ProfAssignmentPage extends JPanel{
     }
 
     /**
+     * sets the panels Assignment and updates the name, dueDate JLabels
      * @param c the Assignment to set
      */
-    public void setAssignment(Assignment c) {
-        assignment = c;
+    public void setAssignment(Assignment a) {
+        assignment = a;
+		setAssignmentNameText(a.getTitle());//update the assignment name JLabel
+		setDueDateText(a.getDueDate()); // update the dueDate JLabel
     }
     
 
