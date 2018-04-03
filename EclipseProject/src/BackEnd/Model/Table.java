@@ -22,7 +22,7 @@ public abstract class Table {
 	 * @param addition the object being added to a row.
 	 * @return The number of rows affected by the update, i.e. if the object was added.
 	 */
-	protected abstract <T extends Serializable> ArrayList<Integer> addToDB(T addition);
+	public abstract <T extends Serializable> ArrayList<Integer> addToDB(T addition);
 	
 	/**
 	 * Generates a arrayList from a result set returned after a query.

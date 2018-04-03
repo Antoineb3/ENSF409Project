@@ -29,7 +29,7 @@ public class GradeTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
+	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Grade grade = (Grade) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
