@@ -19,14 +19,15 @@ public abstract class Table {
 	
 	/**
 	 * Adds a new row to a table in the database given an object of they type in the table.
-	 * @param adition the object being added to a row.
+	 * @param addition the object being added to a row.
 	 * @return The number of rows affected by the update, i.e. if the object was added.
 	 */
-	protected abstract <T extends Serializable> int addToDB(T adition);
+	protected abstract <T extends Serializable> int addToDB(T addition);
 	
 	/**
 	 * Generates a arrayList from a result set returned after a query.
 	 * @param results the result of the query.
+	 * 
 	 * @return the arrayList generated from the result set. 
 	 */
 	protected abstract ArrayList<? extends Serializable> listFromResultSet(ResultSet results);

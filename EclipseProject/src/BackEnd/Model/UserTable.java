@@ -30,8 +30,8 @@ public class UserTable extends Table{
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	public <T extends Serializable> int addToDB(T adition) {
-		User user = (User) adition;
+	public <T extends Serializable> int addToDB(T addition) {
+		User user = (User) addition;
 		char userType = derterminUserType(user);
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", '" + 

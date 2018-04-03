@@ -30,15 +30,15 @@ public class AssignmentTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T adition) {
-		Assignment assgnment = (Assignment) adition;
+	protected <T extends Serializable> int addToDB(T addition) {
+		Assignment assignment = (Assignment) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
-				assgnment.getCourseID() + ", '" +
-				assgnment.getTitle() + "', '" +
-				assgnment.getPath() + "', " +
-				assgnment.getActive() + ", '" +
-				assgnment.getDueDate() + "');";
+				assignment.getCourseID() + ", '" +
+				assignment.getTitle() + "', '" +
+				assignment.getPath() + "', " +
+				assignment.getActive() + ", '" +
+				assignment.getDueDate() + "');";
 		return execute.preformUpdate(update);
 	}
 

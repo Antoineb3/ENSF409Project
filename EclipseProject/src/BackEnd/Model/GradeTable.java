@@ -29,8 +29,8 @@ public class GradeTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T adition) {
-		Grade grade = (Grade) adition;
+	protected <T extends Serializable> int addToDB(T addition) {
+		Grade grade = (Grade) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
 				grade.getAssignID() + ", " +
