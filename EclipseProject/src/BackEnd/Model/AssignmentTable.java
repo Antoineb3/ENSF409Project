@@ -30,7 +30,7 @@ public class AssignmentTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T addition) {
+	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Assignment assignment = (Assignment) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
@@ -39,7 +39,9 @@ public class AssignmentTable extends Table {
 				assignment.getPath() + "', " +
 				assignment.getActive() + ", '" +
 				assignment.getDueDate() + "');";
-		return execute.preformUpdate(update);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
 	}
 
 	/* (non-Javadoc)

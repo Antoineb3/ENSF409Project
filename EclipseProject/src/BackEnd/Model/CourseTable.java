@@ -31,14 +31,16 @@ class CourseTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T addition) {
+	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Course course  = (Course) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
 				course.getProfID() + ", '" +
 				course.getName() + "', " +
 				course.getActive()+ ");";
-		return execute.preformUpdate(update);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
 	}
 
 	

@@ -30,7 +30,7 @@ public class SubmissionTable extends Table {
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	protected <T extends Serializable> int addToDB(T addition) {
+	protected <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Submission submission = (Submission) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
@@ -41,7 +41,9 @@ public class SubmissionTable extends Table {
 				submission.getSubmissionGrade() + ", '" +
 				submission.getComments() + "', '" +
 				submission.getTimestamp()+ "');";
-		return execute.preformUpdate(update);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
 	}
 
 	/* (non-Javadoc)

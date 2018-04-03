@@ -22,7 +22,7 @@ public abstract class Table {
 	 * @param addition the object being added to a row.
 	 * @return The number of rows affected by the update, i.e. if the object was added.
 	 */
-	protected abstract <T extends Serializable> int addToDB(T addition);
+	protected abstract <T extends Serializable> ArrayList<Integer> addToDB(T addition);
 	
 	/**
 	 * Generates a arrayList from a result set returned after a query.
@@ -63,11 +63,13 @@ public abstract class Table {
 	 * @param coditionVal the value of the condition.
 	 * @return the number of affected rows.
 	 */
-	public int editRow(String param, String key, String condition, String coditionVal) {
+	public ArrayList<Integer> editRow(String param, String key, String condition, String coditionVal) {
 		String update = "UPDATE " + tableName + 
 						" SET " + param + "='" + key +
 						"' WHERE " + condition + "='" + coditionVal + "'";
-		return execute.preformUpdate(update);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
 	}
 	
 }

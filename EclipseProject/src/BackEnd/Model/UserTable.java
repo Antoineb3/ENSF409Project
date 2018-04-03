@@ -30,7 +30,7 @@ public class UserTable extends Table{
 	 * @see BackEnd.Model.Table#addToDB(java.io.Serializable)
 	 */
 	@Override
-	public <T extends Serializable> int addToDB(T addition) {
+	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		User user = (User) addition;
 		char userType = derterminUserType(user);
 		String update = "INSERT INTO " + tableName +
@@ -40,7 +40,9 @@ public class UserTable extends Table{
 				user.getFirstName() + "', '" +
 				user.getLastName() + "', '" +
 				userType + "');";
-		return execute.preformUpdate(update);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
 	}
 
 	private char derterminUserType(User toInsert) {
