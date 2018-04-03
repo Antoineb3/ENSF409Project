@@ -131,8 +131,8 @@ public class ProfController extends ViewController{
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
 		params.add("id"); // the column in the table to search
-		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum
+		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // TODO will have to convert this string to int in the model?
+		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<?> response = communicator.communicate(msg);
@@ -144,7 +144,7 @@ public class ProfController extends ViewController{
 			return;
 		}
 		//get the status of the course
-		char status = ((Course) response.get(0)).getActive();
+		int status = ((Course) response.get(0)).getActive();
 		// then do the update: 
 		coursePage.setActiveStatusText(status);
 	}
@@ -159,7 +159,7 @@ public class ProfController extends ViewController{
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
 		params.add("id"); // the column in the table to search
-		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key // will have to convert this string to int in the model?
+		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key // TODO will have to convert this string to int in the model?
 		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response
@@ -172,7 +172,7 @@ public class ProfController extends ViewController{
 			return;
 		}
 		//get the status of the assignment
-		char status = ((Assignment) response.get(0)).getActive();
+		int status = ((Assignment) response.get(0)).getActive();
 		// then do the update: 
 		assignmentPage.setActiveStatusText(status);
 	}

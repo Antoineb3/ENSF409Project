@@ -145,11 +145,11 @@ public class ProfAssignmentPage extends JPanel{
 	
 	/**
      * Changes the frame to tell whether the course is active or not
-     * @param status '1' means active, else means inactive
+     * @param status 1 means active, else means inactive
      */
-    public void setActiveStatusText(char status){
+    public void setActiveStatusText(int status){
         String message = "This course is currently ";
-        message+= (status=='1')? "ACTIVE":"INACTIVE";
+        message+= (status==1)? "ACTIVE":"INACTIVE";
         statusMessage.setText(message);
     }
     
