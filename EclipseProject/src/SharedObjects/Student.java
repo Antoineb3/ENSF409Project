@@ -22,8 +22,7 @@ public class Student extends User{
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", password=" + password + ", email=" + email + ", firstName=" + firstName
-				+ ", lastName=" + lastName + "]";
+		return firstName + " " + lastName;
 	}
 
 	

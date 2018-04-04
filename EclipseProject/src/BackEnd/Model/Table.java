@@ -55,6 +55,7 @@ public abstract class Table {
 		return listFromResultSet(results);
 	}
 	
+	
 	/**
 	 * Updates the table with specified values and conditions. 
 	 * @param param the parameter to be updated.

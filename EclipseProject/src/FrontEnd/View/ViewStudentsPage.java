@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 
 import SharedObjects.Course;
+import SharedObjects.Student;
 
 /*
  * Ross Bartlett
@@ -44,13 +45,16 @@ public class ViewStudentsPage extends JPanel{
 	/**
 	 * The list of search results
 	 */
-	DefaultListModel<String> listModel = new DefaultListModel<>(); //TODO change to type Student
-	JList<String> resultsList;
+	DefaultListModel<Student> listModel = new DefaultListModel<>(); 
+	JList<Student> resultsList;
 	/**
 	 * the current selection from the list
 	 */
 	String selectedStudent; //TODO change this to type Student
-
+	/**
+     *  tells course name
+     */
+    private JLabel courseNameText = new JLabel();
 
 	/**
 	 * Constructor that creates the visible Frame 
@@ -69,9 +73,12 @@ public class ViewStudentsPage extends JPanel{
 	 */
 	private void fillContentPane() {
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        add(GuiUtilities.centeredJLabel("Viewing students through course: testCourseName"));//TODO change to course.getName(): //TODO will have to update this JLabel everytime we go to a new coursepage?
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
+        setCourseNameText("testCourseName"); //TODO remove? the cardChanger sets this when go to this page
+        courseNameText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(courseNameText);
+        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
+        
         setButtonPanel();
         
         add(GuiUtilities.horizontalLine());
@@ -170,16 +177,64 @@ public class ViewStudentsPage extends JPanel{
 		resultsList.addListSelectionListener(e);
 	}
 	
-	
-	
+
 
 	/**
 	 * helper method to set and update the results list 
 	 * @param c the list of results to display 
 	 */
-	public void updateResultsList(DefaultListModel<String> s) { //TODO change to type Student
+	public void updateResultsList(DefaultListModel<Student> s) { //TODO change to type Student
 		listModel=s;
 		resultsList.setModel(listModel);
+	}
+	/**
+     * changes the JLabel that tells the course name
+	 * @param name the course name
+	 */
+	private void setCourseNameText(String name) {
+		String message = "Viewing students through Course: ";
+        message+= name;
+        courseNameText.setText(message);
+	}
+
+	
+	 /**
+     * @return the course
+     */
+    public Course getCourse() { 
+        return course;
+    }
+
+    /**
+     * @param c the course to set
+     */
+    public void setCourse(Course c) {
+        course = c;
+        setCourseNameText(c.getName());//update the course name JLabel
+    }
+
+	/**
+	 * @return the selected index of the searchType ComboBox. 
+	 * 0 for Student ID, 1 for last name
+	 */
+	public int getSearchType() {
+		return searchType.getSelectedIndex();
+
+	}
+	
+	/**
+	 * @return the searchField text
+	 */
+	public String getSearchFieldText() {
+		return searchField.getText();
+	}
+	
+	/**
+	 * Clear the searchField and searchType comboBox
+	 */
+	public void clearSearchFields() {
+		searchField.setText("");
+		searchType.setSelectedIndex(-1);
 	}
 	
 

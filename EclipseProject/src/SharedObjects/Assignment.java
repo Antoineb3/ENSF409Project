@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  */
 public class Assignment implements Serializable{
+	
 	static final long serialVersionUID = 50;
 	private int id;
 	private int courseID;
@@ -99,6 +100,10 @@ public class Assignment implements Serializable{
 		this.dueDate = dueDate;
 	}
 	
-	
+
+	@Override
+	public String toString() {
+		return  title + "\t active = " + active + "\t dueDate = " + dueDate;
+	}
 
 }

@@ -71,6 +71,13 @@ public class Course implements Serializable{
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return name +"\t active = "+active;
+	}
 	
 	
 

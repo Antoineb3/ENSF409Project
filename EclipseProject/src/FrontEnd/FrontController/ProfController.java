@@ -12,6 +12,7 @@ import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfGUI;
 import FrontEnd.View.ProfHomepage;
+import FrontEnd.View.ViewStudentsPage;
 import SharedObjects.*;
 
 
@@ -48,7 +49,43 @@ public class ProfController extends ViewController{
 		pg.getProfCoursePagePanel().setChangeActiveButtonListener(new ChangeCourseStatusListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfAssignmentPanel().setChangeActiveButtonListener(new ChangeAssignmentStatusListener(pg.getProfAssignmentPanel(), this));
 		
+		//search button on ViewStudent page
+		pg.getViewStudentsPanel().setSearchButtonListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String key = pg.getViewStudentsPanel().getSearchFieldText();
+				int searchParam = pg.getViewStudentsPanel().getSearchType();
+				if(key.equals("") || searchParam==-1) {
+					JOptionPane.showMessageDialog(null, "Error: Search field(s) cannot be empty.", "Search Error", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				//make a message to query the matching Students in the UserTable
+				ArrayList<String> params = new ArrayList<>();
+				if (searchParam==0) params.add("ID"); // search by ID
+				else if (searchParam==1) params.add("LASTNAME"); // search by Last Name
+				params.add(key); // the search key  
+				DBMessage msg = new DBMessage(0, 0, 2, 0, params); // 0, 0 is userTableNum, searchOpNum
+				//send the message, get response
+				ArrayList<? extends Serializable> response = communicator.communicate(msg);
+				// convert the returned arraylist to a listmodel 
+				DefaultListModel<Student> listModel = new DefaultListModel<>();
+				for(Object s : response) {
+					listModel.addElement((Student)s);
+				}
+				// do the update: 
+				pg.getViewStudentsPanel().updateResultsList(listModel);
+			}
+		});
 		
+		//clear search button on ViewStudent page
+		pg.getViewStudentsPanel().setClearSearchButtonListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pg.getViewStudentsPanel().clearSearchFields();
+				fillViewStudentsList(pg.getViewStudentsPanel()); // fill the results list with all students
+			}
+		});
+				
 
 		//update the courseList on the homepage
 //		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
@@ -66,7 +103,7 @@ public class ProfController extends ViewController{
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ProfGUI pg = ((ProfGUI) frame); 
+			ProfGUI pg = ((ProfGUI) frame); // from super
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				//TODO the mechanism to assign the assignmentPage's assignment will be in the coursePage's assignmentList listener, which then calls this CardChanger. use setAssignment()
@@ -80,7 +117,11 @@ public class ProfController extends ViewController{
 			}
 			else if(card.equals("PROFHOMEPAGE")){
 				//note: homepage's prof / welcomeText never needs to be refreshed
-				fillHomePageCourseList(((ProfGUI) frame).getProfHomePagePanel()); // update/refresh the course list
+				fillHomePageCourseList(pg.getProfHomePagePanel()); // update/refresh the course list
+			}
+			else if(card.equals("VIEWSTUDENTSPAGE")){
+				pg.getViewStudentsPanel().setCourse(pg.getProfCoursePagePanel().getCourse()); // update the course as the most recent course of the CorusePage
+				fillViewStudentsList(pg.getViewStudentsPanel()); // the results list starts as full of all students
 			}
 			pg.setActiveCard(card);
 		}
@@ -115,7 +156,7 @@ public class ProfController extends ViewController{
 
 
 	/**
-	 * helper method to fill the coursePage's assignmentList using the DB table. p
+	 * helper method to fill the coursePage's assignmentList using the DB table. 
 	 * package scope so that CreateNewAssignmentButton listener can use it 
 	 * @param coursePage the course page
 	 */
@@ -192,6 +233,28 @@ public class ProfController extends ViewController{
 		boolean status = ((Assignment) response.get(0)).getActive();
 		// then do the update: 
 		assignmentPage.setActiveStatusText(status);
+	}
+	
+	/**
+	 * helper method to fill the ViewStudentsPage's result list with all students in the DB table. 
+	 * @param coursePage the course page
+	 */
+	void fillViewStudentsList(ViewStudentsPage page) {
+
+		//make a message to query all the Students in the UserTable
+		ArrayList<String> params = new ArrayList<>();
+		params.add("TYPE"); // the column in the table to search
+		params.add(Character.toString('S')); // the search key  
+		DBMessage msg = new DBMessage(0, 0, 2, 0, params); // 0, 0 is userTableNum, searchOpNum
+		//send the message, get response
+		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		// convert the returned arraylist to a listmodel 
+		DefaultListModel<Student> listModel = new DefaultListModel<>();
+		for(Object s : response) {
+			listModel.addElement((Student)s);
+		}
+		// do the update: 
+		page.updateResultsList(listModel);
 	}
 
 }

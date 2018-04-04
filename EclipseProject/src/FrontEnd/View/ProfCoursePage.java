@@ -47,7 +47,7 @@ public class ProfCoursePage extends JPanel{
      */
     private JLabel statusMessage = new JLabel();
     /**
-     *  tells if course name
+     *  tells course name
      */
     private JLabel courseNameText = new JLabel();
    
@@ -196,7 +196,7 @@ public class ProfCoursePage extends JPanel{
      */
     public void setCourse(Course c) {
         course = c;
-        setCourseNameText(c.getName());//update the prof name JLabel
+        setCourseNameText(c.getName());//update the course name JLabel
     }
     
 
