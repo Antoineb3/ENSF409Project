@@ -50,7 +50,7 @@ public abstract class Table {
 	 */
 	public ArrayList<? extends Serializable> search(String param, String key){
 		String query = "SELECT * FROM " + tableName + 
-					   " WHERE " + param + "='" + key + "'";
+					   " WHERE " + param + "=" + key + "";
 		ResultSet results = execute.preformQuery(query);
 		return listFromResultSet(results);
 	}
@@ -66,8 +66,8 @@ public abstract class Table {
 	 */
 	public ArrayList<Integer> editRow(String param, String key, String condition, String coditionVal) {
 		String update = "UPDATE " + tableName + 
-						" SET " + param + "='" + key +
-						"' WHERE " + condition + "='" + coditionVal + "'";
+						" SET " + param + "=" + key +
+						" WHERE " + condition + "=" + coditionVal + "";
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		result.add(execute.preformUpdate(update));
 		return result;
