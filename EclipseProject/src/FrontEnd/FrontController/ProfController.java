@@ -6,7 +6,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
@@ -85,8 +88,16 @@ public class ProfController extends ViewController{
 				fillViewStudentsList(pg.getViewStudentsPanel()); // fill the results list with all students
 			}
 		});
+		
+		//change enrollment button
+		pg.getViewStudentsPanel().setChangeEnrollmentButton(new ChangeStudentEnrollmentListener(pg.getViewStudentsPanel(), this));
 				
 
+		//set list listeners
+		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
+		
+		
+		
 		//update the courseList on the homepage
 //		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}

@@ -38,7 +38,7 @@ public class ViewStudentsPage extends JPanel{
     /**
      *  tells if selected student is enrolled or not
      */
-    private JLabel enrollmentStatusMessage = new JLabel();
+    private JLabel enrollmentStatusMessage = new JLabel();  // TODO set this in list listener
 
 	/**
 	 * Components to get Search parameters
@@ -54,7 +54,14 @@ public class ViewStudentsPage extends JPanel{
 	/**
 	 * the current selection from the list
 	 */
-	String selectedStudent; //TODO change this to type Student
+	Student selectedStudent; //TODO set this in list listener
+	/**
+	 * if the selected student is enrolled
+	 */
+	int selectedStudentEnrollmentID; // TODO set this in list listener
+	
+
+
 	/**
      *  tells course name
      */
@@ -184,6 +191,7 @@ public class ViewStudentsPage extends JPanel{
 	public void setListListener(ListSelectionListener e) {
 		resultsList.addListSelectionListener(e);
 	}
+
 	
 
 
@@ -195,6 +203,16 @@ public class ViewStudentsPage extends JPanel{
 		listModel=s;
 		resultsList.setModel(listModel);
 	}
+	
+	
+	
+	/**
+	 * @return the resultsList
+	 */
+	public JList<Student> getResultsList() {
+		return resultsList;
+	}
+
 	/**
      * changes the JLabel that tells the course name
 	 * @param name the course name
@@ -210,14 +228,15 @@ public class ViewStudentsPage extends JPanel{
      * @param s the selected student
      * @param enrolled true if they are enrolled in this course
      */
-    public void setEnrollmentStatusMessage(Student s, boolean enrolled){
-        String message = s.getFirstName()+" is currently ";
+    public void setEnrollmentStatusMessage(boolean enrolled){
+        String message = selectedStudent.getFirstName()+" is currently ";
         message+= (enrolled==true)? "":"NOT";
         message+= "enrolled in this course.";
         enrollmentStatusMessage.setText(message);
     }
     
-    public void clearEnrollmentStatusMessage() {
+
+	public void clearEnrollmentStatusMessage() {
     		enrollmentStatusMessage.setText("Select a student to view their enrollment status.");
     }
 
@@ -261,7 +280,34 @@ public class ViewStudentsPage extends JPanel{
 		searchType.setSelectedIndex(-1);
 	}
 	
-	
-	
+
+    /**
+	 * @return the selectedStudent
+	 */
+	public Student getSelectedStudent() {
+		return selectedStudent;
+	}
+	/**
+	 * @param selectedStudent the selectedStudent to set
+	 */
+	public void setSelectedStudent(Student selectedStudent) {
+		this.selectedStudent = selectedStudent;
+	}
+
+	/**
+	 * @return the value of selectedStudentEnrollmentID
+	 */
+	public int getSelectedStudentEnrollmentID() {
+		return selectedStudentEnrollmentID;
+	}
+
+	/**
+	 * @param selectedStudentEnrollmentID the STudentEnrollment of the selected student, -1 if not enrolled
+	 */
+	public void setSelectedStudentEnrollmentID(int selectedStudentEnrollmentID) {
+		this.selectedStudentEnrollmentID = selectedStudentEnrollmentID;
+		boolean enrolled = (selectedStudentEnrollmentID<0)? false:true;
+		setEnrollmentStatusMessage(enrolled);
+	}
 
 }
