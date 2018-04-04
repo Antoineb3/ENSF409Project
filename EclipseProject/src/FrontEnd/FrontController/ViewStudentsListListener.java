@@ -44,7 +44,7 @@ public class ViewStudentsListListener implements ListSelectionListener {
 		//check if the selected student is enrolled in the course
 		ArrayList<String> params = new ArrayList<>();
 		params.add("STUDENT_ID");
-		params.add(Integer.toString(selected.getID()));	
+		params.add("'"+Integer.toString(selected.getID())+"'");	
 		DBMessage msg = new DBMessage(0, 0, 2, 2, params); // 2,0 is studentEnrollmentTableNum, searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);

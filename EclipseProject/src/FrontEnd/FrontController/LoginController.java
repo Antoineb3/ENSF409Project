@@ -40,8 +40,8 @@ public class LoginController extends ViewController{
 			
 			//make a message to query the DB user table for the username 
 			ArrayList<String> params = new ArrayList<>();
-			params.add("id"); // the column in the table to search
-			params.add(userID); // the search key // TODO will have to convert this string to int in the model?
+			params.add("ID"); // the column in the table to search
+			params.add("'"+userID+"'"); // the search key // TODO will have to convert this string to int in the model?
 			DBMessage msg = new DBMessage(0, 0, 0, 0, params); // 0, 0 is userTableNum, searchOpNum
 
 			//send the message, get response

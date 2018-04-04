@@ -37,20 +37,20 @@ public class ChangeCourseStatusListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Course course = panel.getCourse();
 		boolean oldStatus = course.getActive();
-		boolean newStatus = (oldStatus==false)? true:false;
+		String newStatusBitString = (oldStatus==false)? "b'1'":"b'0'";
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
 		params.add("ID"); // the column in the table to search by
-		params.add(Integer.toString(course.getID())); // the search key
+		params.add("'"+Integer.toString(course.getID())+"'"); // the search key
 		params.add("ACTIVE"); // the column to change
-		params.add(Boolean.toString(newStatus)); // the new data
+		params.add(newStatusBitString); // the new data
 		DBMessage msg = new DBMessage(0, 0, 1, 1, params); // 1, 1 is courseTableNum, editRowOp
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		//get the new status of the course
 		boolean status = ((Course) response.get(0)).getActive();
-		if (status!=newStatus) {
+		if (status==oldStatus) {
 			System.out.println("Error: course status did not change in db...");
 			JOptionPane.showMessageDialog(null, "Error: Course status could not be changed.", "Course Status Change Error", JOptionPane.WARNING_MESSAGE);
 		}

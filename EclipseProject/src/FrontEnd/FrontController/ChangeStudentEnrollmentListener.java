@@ -64,9 +64,9 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
 		params.add("ID"); // the column in the table to search by
-		params.add(Integer.toString(selectedStudentEnrollmentID)); // the search key
+		params.add("'"+Integer.toString(selectedStudentEnrollmentID)+"'"); // the search key
 		params.add("STUDENT_ID"); // the column to change
-		params.add(Integer.toString(-1)); // the new data 
+		params.add("'"+Integer.toString(-1)+"'"); // the new data 
 		DBMessage msg = new DBMessage(0, 0, 2, 1, params); // 2, 1 is studentEnrollmentTableNum, editRowOp
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
