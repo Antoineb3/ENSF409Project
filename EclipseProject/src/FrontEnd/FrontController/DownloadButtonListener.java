@@ -44,8 +44,9 @@ public class DownloadButtonListener implements ActionListener {
 
 		//make a message to ask the DB to send a file with the given name
 		ArrayList<String> params = new ArrayList<String>();
-		params.add(fileName);
-		FileMessage msg = new FileMessage(-1, -1, params, null, null);
+		params.add("TITLE"); 
+		params.add("'"+fileName+"'");
+		FileMessage msg = new FileMessage(3, 0, params, null, null); // 3, 0 is assingmentTableNum, searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 
