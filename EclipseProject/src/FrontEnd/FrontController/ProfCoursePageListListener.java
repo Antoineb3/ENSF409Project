@@ -14,7 +14,7 @@ import SharedObjects.Assignment;
 /**
  * The ListListener of the assingmentList on the ProfCoursePage to select an assignment to view 
  */
-public class ProfCoursePageAssignmentListListener implements ListSelectionListener {
+public class ProfCoursePageListListener implements ListSelectionListener {
 	/**
 	 * The panel with the button calling this listener
 	 */
@@ -24,7 +24,7 @@ public class ProfCoursePageAssignmentListListener implements ListSelectionListen
 	 */
 	private ProfController controller;
 
-	public ProfCoursePageAssignmentListListener(ProfCoursePage p, ProfController c) {
+	public ProfCoursePageListListener(ProfCoursePage p, ProfController c) {
 		panel = p;
 		controller=c;
 		

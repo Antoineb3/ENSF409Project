@@ -9,7 +9,8 @@ import FrontEnd.View.ProfGUI;
 import SharedObjects.Course;
 
 /**
- * Listener for the CourseList on the ProfHomePage using MouseAdapter instead of ListSelectionListener
+ * Listener for the CourseList on the ProfHomePage using MouseAdapter instead of 
+ * TODO to replace class ProfHomepageListListener?
  */
 public class CLICK_ProfHomepageListListener extends MouseAdapter{
 	/**

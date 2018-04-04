@@ -12,6 +12,7 @@ import SharedObjects.Assignment;
 
 /**
  * Listener for the assignmentList on the ProfCoursePage using MouseAdapter instead of ListSelectionListener
+ * TODO to replace class ProfCoursePageListListener?
  */
 public class CLICK_ProfCoursePageListListener extends MouseAdapter{
 	/**
