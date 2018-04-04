@@ -2,6 +2,7 @@ package FrontEnd.View;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 
 import SharedObjects.Assignment;
 import SharedObjects.Course;
@@ -85,12 +86,14 @@ public class ProfHomepage extends JPanel{
 
 
 	/**
-	 * Helper functions for the CONTROLLER to initialize the listener
+	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
 	public void setCreateNewCourseButtonListener(ActionListener e) {
 		createNewCourseButton.addActionListener(e);
 	}
-
+	public void setListListener(ListSelectionListener e) {
+		courseList.addListSelectionListener(e);
+	}
 	/**
 	 * sets the panels Assignment and updates the name, dueDate JLabels
 	 * @param c the Assignment to set

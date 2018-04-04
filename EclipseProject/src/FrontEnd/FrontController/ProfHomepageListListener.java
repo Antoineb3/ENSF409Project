@@ -37,6 +37,8 @@ public class ProfHomepageListListener implements ListSelectionListener {
 		int index = list.getSelectedIndex();
 		if (index<0) return;
 		Course selected = (Course)  list.getSelectedValue();
+		
+		//TODO only do the following on double click: 
 		//set the course, refresh the coursepage
 		ProfGUI pg = ((ProfGUI) controller.getFrame());
 		pg.getProfCoursePagePanel().setCourse(selected);

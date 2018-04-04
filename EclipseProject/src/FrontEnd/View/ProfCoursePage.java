@@ -3,6 +3,7 @@ package FrontEnd.View;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 
 import SharedObjects.Assignment;
 import SharedObjects.Course;
@@ -57,6 +58,7 @@ public class ProfCoursePage extends JPanel{
 	 private DefaultListModel<Assignment> listModel = new DefaultListModel<>(); 
      private JList<Assignment> assignmentList;
     
+
 
 	/**
 	 * Constructor that creates the visible panel 
@@ -150,6 +152,9 @@ public class ProfCoursePage extends JPanel{
 	public void setChangeActiveButtonListener(ActionListener e) {
         changeActiveButton.addActionListener(e);
     }
+	public void setListListener(ListSelectionListener e) {
+		assignmentList.addListSelectionListener(e);
+	}
     
 
     /**
@@ -194,22 +199,14 @@ public class ProfCoursePage extends JPanel{
         course = c;
         setCourseNameText(c.getName());//update the course name JLabel
     }
-    
-
-    
 
 
-	//for testing
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
+	/**
+	 * @return the assignmentList
+	 */
+	public JList<Assignment> getAssignmentList() {
+		return assignmentList;
+	}
 
-		frame.setTitle("B&B Learning");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new ProfCoursePage());
-        frame.pack();
-        frame.setLocationRelativeTo(null); // center the JFrame
-		frame.setResizable(false);
-		frame.setVisible(true);
-    }
 
 }

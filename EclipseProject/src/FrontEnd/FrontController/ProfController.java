@@ -93,8 +93,8 @@ public class ProfController extends ViewController{
 
 		//set list listeners
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
-
-
+		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(pg.getProfHomePagePanel(), this ));
+		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageAssignmentListListener(pg.getProfCoursePagePanel(), this));
 
 		//update the courseList on the homepage , as this is the first active card 
 		//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
@@ -115,9 +115,7 @@ public class ProfController extends ViewController{
 			ProfGUI pg = ((ProfGUI) frame); // from super
 			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
-				//TODO the mechanism to assign the assignmentPage's assignment will be in the coursePage's assignmentList listener, which then calls this CardChanger. use setAssignment()
-				//TODO update the file to show using pg.getProfAssignmentPanel().updateAssignmentFile(STRING); can do this in the above step
-				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
+				refreshProfAssignmentPage(pg);
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
 				refreshProfCoursePage(pg);
@@ -132,6 +130,7 @@ public class ProfController extends ViewController{
 			}
 			pg.setActiveCard(card);
 		}
+
 	}
 
 
@@ -142,11 +141,20 @@ public class ProfController extends ViewController{
 	 * refreshes the asssignmentList and the JLabel on the ProfCoursePage
 	 * @param pg the ProfGUI
 	 */
-	 void refreshProfCoursePage(ProfGUI pg) {
+	void refreshProfCoursePage(ProfGUI pg) {
 		fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
 		updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
 	}
-	 
+
+	/**
+	 * refreshes the assignmentPage status label and BONUS: the assignment file shower
+	 * @param pg
+	 */
+	void refreshProfAssignmentPage(ProfGUI pg) {
+		//TODO BONUS: update the file shower using pg.getProfAssignmentPanel().updateAssignmentDisplay(STRING);. call this in ProfCoursePageAssignmentListListener
+		updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
+	}
+
 	/**	
 	 * helper method to fill the homepage courseList using the DB table. 
 	 * package scope so that CreateNewCourseButton listener can use it helper method to fill the coursePage's assignmentList using the DB table. 
