@@ -21,6 +21,22 @@ public class FileMessage extends DBMessage implements Serializable{
 		this.contents = contents;
 		this.ext = ext;
 	}
+
+	/**
+	 * @return the contents
+	 */
+	public byte[] getContents() {
+		return contents;
+	}
+
+	/**
+	 * @return the ext
+	 */
+	public String getExt() {
+		return ext;
+	}
+	
+	
 	
 
 }

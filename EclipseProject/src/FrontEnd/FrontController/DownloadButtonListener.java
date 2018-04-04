@@ -1,0 +1,90 @@
+/**
+ * 
+ */
+package FrontEnd.FrontController;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+import FrontEnd.View.ProfAssignmentPage;
+import FrontEnd.View.ProfHomepage;
+import SharedObjects.FileMessage;
+
+/**
+ * Listener for the button to download an assignment 
+ */
+public class DownloadButtonListener implements ActionListener {
+	/**
+	 * The panel with the button calling this listener
+	 */
+	private ProfAssignmentPage panel;
+	/**
+	 * the controller constructing this listener
+	 */
+	private ProfController controller;
+
+	//ctor
+	public DownloadButtonListener(ProfAssignmentPage p, ProfController c) {
+		panel = p;
+		controller=c;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		String fileName = panel.getAssignment().getTitle();
+
+		//make a message to ask the DB to send a file with the given name
+		ArrayList<String> params = new ArrayList<String>();
+		params.add(fileName);
+		FileMessage msg = new FileMessage(-1, -1, params, null, null);
+		//send the message, get response
+		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+
+		if(response.size()<1) {
+			JOptionPane.showMessageDialog(null, "Error fetching assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		byte [] content;
+		String ext;
+		try {
+			content = (byte[]) ((FileMessage)response.get(0)).getContents();
+			ext =  (String) ((FileMessage)response.get(0)).getExt();
+		}
+		catch(Exception e1) {
+			JOptionPane.showMessageDialog(null, "Error extracting assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		
+		//save the file to the home directory
+		String homeDiriectory = System.getProperty("user.home");
+		//TODO will have to test this, idk if this is the right way to write a path
+		File newFile = new File(homeDiriectory +"\\" + fileName +"."+ext); 
+		System.out.println("File saving as: "+homeDiriectory +"\\" + fileName +"."+ext);
+		createFile(newFile, content);
+
+	}
+	
+	/**
+	 * Helper method to create a file and fill it with contents
+	 */
+	private void createFile(File newFile, byte[] content) {
+		try{
+			if(! newFile.exists()) newFile.createNewFile();
+			FileOutputStream writer = new FileOutputStream(newFile); 
+			BufferedOutputStream bos = new BufferedOutputStream(writer); 
+			bos.write(content);
+			bos.close();
+		} catch(IOException ex){ ex.printStackTrace();
+		}
+	}
+
+}
