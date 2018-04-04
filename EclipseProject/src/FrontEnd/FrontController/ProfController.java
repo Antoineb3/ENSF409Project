@@ -22,8 +22,6 @@ import SharedObjects.*;
 //TODO what relationship between actionListeners and ProfController ? ViewController?
 
 
-//TODO in the listener that goes to a course page, use pg.getProfCoursePagePanel().setCourse(theCourse) before setActiveCard()
-//and before going to  viewStudents page
 
 public class ProfController extends ViewController{
 
@@ -98,14 +96,14 @@ public class ProfController extends ViewController{
 
 
 
-		//update the courseList on the homepage
+		//update the courseList on the homepage , as this is the first active card 
 		//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
 
 
 
 	/**
-	 * Inner class listener to switch the active card on the ProfGUI
+	 * Inner class listener to switch the active card on the ProfGUI using either the BackToHomepage or Back buttons
 	 */
 	class CardChangerListener implements ActionListener {
 		String card;
@@ -122,12 +120,10 @@ public class ProfController extends ViewController{
 				updateAssignmentPageStatusLabel(pg.getProfAssignmentPanel()); // refresh the JLabel that says this assignment is active/inactive
 			}
 			else if(card.equals("PROFCOURSEPAGE")){
-				//TODO the mechanism to assign the coursePages's course will be in the homepage's courseList listener, which then calls this CardChanger. use setCourse()
-				fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
-				updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
+				refreshProfCoursePage(pg);
 			}
 			else if(card.equals("PROFHOMEPAGE")){
-				//note: homepage's prof / welcomeText never needs to be refreshed
+				//note: homepage's welcomeText with the prof's name never needs to be refreshed
 				fillHomePageCourseList(pg.getProfHomePagePanel()); // update/refresh the course list
 			}
 			else if(card.equals("VIEWSTUDENTSPAGE")){
@@ -141,6 +137,16 @@ public class ProfController extends ViewController{
 
 
 
+
+	/**
+	 * refreshes the asssignmentList and the JLabel on the ProfCoursePage
+	 * @param pg the ProfGUI
+	 */
+	 void refreshProfCoursePage(ProfGUI pg) {
+		fillCoursePageAssignmentList(pg.getProfCoursePagePanel()); // update/refresh the assignment list
+		updateCoursePageStatusLabel(pg.getProfCoursePagePanel()); //update the JLabel that says this Course is active/inactive
+	}
+	 
 	/**	
 	 * helper method to fill the homepage courseList using the DB table. 
 	 * package scope so that CreateNewCourseButton listener can use it helper method to fill the coursePage's assignmentList using the DB table. 
@@ -164,6 +170,7 @@ public class ProfController extends ViewController{
 		// then do the update: 
 		homepagePanel.updateCourseList(listModel);
 	}
+
 
 
 	/**

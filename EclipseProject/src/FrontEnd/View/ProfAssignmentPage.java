@@ -163,9 +163,10 @@ public class ProfAssignmentPage extends JPanel{
 
     /**
 	 * helper method to set / update the Assignment file text area
+	 * for bonus points
 	 * @param contents the file contents
 	 */
-	public void updateAssignmentFile(String contents) { //TODO call this in controller whenever changing to assignment page?
+	public void updateAssignmentDisplay(String contents) { //TODO call this in controller whenever changing to assignment page?
 		fileArea.setText(contents);
     }
 	
@@ -214,18 +215,4 @@ public class ProfAssignmentPage extends JPanel{
 		setDueDateText(a.getDueDate()); // update the dueDate JLabel
     }
     
-
-    //for testing
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-
-		frame.setTitle("B&B Learning");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new ProfAssignmentPage());
-        frame.pack();
-        frame.setLocationRelativeTo(null); // center the JFrame
-		frame.setResizable(false);
-		frame.setVisible(true);
-    }
-
 }

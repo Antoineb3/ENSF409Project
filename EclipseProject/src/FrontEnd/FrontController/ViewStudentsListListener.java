@@ -14,7 +14,6 @@ import FrontEnd.View.ViewStudentsPage;
 import SharedObjects.DBMessage;
 import SharedObjects.Student;
 import SharedObjects.StudentEnrollment;
-import SharedObjects.User;
 
 /**
  * @author Ross

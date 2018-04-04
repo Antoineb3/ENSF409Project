@@ -34,7 +34,11 @@ public class ProfHomepage extends JPanel{
 	private DefaultListModel<Course> listModel = new DefaultListModel<>(); 
 	private JList<Course> courseList;
 
+	/**
+	 * JLabel at top of panel 
+	 */
 	private JLabel welcomeText= new JLabel();
+	
 
 
 	/**
@@ -116,6 +120,16 @@ public class ProfHomepage extends JPanel{
 		listModel=c;
 		courseList.setModel(listModel);
 	}
+
+	
+
+	/**
+	 * @return the courseList
+	 */
+	public JList<Course> getCourseList() {
+		return courseList;
+	}
+
 
 	/**
 	 * @return the prof
