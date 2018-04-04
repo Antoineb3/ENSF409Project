@@ -33,8 +33,12 @@ public class ViewStudentsPage extends JPanel{
 	JButton searchButton = new JButton("Search");
 	JButton clearSearchButton = new JButton("Clear Search");
 	
-	JButton enrollButton = new JButton("Enroll");
-	JButton unEnrollButton = new JButton("UnEnroll");
+	JButton changeEnrollmentButton = new JButton("Change Enrollment Status");
+
+    /**
+     *  tells if selected student is enrolled or not
+     */
+    private JLabel enrollmentStatusMessage = new JLabel();
 
 	/**
 	 * Components to get Search parameters
@@ -62,9 +66,6 @@ public class ViewStudentsPage extends JPanel{
 	public ViewStudentsPage() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
-
-        // listModel=manager.getStudents(); //TODO updates the resultsList to show all students
-
         fillContentPane();
 	}
 	
@@ -77,7 +78,6 @@ public class ViewStudentsPage extends JPanel{
         setCourseNameText("testCourseName"); //TODO remove? the cardChanger sets this when go to this page
         courseNameText.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(courseNameText);
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
         setButtonPanel();
         
@@ -92,11 +92,14 @@ public class ViewStudentsPage extends JPanel{
         add(GuiUtilities.centeredJLabel("Results"));
         addResultsList();
         
-        enrollButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(enrollButton);
-        unEnrollButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(unEnrollButton);
+        clearSearchFields();
+        clearEnrollmentStatusMessage();
+        enrollmentStatusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(enrollmentStatusMessage);
         
+        changeEnrollmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(changeEnrollmentButton);
+
     }
 
 	
@@ -104,7 +107,7 @@ public class ViewStudentsPage extends JPanel{
 	/**
      * make a panel of the top buttons on the frame
      */
-    public void setButtonPanel(){
+    private void setButtonPanel(){
         JPanel buttonPanel = new JPanel();
         buttonPanel.setMaximumSize(new Dimension(800,50));
         buttonPanel.setLayout(new FlowLayout());
@@ -112,9 +115,8 @@ public class ViewStudentsPage extends JPanel{
         buttonPanel.add(backButton);
         add(buttonPanel);
     }
+   
 	
-	
-
 	/**
 	 * Helper method to add components to the results panel
 	 */
@@ -144,13 +146,22 @@ public class ViewStudentsPage extends JPanel{
 		searchField = new JTextField(10);
 		searchField.setMaximumSize(new Dimension(120,20));
 		add(searchField);
-		
-		searchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		add(searchButton);
-		clearSearchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		add(clearSearchButton);
+
+		setSearchButtonPanel();
 
 	}
+	 
+    /**
+     * make a panel of the search and clearSearch buttons
+     */
+    private void setSearchButtonPanel(){
+        JPanel searchButtonPanel = new JPanel();
+        searchButtonPanel.setMaximumSize(new Dimension(800,50));
+        searchButtonPanel.setLayout(new FlowLayout());
+        searchButtonPanel.add(searchButton);
+        searchButtonPanel.add(clearSearchButton);
+        add(searchButtonPanel);
+    }
 	
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
@@ -167,11 +178,8 @@ public class ViewStudentsPage extends JPanel{
 	public void setSearchButtonListener(ActionListener e) {
 		searchButton.addActionListener(e);
 	}
-	public void setEnrollButtonListener(ActionListener e) {
-		enrollButton.addActionListener(e);
-	}
-	public void setUnEnrollButtonListener(ActionListener e) {
-		unEnrollButton.addActionListener(e);
+	public void setChangeEnrollmentButton(ActionListener e) {
+		changeEnrollmentButton.addActionListener(e);
 	}
 	public void setListListener(ListSelectionListener e) {
 		resultsList.addListSelectionListener(e);
@@ -196,6 +204,22 @@ public class ViewStudentsPage extends JPanel{
         message+= name;
         courseNameText.setText(message);
 	}
+	
+	/**
+     * Changes the frame to tell whether the selected student is enrolled or not in this course
+     * @param s the selected student
+     * @param enrolled true if they are enrolled in this course
+     */
+    public void setEnrollmentStatusMessage(Student s, boolean enrolled){
+        String message = s.getFirstName()+" is currently ";
+        message+= (enrolled==true)? "":"NOT";
+        message+= "enrolled in this course.";
+        enrollmentStatusMessage.setText(message);
+    }
+    
+    public void clearEnrollmentStatusMessage() {
+    		enrollmentStatusMessage.setText("Select a student to view their enrollment status.");
+    }
 
 	
 	 /**
@@ -236,6 +260,8 @@ public class ViewStudentsPage extends JPanel{
 		searchField.setText("");
 		searchType.setSelectedIndex(-1);
 	}
+	
+	
 	
 
 }

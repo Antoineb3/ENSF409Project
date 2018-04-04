@@ -43,9 +43,6 @@ public class ProfHomepage extends JPanel{
 	public ProfHomepage() { 
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
-
-        // listModel=model.getProfsCourses(); //TODO updates the courseList to show all the profs Courses
-
         fillContentPane();
 	}
 

@@ -62,12 +62,8 @@ public class ProfCoursePage extends JPanel{
 	 * Constructor that creates the visible panel 
 	 */
 	public ProfCoursePage() {
-        
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
-
-        // listModel=manager.getCourseAssignments(); //TODO updates the courseList to show all course's assignments
-
         fillContentPane();
 	}
 

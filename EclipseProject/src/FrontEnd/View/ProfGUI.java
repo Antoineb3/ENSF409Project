@@ -33,8 +33,8 @@ public class ProfGUI extends JFrame{
     private ViewStudentsPage viewStudentsPanel;
     private ProfAssignmentPage profAssignmentPanel;
 
-    public ProfGUI() {
-        
+    public ProfGUI(Professor p) {
+        prof=p;
 		setTitle("B&B Learning");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cards = new JPanel(new CardLayout());
@@ -94,26 +94,12 @@ public class ProfGUI extends JFrame{
 		return profAssignmentPanel;
 	}
     
-    
-
-
-
-    public static void main(String[] args) {
-        ProfGUI gui = new ProfGUI();
-    }
 
 	/**
 	 * @return the prof
 	 */
 	public Professor getProf() {
 		return prof;
-	}
-
-	/**
-	 * @param prof the prof to set
-	 */
-	public void setProf(Professor prof) {
-		this.prof = prof;
 	}
 
 	
