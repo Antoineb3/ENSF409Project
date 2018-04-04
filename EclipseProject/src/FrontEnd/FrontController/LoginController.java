@@ -81,14 +81,12 @@ public class LoginController extends ViewController{
 				//logged in 
 				ClientSocketCommunicator csc = ((ClientSocketCommunicator) communicator); 
 				if(temp instanceof Professor) {
-					ProfGUI pg = new ProfGUI();
-					pg.setProf((Professor)temp);
+					ProfGUI pg = new ProfGUI((Professor)temp);
 			        ProfController controller = new ProfController(pg, csc);	
 			        gui.dispose(); //close the LoginGUI
 				}
 				else if(temp instanceof Student) {
-//					StudentGUI sg = new ProfGUI();
-//					sg.setStudent((Student)temp);
+//					StudentGUI sg = new StudentGUI((Student)temp);
 //			        StudentController controller = new StudentController(sg, csc);
 					gui.dispose(); //close the LoginGUI
 				}
