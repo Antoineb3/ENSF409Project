@@ -48,6 +48,7 @@ public class ViewStudentsListListener implements ListSelectionListener {
 		DBMessage msg = new DBMessage(0, 0, 2, 2, params); // 2,0 is studentEnrollmentTableNum, searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+		//response should be a list of all the StudentEnrollments that that student is enrolled in 
 		int enrollmentID = -1;
 		for (Serializable enrollment : response) {
 			if (((StudentEnrollment) enrollment).getCourseID() == panel.getCourse().getID() ){
