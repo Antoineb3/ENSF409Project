@@ -58,7 +58,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 	 * @param student
 	 * @param course
 	 */
-	private void unenroll(int selectedStudentEnrollmentID,   Student student, Course course) {
+	private void unenroll(int selectedStudentEnrollmentID, Student student, Course course) {
 		// to unenroll a student, set their student id in their enrollment row in the enrollment table to -1
 
 		//make a message to edit the DB
