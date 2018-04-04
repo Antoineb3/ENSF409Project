@@ -6,10 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
@@ -93,9 +90,17 @@ public class ProfController extends ViewController{
 
 		//set list listeners
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
-		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(pg.getProfHomePagePanel(), this ));
-		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageAssignmentListListener(pg.getProfCoursePagePanel(), this));
+		
+		
+//		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(pg.getProfHomePagePanel(), this ));
+		pg.getProfHomePagePanel().setListListener(new CLICK_ProfHomepageListListener(this));
 
+//		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageAssignmentListListener(pg.getProfCoursePagePanel(), this));
+		pg.getProfCoursePagePanel().setListListener(new CLICK_ProfCoursePageListListener(this));
+		
+		
+		
+		
 		//update the courseList on the homepage , as this is the first active card 
 		//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}

@@ -1,6 +1,8 @@
 package FrontEnd.View;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 
@@ -91,9 +93,14 @@ public class ProfHomepage extends JPanel{
 	public void setCreateNewCourseButtonListener(ActionListener e) {
 		createNewCourseButton.addActionListener(e);
 	}
-	public void setListListener(ListSelectionListener e) {
-		courseList.addListSelectionListener(e);
+//	public void setListListener(ListSelectionListener e) {
+//		courseList.addListSelectionListener(e);
+//	}
+	public void setListListener(MouseAdapter e) {
+		courseList.addMouseListener(e);
 	}
+	
+	
 	/**
 	 * sets the panels Assignment and updates the name, dueDate JLabels
 	 * @param c the Assignment to set

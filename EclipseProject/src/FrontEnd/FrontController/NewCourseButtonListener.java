@@ -2,13 +2,11 @@ package FrontEnd.FrontController;
 
 import javax.swing.*;
 
-import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfHomepage;
 import SharedObjects.Course;
 import SharedObjects.DBMessage;
 
 import java.awt.event.*;
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 

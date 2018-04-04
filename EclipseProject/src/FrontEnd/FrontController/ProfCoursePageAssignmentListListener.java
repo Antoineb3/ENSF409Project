@@ -1,9 +1,11 @@
 
 package FrontEnd.FrontController;
 
+
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 
 import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfGUI;
@@ -25,6 +27,7 @@ public class ProfCoursePageAssignmentListListener implements ListSelectionListen
 	public ProfCoursePageAssignmentListListener(ProfCoursePage p, ProfController c) {
 		panel = p;
 		controller=c;
+		
 	}
 
 	/**
@@ -38,13 +41,13 @@ public class ProfCoursePageAssignmentListListener implements ListSelectionListen
 		if (index<0) return;
 		Assignment selected = (Assignment) list.getSelectedValue();
 		
-		
-		//TODO: do the rest if double click
+		//TODO: do the rest if double click or make a GoToPage Button
 		//set the assignment, refresh the assignmentPage
 		ProfGUI pg = ((ProfGUI) controller.getFrame());
 		pg.getProfAssignmentPanel().setAssignment(selected);
 		controller.refreshProfAssignmentPage(pg);
 		pg.setActiveCard("PROFASSIGNMENTPAGE"); // go to the assignmentPage
+		
 	}
 }
 

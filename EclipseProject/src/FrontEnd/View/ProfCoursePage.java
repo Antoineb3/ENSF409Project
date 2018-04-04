@@ -2,6 +2,8 @@ package FrontEnd.View;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 
@@ -152,8 +154,11 @@ public class ProfCoursePage extends JPanel{
 	public void setChangeActiveButtonListener(ActionListener e) {
         changeActiveButton.addActionListener(e);
     }
-	public void setListListener(ListSelectionListener e) {
-		assignmentList.addListSelectionListener(e);
+//	public void setListListener(ListSelectionListener e) {
+//		assignmentList.addListSelectionListener(e);
+//	}
+	public void setListListener(MouseAdapter e) {
+		assignmentList.addMouseListener(e);
 	}
     
 

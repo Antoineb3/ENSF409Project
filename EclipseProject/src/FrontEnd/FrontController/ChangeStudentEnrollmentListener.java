@@ -1,7 +1,6 @@
 
 package FrontEnd.FrontController;
 
-import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
@@ -9,12 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ViewStudentsPage;
-import SharedObjects.Assignment;
 import SharedObjects.Course;
 import SharedObjects.DBMessage;
-import SharedObjects.FileMessage;
 import SharedObjects.Student;
 import SharedObjects.StudentEnrollment;
 
