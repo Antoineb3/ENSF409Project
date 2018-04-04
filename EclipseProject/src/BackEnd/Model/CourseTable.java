@@ -52,7 +52,8 @@ class CourseTable extends Table {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		try {
 			while(results.next()) {
-					courses.add(new Course(results.getInt(1), results.getInt(2), results.getString(3), results.getInt(4))); //must be edited now that ACTIVE field is a boolean
+					courses.add(new Course(results.getInt(1), results.getInt(2), results.getString(3), 
+							results.getBoolean(4))); 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

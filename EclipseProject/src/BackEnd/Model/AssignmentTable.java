@@ -53,7 +53,7 @@ public class AssignmentTable extends Table {
 		try {
 			while(results.next()) {
 				assignment.add(new Assignment(results.getInt(1), results.getInt(2), results.getString(3),
-						results.getString(4), results.getInt(5), results.getString(6))); //must be edited now that ACTIVE field is a boolean
+						results.getString(4), results.getBoolean(5), results.getString(6))); 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
