@@ -51,7 +51,7 @@ public class ProfController extends ViewController{
 		//set the changeActiveStatus listeners
 		pg.getProfCoursePagePanel().setChangeActiveButtonListener(new ChangeCourseStatusListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfAssignmentPanel().setChangeActiveButtonListener(new ChangeAssignmentStatusListener(pg.getProfAssignmentPanel(), this));
-		
+
 		//search button on ViewStudent page
 		pg.getViewStudentsPanel().setSearchButtonListener(new ActionListener() {
 			@Override
@@ -79,7 +79,7 @@ public class ProfController extends ViewController{
 				pg.getViewStudentsPanel().updateResultsList(listModel);
 			}
 		});
-		
+
 		//clear search button on ViewStudent page
 		pg.getViewStudentsPanel().setClearSearchButtonListener(new ActionListener() {
 			@Override
@@ -88,20 +88,20 @@ public class ProfController extends ViewController{
 				fillViewStudentsList(pg.getViewStudentsPanel()); // fill the results list with all students
 			}
 		});
-		
+
 		//change enrollment button
 		pg.getViewStudentsPanel().setChangeEnrollmentButton(new ChangeStudentEnrollmentListener(pg.getViewStudentsPanel(), this));
-				
+
 
 		//set list listeners
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
-		
-		
-		
+
+
+
 		//update the courseList on the homepage
-//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
+		//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
-	
+
 
 
 	/**
@@ -190,7 +190,7 @@ public class ProfController extends ViewController{
 		// then do the update: 
 		coursePage.updateAssignmentList(listModel);
 	}
-	
+
 	/**
 	 * Helper method to refresh the JLabel on the CoursePage that says whether or not the course is active
 	 * @param coursePage the course page
@@ -217,7 +217,7 @@ public class ProfController extends ViewController{
 		// then do the update: 
 		coursePage.setActiveStatusText(status);
 	}
-	
+
 
 	/**
 	 * Helper method to refresh the JLabel on the AssignmentPage that says whether or not the course is active
@@ -245,7 +245,7 @@ public class ProfController extends ViewController{
 		// then do the update: 
 		assignmentPage.setActiveStatusText(status);
 	}
-	
+
 	/**
 	 * helper method to fill the ViewStudentsPage's result list with all students in the DB table. 
 	 * @param coursePage the course page

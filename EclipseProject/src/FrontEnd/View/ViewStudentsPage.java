@@ -20,25 +20,25 @@ import SharedObjects.Student;
  */
 public class ViewStudentsPage extends JPanel{
 	/**
-     * The course represented on the GUI
-     */
-    private Course course;
-	
+	 * The course represented on the GUI
+	 */
+	private Course course;
+
 	/**
 	 * The buttons on the JPanel
 	 */
 	JButton homepageButton = new JButton("Back to Homepage");
 	JButton backButton = new JButton("Back");
-	
+
 	JButton searchButton = new JButton("Search");
 	JButton clearSearchButton = new JButton("Clear Search");
-	
+
 	JButton changeEnrollmentButton = new JButton("Change Enrollment Status");
 
-    /**
-     *  tells if selected student is enrolled or not
-     */
-    private JLabel enrollmentStatusMessage = new JLabel();  // TODO set this in list listener
+	/**
+	 *  tells if selected student is enrolled or not
+	 */
+	private JLabel enrollmentStatusMessage = new JLabel();  // TODO set this in list listener
 
 	/**
 	 * Components to get Search parameters
@@ -59,13 +59,13 @@ public class ViewStudentsPage extends JPanel{
 	 * if the selected student is enrolled
 	 */
 	int selectedStudentEnrollmentID; // TODO set this in list listener
-	
+
 
 
 	/**
-     *  tells course name
-     */
-    private JLabel courseNameText = new JLabel();
+	 *  tells course name
+	 */
+	private JLabel courseNameText = new JLabel();
 
 	/**
 	 * Constructor that creates the visible Frame 
@@ -73,57 +73,57 @@ public class ViewStudentsPage extends JPanel{
 	public ViewStudentsPage() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
-        fillContentPane();
+		fillContentPane();
 	}
-	
+
 	/**
 	 * Helper method to add components to the panel
 	 */
 	private void fillContentPane() {
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
+		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
 
-        setCourseNameText("testCourseName"); //TODO remove? the cardChanger sets this when go to this page
-        courseNameText.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(courseNameText);
-        
-        setButtonPanel();
-        
-        add(GuiUtilities.horizontalLine());
-        
-        add(GuiUtilities.centeredJLabel("Search Students"));
-        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
-        addSearchPrompts();
+		setCourseNameText("testCourseName"); //TODO remove? the cardChanger sets this when go to this page
+		courseNameText.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(courseNameText);
 
-        add(GuiUtilities.horizontalLine());
-        
-        add(GuiUtilities.centeredJLabel("Results"));
-        addResultsList();
-        
-        clearSearchFields();
-        clearEnrollmentStatusMessage();
-        enrollmentStatusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(enrollmentStatusMessage);
-        
-        changeEnrollmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(changeEnrollmentButton);
+		setButtonPanel();
 
-    }
+		add(GuiUtilities.horizontalLine());
 
-	
-	
+		add(GuiUtilities.centeredJLabel("Search Students"));
+		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing 
+		addSearchPrompts();
+
+		add(GuiUtilities.horizontalLine());
+
+		add(GuiUtilities.centeredJLabel("Results"));
+		addResultsList();
+
+		clearSearchFields();
+		clearEnrollmentStatusMessage();
+		enrollmentStatusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(enrollmentStatusMessage);
+
+		changeEnrollmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(changeEnrollmentButton);
+
+	}
+
+
+
 	/**
-     * make a panel of the top buttons on the frame
-     */
-    private void setButtonPanel(){
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setMaximumSize(new Dimension(800,50));
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(homepageButton);
-        buttonPanel.add(backButton);
-        add(buttonPanel);
-    }
-   
-	
+	 * make a panel of the top buttons on the frame
+	 */
+	private void setButtonPanel(){
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setMaximumSize(new Dimension(800,50));
+		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.add(homepageButton);
+		buttonPanel.add(backButton);
+		add(buttonPanel);
+	}
+
+
 	/**
 	 * Helper method to add components to the results panel
 	 */
@@ -148,7 +148,7 @@ public class ViewStudentsPage extends JPanel{
 		searchType.setMaximumSize( searchType.getPreferredSize() ); // sets the width of the ComboBox
 		searchType.setSelectedIndex(-1);
 		add(searchType);
-		
+
 		add(GuiUtilities.centeredJLabel("Search key:"));
 		searchField = new JTextField(10);
 		searchField.setMaximumSize(new Dimension(120,20));
@@ -157,25 +157,25 @@ public class ViewStudentsPage extends JPanel{
 		setSearchButtonPanel();
 
 	}
-	 
-    /**
-     * make a panel of the search and clearSearch buttons
-     */
-    private void setSearchButtonPanel(){
-        JPanel searchButtonPanel = new JPanel();
-        searchButtonPanel.setMaximumSize(new Dimension(800,50));
-        searchButtonPanel.setLayout(new FlowLayout());
-        searchButtonPanel.add(searchButton);
-        searchButtonPanel.add(clearSearchButton);
-        add(searchButtonPanel);
-    }
-	
+
+	/**
+	 * make a panel of the search and clearSearch buttons
+	 */
+	private void setSearchButtonPanel(){
+		JPanel searchButtonPanel = new JPanel();
+		searchButtonPanel.setMaximumSize(new Dimension(800,50));
+		searchButtonPanel.setLayout(new FlowLayout());
+		searchButtonPanel.add(searchButton);
+		searchButtonPanel.add(clearSearchButton);
+		add(searchButtonPanel);
+	}
+
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
 	public void setHomepageButtonListener(ActionListener e) {
-        homepageButton.addActionListener(e);
-    }
+		homepageButton.addActionListener(e);
+	}
 	public void setBackButtonListener(ActionListener e) {
 		backButton.addActionListener(e);
 	}
@@ -192,7 +192,7 @@ public class ViewStudentsPage extends JPanel{
 		resultsList.addListSelectionListener(e);
 	}
 
-	
+
 
 
 	/**
@@ -203,9 +203,9 @@ public class ViewStudentsPage extends JPanel{
 		listModel=s;
 		resultsList.setModel(listModel);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * @return the resultsList
 	 */
@@ -214,47 +214,47 @@ public class ViewStudentsPage extends JPanel{
 	}
 
 	/**
-     * changes the JLabel that tells the course name
+	 * changes the JLabel that tells the course name
 	 * @param name the course name
 	 */
 	private void setCourseNameText(String name) {
 		String message = "Viewing students through Course: ";
-        message+= name;
-        courseNameText.setText(message);
+		message+= name;
+		courseNameText.setText(message);
 	}
-	
+
 	/**
-     * Changes the frame to tell whether the selected student is enrolled or not in this course
-     * @param s the selected student
-     * @param enrolled true if they are enrolled in this course
-     */
-    public void setEnrollmentStatusMessage(boolean enrolled){
-        String message = selectedStudent.getFirstName()+" is currently ";
-        message+= (enrolled==true)? "":"NOT";
-        message+= "enrolled in this course.";
-        enrollmentStatusMessage.setText(message);
-    }
-    
+	 * Changes the frame to tell whether the selected student is enrolled or not in this course
+	 * @param s the selected student
+	 * @param enrolled true if they are enrolled in this course
+	 */
+	public void setEnrollmentStatusMessage(boolean enrolled){
+		String message = selectedStudent.getFirstName()+" is currently ";
+		message+= (enrolled==true)? "":"NOT";
+		message+= "enrolled in this course.";
+		enrollmentStatusMessage.setText(message);
+	}
+
 
 	public void clearEnrollmentStatusMessage() {
-    		enrollmentStatusMessage.setText("Select a student to view their enrollment status.");
-    }
+		enrollmentStatusMessage.setText("Select a student to view their enrollment status.");
+	}
 
-	
-	 /**
-     * @return the course
-     */
-    public Course getCourse() { 
-        return course;
-    }
 
-    /**
-     * @param c the course to set
-     */
-    public void setCourse(Course c) {
-        course = c;
-        setCourseNameText(c.getName());//update the course name JLabel
-    }
+	/**
+	 * @return the course
+	 */
+	public Course getCourse() { 
+		return course;
+	}
+
+	/**
+	 * @param c the course to set
+	 */
+	public void setCourse(Course c) {
+		course = c;
+		setCourseNameText(c.getName());//update the course name JLabel
+	}
 
 	/**
 	 * @return the selected index of the searchType ComboBox. 
@@ -264,14 +264,14 @@ public class ViewStudentsPage extends JPanel{
 		return searchType.getSelectedIndex();
 
 	}
-	
+
 	/**
 	 * @return the searchField text
 	 */
 	public String getSearchFieldText() {
 		return searchField.getText();
 	}
-	
+
 	/**
 	 * Clear the searchField and searchType comboBox
 	 */
@@ -279,9 +279,9 @@ public class ViewStudentsPage extends JPanel{
 		searchField.setText("");
 		searchType.setSelectedIndex(-1);
 	}
-	
 
-    /**
+
+	/**
 	 * @return the selectedStudent
 	 */
 	public Student getSelectedStudent() {

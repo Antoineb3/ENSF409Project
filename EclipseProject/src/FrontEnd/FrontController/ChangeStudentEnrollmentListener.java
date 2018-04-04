@@ -50,7 +50,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 			//un-enrolling the student
 			unenroll(oldEnrollmentID, student, course);
 		}
-		
+
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 	 */
 	private void unenroll(int selectedStudentEnrollmentID,   Student student, Course course) {
 		// to unenroll a student, set their student id in their enrollment row in the enrollment table to -1
-		
+
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
 		params.add("ID"); // the column in the table to search by
@@ -71,13 +71,13 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		int enrollmentID = ((StudentEnrollment) response.get(0)).getID();
-		if(enrollmentID<0) JOptionPane.showMessageDialog(null, student.getFirstName()+" has been  un-enrolled.", "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
-		else {
+		if(enrollmentID<0) 
+			JOptionPane.showMessageDialog(null, student.getFirstName()+" has been successfuly un-enrolled from "+course.getName(), "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
+		else 
 			JOptionPane.showMessageDialog(null, "Error un-enrolling "+student.getFirstName()+".", "Enrollment Status Change ERROR ", JOptionPane.WARNING_MESSAGE);
-		}
 		//update the panel fields
 		panel.setSelectedStudentEnrollmentID(enrollmentID);
-		
+
 	}
 
 	/**
@@ -89,17 +89,17 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		//construct new student enrollment
 		//make a message to tell the DB to add the studentEnrollment
 		StudentEnrollment studentEnrollment = new StudentEnrollment(-1, student.getID(), course.getID());
-		
+
 		ArrayList<StudentEnrollment> params = new ArrayList<>();
 		params.add(studentEnrollment);	
 		DBMessage msg = new DBMessage(0, 0, 2, 2, params); // 2,2 is studentEnrollmentTableNum, addOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		int enrollmentID = ((StudentEnrollment) response.get(0)).getID();
-		if(enrollmentID>=0) JOptionPane.showMessageDialog(null, student.getFirstName()+" is now enrolled.", "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
-		else {
+		if(enrollmentID>=0) 
+			JOptionPane.showMessageDialog(null, student.getFirstName()+" has been successfuly enrolled in "+course.getName(), "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
+		else 
 			JOptionPane.showMessageDialog(null, "Error enrolling "+student.getFirstName()+".", "Enrollment Status Change ERROR ", JOptionPane.WARNING_MESSAGE);
-		}
 		//update the panel fields
 		panel.setSelectedStudentEnrollmentID(enrollmentID);
 	}
