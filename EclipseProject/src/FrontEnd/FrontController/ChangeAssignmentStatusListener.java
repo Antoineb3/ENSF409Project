@@ -36,20 +36,20 @@ public class ChangeAssignmentStatusListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Assignment assignment = panel.getAssignment();
-		int oldStatus = assignment.getActive();
-		int newStatus = (oldStatus==0)? 1:0;
+		boolean oldStatus = assignment.getActive();
+		boolean newStatus = (oldStatus==false)? true:false;
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
-		params.add("id"); // the column in the table to search by
+		params.add("ID"); // the column in the table to search by
 		params.add(Integer.toString(assignment.getID())); // the search key
-		params.add("active"); // the column to change
-		params.add(Integer.toString(newStatus)); // the new data
+		params.add("ACTIVE"); // the column to change
+		params.add(Boolean.toString(newStatus)); // the new data
 		DBMessage msg = new DBMessage(0, 0, 3, 1, params); // 3, 1 is courseTableNum, editRowOp
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		//get the new status of the assignment
-		int status = ((Assignment) response.get(0)).getActive();
+		boolean status = ((Assignment) response.get(0)).getActive();
 		if (status!=newStatus) {
 			System.out.println("Error: assignment status did not change in db...");
 			JOptionPane.showMessageDialog(null, "Error: Assignment status could not be changed.", "Assignment Status Change Error", JOptionPane.WARNING_MESSAGE);

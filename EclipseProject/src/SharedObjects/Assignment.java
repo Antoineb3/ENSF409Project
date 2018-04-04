@@ -15,14 +15,14 @@ public class Assignment implements Serializable{
 	private int courseID;
 	private String path;
 	private String title;
-	private int active;
+	private boolean active;
 	private String dueDate;
 	
 	
 	/**
 	 * Constructor that inits all fields and receives int ID, for creating a temporary Assignment to return from the DB that already has an ID
 	 */
-	public Assignment(int id, int courseID, String path, String title, int active, String dueDate) {
+	public Assignment(int id, int courseID, String path, String title, boolean active, String dueDate) {
 		this.id = id;
 		this.courseID = courseID;
 		this.path = path;
@@ -77,13 +77,13 @@ public class Assignment implements Serializable{
 	/**
 	 * @return the active
 	 */
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 	/**

@@ -93,7 +93,7 @@ public class ProfCoursePage extends JPanel{
         newAssignmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(newAssignmentButton);
 
-        setActiveStatusText(0); // start as saying inactive //TODO remove?
+        setActiveStatusText(false); // start as saying inactive //TODO remove?
         add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 
 
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -167,11 +167,11 @@ public class ProfCoursePage extends JPanel{
 	
 	/**
      * Changes the frame to tell whether the course is active or not
-     * @param status 1 means active, else means inactive
+     * @param status true means active, else means inactive
      */
-    public void setActiveStatusText(int status){
+    public void setActiveStatusText(boolean status){
         String message = "This course is currently ";
-        message+= (status==1)? "ACTIVE":"INACTIVE";
+        message+= (status==true)? "ACTIVE":"INACTIVE";
         statusMessage.setText(message);
     }
     /**

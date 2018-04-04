@@ -14,13 +14,13 @@ public class Course implements Serializable{
 	private int id;
 	private int profID;
 	private String name;
-	private int active;
+	private boolean active;
 	
 	
 	/**
 	 * Constructor that inits all fields and receives int ID, for creating a temporary course to return from the DB that already has an ID
 	 */
-	public Course(int id, int profID, String name, int active) {
+	public Course(int id, int profID, String name, boolean active) {
 		super();
 		this.id = id;
 		this.profID = profID;
@@ -62,13 +62,13 @@ public class Course implements Serializable{
 	/**
 	 * @return the active
 	 */
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 	

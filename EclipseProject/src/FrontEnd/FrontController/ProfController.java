@@ -97,7 +97,7 @@ public class ProfController extends ViewController{
 	void fillHomePageCourseList(ProfHomepage homepagePanel) {
 		//make a message to query all the courses for this prof
 		ArrayList<String> params = new ArrayList<>();
-		params.add("prof_id"); // the column in the table to search
+		params.add("PROF_ID"); // the column in the table to search
 		params.add(Integer.toString(homepagePanel.getProf().getID())); // the search key // will have to convert this string to int in the model?
 		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
@@ -123,7 +123,7 @@ public class ProfController extends ViewController{
 
 		//make a message to query all the assignments in a course
 		ArrayList<String> params = new ArrayList<>();
-		params.add("course_id"); // the column in the table to search
+		params.add("COURSE_ID"); // the column in the table to search
 		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // will have to convert this string to int in the model?
 		DBMessage msg = new DBMessage(0, 0, 3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
 
@@ -147,7 +147,7 @@ public class ProfController extends ViewController{
 
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
-		params.add("id"); // the column in the table to search
+		params.add("ID"); // the column in the table to search
 		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key 
 		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
@@ -161,7 +161,7 @@ public class ProfController extends ViewController{
 			return;
 		}
 		//get the status of the course
-		int status = ((Course) response.get(0)).getActive();
+		boolean status = ((Course) response.get(0)).getActive();
 		// then do the update: 
 		coursePage.setActiveStatusText(status);
 	}
@@ -175,7 +175,7 @@ public class ProfController extends ViewController{
 
 		//make a message to query the course status (active/inactive)
 		ArrayList<String> params = new ArrayList<>();
-		params.add("id"); // the column in the table to search
+		params.add("ID"); // the column in the table to search
 		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key 
 		DBMessage msg = new DBMessage(0, 0, 3, 0, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
@@ -189,7 +189,7 @@ public class ProfController extends ViewController{
 			return;
 		}
 		//get the status of the assignment
-		int status = ((Assignment) response.get(0)).getActive();
+		boolean status = ((Assignment) response.get(0)).getActive();
 		// then do the update: 
 		assignmentPage.setActiveStatusText(status);
 	}

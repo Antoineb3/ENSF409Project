@@ -98,7 +98,7 @@ public class ProfAssignmentPage extends JPanel{
         add(dueDateMessage);
         add(Box.createRigidArea(new Dimension(0,20))); //empty spacing 
         
-        setActiveStatusText(0); // start as saying inactive //TODO remove? the cardChanger sets this when go to this page
+        setActiveStatusText(false); // start as saying inactive //TODO remove? the cardChanger sets this when go to this page
         statusMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(statusMessage);
         
@@ -173,9 +173,9 @@ public class ProfAssignmentPage extends JPanel{
      * Changes the frame to tell whether the course is active or not
      * @param status 1 means active, else means inactive
      */
-    public void setActiveStatusText(int status){
+    public void setActiveStatusText(boolean status){
         String message = "This course is currently ";
-        message+= (status==1)? "ACTIVE":"INACTIVE";
+        message+= (status==true)? "ACTIVE":"INACTIVE";
         statusMessage.setText(message);
     }
     /**
