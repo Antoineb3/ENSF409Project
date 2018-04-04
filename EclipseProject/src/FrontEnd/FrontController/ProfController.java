@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
@@ -43,11 +44,16 @@ public class ProfController extends ViewController{
 		pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentButtonListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfHomePagePanel().setCreateNewCourseButtonListener(new NewCourseButtonListener(pg.getProfHomePagePanel(), this));
 
+		//set the changeActiveStatus listeners
+		pg.getProfCoursePagePanel().setChangeActiveButtonListener(new ChangeCourseStatusListener(pg.getProfCoursePagePanel(), this));
+		pg.getProfAssignmentPanel().setChangeActiveButtonListener(new ChangeAssignmentStatusListener(pg.getProfAssignmentPanel(), this));
+		
+		
 
 		//update the courseList on the homepage
 //		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
-
+	
 
 
 	/**
@@ -93,7 +99,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("prof_id"); // the column in the table to search
 		params.add(Integer.toString(homepagePanel.getProf().getID())); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to courseTableNum, searchOpNum
+		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -119,7 +125,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("course_id"); // the column in the table to search
 		params.add(Integer.toString(coursePage.getCourse().getID())); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignemntTableNum, searchOpNum
+		DBMessage msg = new DBMessage(0, 0, 3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -171,7 +177,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("id"); // the column in the table to search
 		params.add(Integer.toString(assignmentPage.getAssignment().getID())); // the search key 
-		DBMessage msg = new DBMessage(0, 0, -1, -1, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
+		DBMessage msg = new DBMessage(0, 0, 3, 0, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
