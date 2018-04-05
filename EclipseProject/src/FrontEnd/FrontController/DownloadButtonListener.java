@@ -50,26 +50,28 @@ public class DownloadButtonListener implements ActionListener {
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 
-		if(response.size()<1) {
-			JOptionPane.showMessageDialog(null, "Error fetching assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
-			return;
-		}
-		byte [] content;
-		String ext;
-		try {
-			content = (byte[]) ((FileMessage)response.get(0)).getContents();
-			ext =  (String) ((FileMessage)response.get(0)).getExt();
-		}
-		catch(Exception e1) {
-			JOptionPane.showMessageDialog(null, "Error extracting assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
-			return;
-		}
+		System.out.println("TODO need to implmement downloading a file still");
+		//TODO need a FileMessage containing a byte [] contents sent back to me 
+//		if(response.size()<1) {
+//			JOptionPane.showMessageDialog(null, "Error fetching assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
+//			return;
+//		}
+//		byte [] content;
+//		String ext;
+//		try {
+//			content = (byte[]) ((FileMessage)response.get(0)).getContents();
+//			ext =  (String) ((FileMessage)response.get(0)).getExt();
+//		}
+//		catch(Exception e1) {
+//			JOptionPane.showMessageDialog(null, "Error extracting assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
+//			return;
+//		}
 		
-
-		File newFile = new File( fileName +"."+ext); 
-		createFile(newFile, content);
-		System.out.println("File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath());
-		JOptionPane.showMessageDialog(null, "File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath(), "Assignment Downloaded", JOptionPane.INFORMATION_MESSAGE);
+//
+//		File newFile = new File( fileName +"."+ext); 
+//		createFile(newFile, content);
+//		System.out.println("File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath());
+//		JOptionPane.showMessageDialog(null, "File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath(), "Assignment Downloaded", JOptionPane.INFORMATION_MESSAGE);
 
 
 	}
