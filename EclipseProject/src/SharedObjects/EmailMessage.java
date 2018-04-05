@@ -16,8 +16,8 @@ public class EmailMessage extends Message implements Serializable {
 	private String sender;
 	private String receiver;
 	
-	public EmailMessage(int isFile, int isEmail, String subject, String contents, String sender, String receiver) {
-		super(isFile, isEmail);
+	public EmailMessage(String subject, String contents, String sender, String receiver) {
+		super();
 		this.subject = subject;
 		this.contents = contents;
 		this.sender = sender;

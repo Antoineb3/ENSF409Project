@@ -64,7 +64,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		params.add("'"+Integer.toString(-1)+"'"); // the new data 
 		params.add("ID"); // the column in the table to search by (condition)
 		params.add("'"+Integer.toString(selectedStudentEnrollmentID)+"'"); // the conditionVal
-		DBMessage msg = new DBMessage(0, 0, 2, 1, params); // 2, 1 is studentEnrollmentTableNum, editRowOp
+		DBMessage msg = new DBMessage(2, 1, params); // 2, 1 is studentEnrollmentTableNum, editRowOp
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		if((int)response.get(0)!=1) { // number of affected rows
@@ -89,7 +89,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 
 		ArrayList<StudentEnrollment> params = new ArrayList<>();
 		params.add(studentEnrollment);	
-		DBMessage msg = new DBMessage(0, 0, 2, 2, params); // 2,2 is studentEnrollmentTableNum, addOpNum
+		DBMessage msg = new DBMessage(2, 2, params); // 2,2 is studentEnrollmentTableNum, addOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		if((int)response.get(0)!=1) { // number of affected rows
@@ -102,7 +102,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		ArrayList<String> params2 = new ArrayList<>();
 		params2.add("STUDENTID");	
 		params2.add("'"+Integer.toString(student.getID())+"'");
-		DBMessage msg2 = new DBMessage(0, 0, 2, 0, params2); // 2,0 is studentEnrollmentTableNum, searchOpNum
+		DBMessage msg2 = new DBMessage(2, 0, params2); // 2,0 is studentEnrollmentTableNum, searchOpNum
 		ArrayList<? extends Serializable> response2 = controller.getCommunicator().communicate(msg2);
 		//response contains all the StudentEnrollments of that student
 		int enrollmentID=-1;

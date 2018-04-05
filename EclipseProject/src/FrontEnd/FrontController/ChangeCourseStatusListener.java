@@ -46,7 +46,7 @@ public class ChangeCourseStatusListener implements ActionListener{
 		params.add(newStatusBitString); // the new data
 		params.add("ID"); // the condition condition
 		params.add("'"+Integer.toString(course.getID())+"'"); // the condition val
-		DBMessage msg = new DBMessage(0, 0, 1, 1, params); // 1, 1 is courseTableNum, editRowOp
+		DBMessage msg = new DBMessage(1, 1, params); // 1, 1 is courseTableNum, editRowOp
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);

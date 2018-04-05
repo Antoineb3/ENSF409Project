@@ -62,7 +62,7 @@ public class ProfController extends ViewController{
 				if (searchParam==0) params.add("ID"); // search by ID
 				else if (searchParam==1) params.add("LASTNAME"); // search by Last Name
 				params.add("'"+key+"'"); // the search key  
-				DBMessage msg = new DBMessage(0, 0, 0, 0, params); // 0, 0 is userTableNum, searchOpNum
+				DBMessage msg = new DBMessage(0, 0, params); // 0, 0 is userTableNum, searchOpNum
 				//send the message, get response
 				ArrayList<? extends Serializable> response = communicator.communicate(msg);
 				// convert the returned arraylist to a listmodel 
@@ -171,7 +171,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("PROFID"); // the column in the table to search
 		params.add("'"+Integer.toString(homepagePanel.getProf().getID())+"'"); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
+		DBMessage msg = new DBMessage(1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -198,7 +198,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("COURSEID"); // the column in the table to search
 		params.add("'"+Integer.toString(coursePage.getCourse().getID())+"'"); // the search key // will have to convert this string to int in the model?
-		DBMessage msg = new DBMessage(0, 0, 3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
+		DBMessage msg = new DBMessage(3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -222,7 +222,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("ID"); // the column in the table to search
 		params.add("'"+Integer.toString(coursePage.getCourse().getID())+"'"); // the search key 
-		DBMessage msg = new DBMessage(0, 0, 1, 0, params); // 1, 0 is courseTableNum, searchOpNum
+		DBMessage msg = new DBMessage(1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -250,7 +250,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("ID"); // the column in the table to search
 		params.add("'"+Integer.toString(assignmentPage.getAssignment().getID())+"'"); // the search key 
-		DBMessage msg = new DBMessage(0, 0, 3, 0, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
+		DBMessage msg = new DBMessage(3, 0, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
@@ -277,7 +277,7 @@ public class ProfController extends ViewController{
 		ArrayList<String> params = new ArrayList<>();
 		params.add("TYPE"); // the column in the table to search
 		params.add("'S'"); // the search key  
-		DBMessage msg = new DBMessage(0, 0, 0, 0, params); // 0, 0 is userTableNum, searchOpNum
+		DBMessage msg = new DBMessage(0, 0, params); // 0, 0 is userTableNum, searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = communicator.communicate(msg);
 		// convert the returned arraylist to a listmodel 

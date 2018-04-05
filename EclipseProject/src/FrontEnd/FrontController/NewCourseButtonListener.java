@@ -73,7 +73,7 @@ public class NewCourseButtonListener implements ActionListener{
 			//make a message to tell the DB to add the course
 			ArrayList<Course> params = new ArrayList<>();
 			params.add(temp);
-			DBMessage msg = new DBMessage(0, 0, 1, 2, params); // 1,2 is courseTableNum, addOpNum
+			DBMessage msg = new DBMessage(1, 2, params); // 1,2 is courseTableNum, addOpNum
 
 			//send the message, get response
 			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg); 

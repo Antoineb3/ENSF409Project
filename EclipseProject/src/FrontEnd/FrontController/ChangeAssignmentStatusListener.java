@@ -44,7 +44,7 @@ public class ChangeAssignmentStatusListener implements ActionListener{
 		params.add(newStatusBitString); // the new data key
 		params.add("ID"); // the column in the table to search by (condition)
 		params.add("'"+Integer.toString(assignment.getID())+"'"); // the conditionVal 
-		DBMessage msg = new DBMessage(0, 0, 3, 1, params); // 3, 1 is assignmentTableNum, editRowOp
+		DBMessage msg = new DBMessage(3, 1, params); // 3, 1 is assignmentTableNum, editRowOp
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);

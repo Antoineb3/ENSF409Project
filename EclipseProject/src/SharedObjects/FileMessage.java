@@ -17,7 +17,7 @@ public class FileMessage extends DBMessage implements Serializable{
 	private String ext;
 	
 	public FileMessage(int table, int op, ArrayList<? extends Serializable> params, byte[] contents, String ext) {
-		super(1, 0, table, op, params); // isFile is 1, isEmail is 0
+		super(table, op, params); // isFile is 1, isEmail is 0
 		this.contents = contents;
 		this.ext = ext;
 	}

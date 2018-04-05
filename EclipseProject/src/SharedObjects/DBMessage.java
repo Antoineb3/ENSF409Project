@@ -16,8 +16,8 @@ public class DBMessage extends Message implements Serializable{
 	private int op;
 	private ArrayList<? extends Serializable> params;
 	
-	public DBMessage(int isFile, int isEmail, int table, int op, ArrayList<? extends Serializable> params) {
-		super(isFile, isEmail);
+	public DBMessage(int table, int op, ArrayList<? extends Serializable> params) {
+		super();
 		this.table = table;
 		this.op = op;
 		this.params = params;

@@ -45,7 +45,7 @@ public class ViewStudentsListListener implements ListSelectionListener {
 		ArrayList<String> params = new ArrayList<>();
 		params.add("STUDENTID");
 		params.add("'"+Integer.toString(selected.getID())+"'");	
-		DBMessage msg = new DBMessage(0, 0, 2, 0, params); // 2,0 is studentEnrollmentTableNum, searchOpNum
+		DBMessage msg = new DBMessage(2, 0, params); // 2,0 is studentEnrollmentTableNum, searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		//response should be a list of all the StudentEnrollments that that student is enrolled in 
