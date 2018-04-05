@@ -15,7 +15,10 @@ import SharedObjects.Student;
 import SharedObjects.User;
 
 
-
+/**
+ * 
+ * @author 	Antoine Bizon & Ross Bartlett
+ */
 public class LoginController extends ViewController{
 
 	public LoginController(LoginGUI gui, ClientSocketCommunicator c){

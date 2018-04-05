@@ -4,7 +4,7 @@
 package SharedObjects;
 
 /**
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class Student extends User{

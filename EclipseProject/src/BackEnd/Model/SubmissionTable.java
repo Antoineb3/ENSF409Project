@@ -10,7 +10,7 @@ import SharedObjects.Submission;
 
 /**
  * This class implements the abstract methods in the Table class for the submission table.
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-03-30
  */

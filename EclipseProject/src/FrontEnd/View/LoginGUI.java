@@ -11,6 +11,7 @@ import javax.swing.*;
 
 /**
  * Creates the Login GUI 
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class LoginGUI extends JFrame{
 	/**

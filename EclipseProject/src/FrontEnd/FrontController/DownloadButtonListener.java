@@ -19,7 +19,8 @@ import FrontEnd.View.ProfHomepage;
 import SharedObjects.FileMessage;
 
 /**
- * Listener for the button to download an assignment 
+ * Listener for the button to download an assignment
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class DownloadButtonListener implements ActionListener {
 	/**

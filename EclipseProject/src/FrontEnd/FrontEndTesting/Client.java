@@ -4,6 +4,11 @@ import FrontEnd.FrontController.*;
 import FrontEnd.View.*;
 import SharedObjects.Professor;
 
+/**
+ * 
+ * @author 	Antoine Bizon & Ross Bartlett
+ *
+ */
 public class Client{
 
 	public static void main(String[] args) {

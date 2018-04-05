@@ -15,7 +15,7 @@ import SharedObjects.*;
 
 /**
  * 
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ClientSocketCommunicator {
 

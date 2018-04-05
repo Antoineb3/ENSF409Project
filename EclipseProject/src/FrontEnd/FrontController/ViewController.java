@@ -3,7 +3,11 @@ package FrontEnd.FrontController;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
-
+/**
+ * 
+ * @author 	Antoine Bizon & Ross Bartlett
+ *
+ */
 public abstract class ViewController {
 	protected ArrayList<?> responseItems; //TODO dont need this?
 	protected JFrame frame;

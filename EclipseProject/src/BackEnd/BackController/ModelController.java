@@ -8,7 +8,7 @@ import SharedObjects.Message;
 
 /**
  * This abstract class outlines the fields needed by each kind of model controller.
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-03
  */

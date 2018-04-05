@@ -16,7 +16,7 @@ import SharedObjects.StudentEnrollment;
 
 /**
  * Listener class for the Change Enrollment Status button of a student on the ViewStudentsPage
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ChangeStudentEnrollmentListener implements ActionListener{
 	/**

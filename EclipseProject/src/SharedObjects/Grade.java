@@ -6,7 +6,7 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class Grade implements Serializable{

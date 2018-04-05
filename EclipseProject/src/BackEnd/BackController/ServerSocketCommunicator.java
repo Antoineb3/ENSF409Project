@@ -15,7 +15,7 @@ import BackEnd.Model.ModelExecutor;
 import SharedObjects.Message;
 
 /**
- * @author Antoine
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class ServerSocketCommunicator implements Runnable{

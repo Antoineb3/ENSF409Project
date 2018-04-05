@@ -13,6 +13,7 @@ import SharedObjects.Assignment;
 
 /**
  * Creates the ProfAssignmentPage GUI panel -  the Assignment page as viewed from a Professor
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ProfAssignmentPage extends JPanel{
     /**

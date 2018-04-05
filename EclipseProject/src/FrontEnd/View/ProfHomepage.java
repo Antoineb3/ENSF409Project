@@ -18,6 +18,7 @@ import SharedObjects.Professor;
 
 /**
  * Creates the ProfHomepage GUI panel
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ProfHomepage extends JPanel{
 

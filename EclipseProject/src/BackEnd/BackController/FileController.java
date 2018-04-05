@@ -14,7 +14,7 @@ import SharedObjects.FileMessage;
 import SharedObjects.Message;
 
 /**
- * @author Antoine
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 class FileController extends ModelController {

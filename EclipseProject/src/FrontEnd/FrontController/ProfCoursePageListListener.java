@@ -12,6 +12,7 @@ import SharedObjects.Assignment;
 
 /**
  * Listener for the assignmentList on the ProfCoursePage using MouseAdapter instead of ListSelectionListener
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ProfCoursePageListListener extends MouseAdapter{
 	/**

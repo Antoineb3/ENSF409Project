@@ -2,7 +2,7 @@ package BackEnd.Model;
 
 /**
  * This class has an array of tables containing one table object for each table in the database.
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-03
  */

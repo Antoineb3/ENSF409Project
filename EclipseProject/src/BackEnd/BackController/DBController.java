@@ -10,7 +10,7 @@ import SharedObjects.Message;
 
 /**
  * This class implements the abstract methods in ModelController to control the DB class.
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-03
  */

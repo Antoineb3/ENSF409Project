@@ -12,7 +12,7 @@ import SharedObjects.Assignment;
 import SharedObjects.FileMessage;
 
 /**
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-03
  */

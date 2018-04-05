@@ -11,8 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-/*
+/**
  * Listener class for the Create a New Course button
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class NewCourseButtonListener implements ActionListener{
 

@@ -16,7 +16,7 @@ import SharedObjects.DBMessage;
 
 /**
  * Listener class for the Change Active Status button of a course
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ChangeCourseStatusListener implements ActionListener{
 	/**

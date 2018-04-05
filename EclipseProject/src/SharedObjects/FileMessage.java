@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author Ross
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class FileMessage extends DBMessage implements Serializable{

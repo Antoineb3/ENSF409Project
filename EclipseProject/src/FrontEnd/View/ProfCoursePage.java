@@ -18,6 +18,7 @@ import SharedObjects.Course;
 
 /**
  * Creates the ProfCoursePage GUI panel -  the course page as viewed from a Professor
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ProfCoursePage extends JPanel{
     /**

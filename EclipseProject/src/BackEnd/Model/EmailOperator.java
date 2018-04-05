@@ -4,7 +4,7 @@
 package BackEnd.Model;
 
 /**
- * @author Antoine
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class EmailOperator {

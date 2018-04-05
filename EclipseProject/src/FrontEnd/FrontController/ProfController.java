@@ -18,7 +18,11 @@ import SharedObjects.*;
 
 //TODO what relationship between actionListeners and ProfController ? ViewController?
 
-
+/**
+ * 
+ * @author 	Antoine Bizon & Ross Bartlett
+ *
+ */
 
 public class ProfController extends ViewController{
 

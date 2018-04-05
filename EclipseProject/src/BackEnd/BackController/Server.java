@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author Antoine
+ * @author 	Antoine Bizon & Ross Bartlett
  *
  */
 public class Server {

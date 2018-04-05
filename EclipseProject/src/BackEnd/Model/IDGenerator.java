@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  * This class has a static method that 
- * @author 	Antoine Bizon
+ * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-02
  */
