@@ -56,6 +56,11 @@ class DBController extends ModelController {
 		else if(dbMessage.getOp() == 2) {
 			return theTable.addToDB(dbMessage.getParams().get(0));
 		}
+		//Remove(parameter, key)
+		else if(dbMessage.getOp() == 3) {
+			return theTable.remove((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
+		}
+		
 		return null;
 	}
 

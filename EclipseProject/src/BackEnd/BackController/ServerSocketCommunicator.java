@@ -72,7 +72,6 @@ public class ServerSocketCommunicator implements Runnable{
 		DBController theDBController = new DBController(execute);
 		FileController theFileController = new FileController(execute);
 		EmailController theEmailController = new EmailController(execute);
-		new MessageDecoder(theDBController, theFileController, theEmailController);
 		return new MessageDecoder(theDBController, theFileController, theEmailController);
 	}
 

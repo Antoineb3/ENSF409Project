@@ -74,4 +74,17 @@ public abstract class Table {
 		return result;
 	}
 	
+	/**
+	 * Removes all rows in the table where param==key.
+	 * @param param the parameter to be checked
+	 * @param key the value of the parameter 
+	 * @return the number of rows removed.
+	 */
+	public ArrayList<? extends Serializable> remove(String param, String key){
+		String update = "DELETE FROM " + tableName + 
+					   " WHERE " + param + "=" + key;
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(execute.preformUpdate(update));
+		return result;
+	}
 }
