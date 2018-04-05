@@ -23,18 +23,10 @@ public class FileOperator {
 		directory = dir;
 	}
 	
-	public String saveFile(FileMessage fileContents) {
-		if(fileContents.getParams().get(0) instanceof Assignment) {
-			String fileName = ((Assignment)fileContents.getParams().get(0)).getTitle();
-			File newFile = new File( fileName + "." + fileContents.getExt()); 
-			createFile(newFile, fileContents.getContents());
-			return newFile.getAbsolutePath();
-		}
-		else if(true) {
-			//TODO for submission
-		}
-		
-		return null;
+	public String saveFile(String fileName, String extention, byte[] fileContents) {
+		File newFile = new File( fileName + "." + extention); 
+		createFile(newFile, fileContents);
+		return newFile.getAbsolutePath();
 	}
 	
 	/**

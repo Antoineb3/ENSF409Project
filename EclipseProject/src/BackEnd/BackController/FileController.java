@@ -68,7 +68,8 @@ class FileController extends ModelController {
 		String path;
 		if(fileMessage.getTable() == 3) {
 			Assignment newAssignment = (Assignment) fileMessage.getParams().get(0);
-			path = theModel.getFileOperator().saveFile(fileMessage);
+			path = theModel.getFileOperator().saveFile(newAssignment.getTitle(), fileMessage.getExt(),
+														fileMessage.getContents());
 			newAssignment.setPath(path);
 			return theModel.getDatabase().getTableAt(3).addToDB(newAssignment);
 		}
