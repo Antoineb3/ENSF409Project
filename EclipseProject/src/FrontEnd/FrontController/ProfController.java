@@ -103,7 +103,7 @@ public class ProfController extends ViewController{
 		
 		
 		//update the courseList on the homepage , as this is the first active card 
-		//		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
+				fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
 
 

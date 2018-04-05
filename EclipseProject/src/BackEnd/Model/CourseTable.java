@@ -15,7 +15,7 @@ import SharedObjects.Course;
  * @version 1.0
  * @since	2018-03-30
  */
-class CourseTable extends Table {
+public class CourseTable extends Table {
 
 	/**
 	 * Constructs an object of class CourseTable.

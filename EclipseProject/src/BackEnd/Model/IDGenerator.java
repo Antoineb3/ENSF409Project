@@ -72,6 +72,6 @@ public class IDGenerator {
 		preparedStatement.setInt(1, id);
 		preparedStatement.setInt(2, id-1);
 		preparedStatement.executeUpdate();
-		
+		System.out.println("id val set to "+id);
 	}
 }

@@ -8,13 +8,16 @@ public class Demo{
 
 	public static void main(String[] args) {
 
-		ClientSocketCommunicator c = new ClientSocketCommunicator("localhost", 9898);
-
-		Professor tempProf = new Professor(-1, "password", "email","firstName","LastName");
-		ProfGUI pg = new ProfGUI(tempProf);
-		ProfController controller = new ProfController(pg, c);
-
-		pg.setActiveCard("VIEWSTUDENTSPAGE"); //change this arg to set the startup page
+		ClientSocketCommunicator c = new ClientSocketCommunicator("localhost", 3306);
+		
+		LoginGUI loginGUI = new LoginGUI();
+		LoginController controller = new LoginController(loginGUI, c);
+//
+//		Professor tempProf = new Professor(-1, "password", "email","firstName","LastName");
+//		ProfGUI pg = new ProfGUI(tempProf);
+//		ProfController controller = new ProfController(pg, c);
+//
+//		pg.setActiveCard("VIEWSTUDENTSPAGE"); //change this arg to set the startup page
 
 	}
 }
