@@ -103,7 +103,7 @@ public class Assignment implements Serializable{
 
 	@Override
 	public String toString() {
-		return  title + "\t active = " + active + "\t dueDate = " + dueDate;
+		return  title +  "\t dueDate: " + dueDate;
 	}
 
 }
