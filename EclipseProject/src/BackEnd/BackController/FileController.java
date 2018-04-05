@@ -7,6 +7,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import BackEnd.Model.ModelExecutor;
+import BackEnd.Model.Table;
+import SharedObjects.Assignment;
+import SharedObjects.DBMessage;
+import SharedObjects.FileMessage;
 import SharedObjects.Message;
 
 /**
@@ -14,7 +18,8 @@ import SharedObjects.Message;
  *
  */
 class FileController extends ModelController {
-
+	private FileMessage fileMessage;
+	
 	/**
 	 * @param theModel
 	 */
@@ -28,8 +33,48 @@ class FileController extends ModelController {
 	 */
 	@Override
 	ArrayList<? extends Serializable> executeMessage(Message theMessage) {
-		// TODO Auto-generated method stub
+		fileMessage = (FileMessage) theMessage;
+		if(fileMessage.getOp() == 2) {
+			return saveFile();
+		}
+		else if(fileMessage.getOp() == 2) {
+			loadFile();
+		}
+		
 		return null;
+	}
+
+	/**
+	 * 
+	 */
+	private ArrayList<? extends Serializable> loadFile() {
+		ArrayList<FileMessage> returnMessage = new ArrayList<FileMessage>();
+		if(fileMessage.getTable() == 3) {
+			Assignment loadedAssign = (Assignment) theModel.getDatabase().getTableAt(3).search
+					((String)fileMessage.getParams().get(0), (String)fileMessage.getParams().get(1)).get(0);
+			
+			returnMessage.add(theModel.getFileOperator().loadFile(loadedAssign.getPath()));
+		}
+		else if (fileMessage.getTable() == 4 ) {
+			//TODO file controller for submissions
+		}
+		return returnMessage;
+	}
+
+	/**
+	 * 
+	 */
+	private ArrayList<? extends Serializable> saveFile() {
+		String path = theModel.getFileOperator().saveFile(fileMessage);
+		if(fileMessage.getTable() == 3) {
+			Assignment newAssignment = (Assignment) fileMessage.getParams().get(0);
+			newAssignment.setPath(path);
+			return theModel.getDatabase().getTableAt(3).addToDB(newAssignment);
+		}
+		else if (fileMessage.getTable() == 4 ) {
+			//TODO file controller for submissions
+		}
+		return new ArrayList<Integer>();
 	}
 
 }

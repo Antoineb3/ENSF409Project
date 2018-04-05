@@ -15,7 +15,7 @@ import SharedObjects.Message;
  * @since	2018-04-03
  */
 class DBController extends ModelController {
-	private DBMessage theMessage;
+	private DBMessage dbMessage;
 	
 	/**
 	 * Constructs s DBController object by calling the classes super constructor. 
@@ -30,9 +30,9 @@ class DBController extends ModelController {
 	 * @see BackEnd.BackController.ModelController#executeMessage(SharedObjects.Message)
 	 */
 	@Override
-	ArrayList<? extends Serializable> executeMessage(Message dbMessage) {
-		theMessage = (DBMessage) dbMessage;
-		Table theTable = theModel.getDatabase().getTableAt(theMessage.getTable());
+	ArrayList<? extends Serializable> executeMessage(Message theMessage) {
+		dbMessage = (DBMessage) theMessage;
+		Table theTable = theModel.getDatabase().getTableAt(dbMessage.getTable());
 		ArrayList<? extends Serializable> returnMessage = preformOperation(theTable);
 		return returnMessage;
 	}
@@ -44,17 +44,17 @@ class DBController extends ModelController {
 	 */
 	private ArrayList<? extends Serializable> preformOperation(Table theTable) {
 		//search(parameter, key)
-		if(theMessage.getOp() == 0) {
-			return theTable.search((String)theMessage.getParams().get(0), (String)theMessage.getParams().get(1));
+		if(dbMessage.getOp() == 0) {
+			return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
 		}
 		//edit(parameter, key, condition, value)
-		else if(theMessage.getOp() == 1) {
-			return theTable.editRow((String)theMessage.getParams().get(0), (String)theMessage.getParams().get(1),
-									(String)theMessage.getParams().get(2), (String)theMessage.getParams().get(3));
+		else if(dbMessage.getOp() == 1) {
+			return theTable.editRow((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1),
+									(String)dbMessage.getParams().get(2), (String)dbMessage.getParams().get(3));
 		}
 		//add(? extends Serializable)
-		else if(theMessage.getOp() == 2) {
-			return theTable.addToDB(theMessage.getParams().get(0));
+		else if(dbMessage.getOp() == 2) {
+			return theTable.addToDB(dbMessage.getParams().get(0));
 		}
 		return null;
 	}
