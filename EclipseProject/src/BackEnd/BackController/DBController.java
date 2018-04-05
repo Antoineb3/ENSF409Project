@@ -61,7 +61,7 @@ class DBController extends ModelController {
 			return theTable.remove((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
 		}
 		
-		return null;
+		return new ArrayList<Integer>();
 	}
 
 }

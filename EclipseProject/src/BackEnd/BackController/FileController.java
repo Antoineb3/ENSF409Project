@@ -37,7 +37,7 @@ class FileController extends ModelController {
 		if(fileMessage.getOp() == 2) {
 			return saveFile();
 		}
-		else if(fileMessage.getOp() == 2) {
+		else if(fileMessage.getOp() == 0) {
 			loadFile();
 		}
 		
