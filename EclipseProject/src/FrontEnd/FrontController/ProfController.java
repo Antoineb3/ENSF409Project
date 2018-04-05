@@ -94,10 +94,10 @@ public class ProfController extends ViewController{
 		
 		
 //		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(pg.getProfHomePagePanel(), this ));
-		pg.getProfHomePagePanel().setListListener(new CLICK_ProfHomepageListListener(this));
+		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
 
 //		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageAssignmentListListener(pg.getProfCoursePagePanel(), this));
-		pg.getProfCoursePagePanel().setListListener(new CLICK_ProfCoursePageListListener(this));
+		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageListListener(this));
 		
 		
 		
