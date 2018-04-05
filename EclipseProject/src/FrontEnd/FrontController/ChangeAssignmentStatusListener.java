@@ -40,10 +40,10 @@ public class ChangeAssignmentStatusListener implements ActionListener{
 		String newStatusBitString = (oldStatus==false)? "b'1'":"b'0'";
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
-		params.add("ID"); // the column in the table to search by
-		params.add("'"+Integer.toString(assignment.getID())+"'"); // the search key
 		params.add("ACTIVE"); // the column to change
-		params.add(newStatusBitString); // the new data
+		params.add(newStatusBitString); // the new data key
+		params.add("ID"); // the column in the table to search by (condition)
+		params.add("'"+Integer.toString(assignment.getID())+"'"); // the conditionVal 
 		DBMessage msg = new DBMessage(0, 0, 3, 1, params); // 3, 1 is assignmentTableNum, editRowOp
 
 		//send the message, get response

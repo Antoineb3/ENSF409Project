@@ -61,13 +61,13 @@ public abstract class Table {
 	 * @param param the parameter to be updated.
 	 * @param key the new value of the parameter.
 	 * @param condition the column to be checked for the condition.
-	 * @param coditionVal the value of the condition.
+	 * @param conditionVal the value of the condition.
 	 * @return the number of affected rows.
 	 */
-	public ArrayList<Integer> editRow(String param, String key, String condition, String coditionVal) {
+	public ArrayList<Integer> editRow(String param, String key, String condition, String conditionVal) {
 		String update = "UPDATE " + tableName + 
-						" SET " + condition + "=" + coditionVal +
-						" WHERE "  + param + "=" + key;
+						" SET " + param + "=" + key +
+						" WHERE "  + condition + "=" + conditionVal;
 
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		result.add(execute.preformUpdate(update));

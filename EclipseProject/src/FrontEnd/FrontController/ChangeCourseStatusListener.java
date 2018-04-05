@@ -40,10 +40,10 @@ public class ChangeCourseStatusListener implements ActionListener{
 		String newStatusBitString = (oldStatus==false)? "b'1'":"b'0'";
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
-		params.add("ID"); // the column in the table to search by
-		params.add("'"+Integer.toString(course.getID())+"'"); // the search key
 		params.add("ACTIVE"); // the column to change
 		params.add(newStatusBitString); // the new data
+		params.add("ID"); // the condition condition
+		params.add("'"+Integer.toString(course.getID())+"'"); // the condition val
 		DBMessage msg = new DBMessage(0, 0, 1, 1, params); // 1, 1 is courseTableNum, editRowOp
 
 		//send the message, get response
