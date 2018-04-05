@@ -65,9 +65,10 @@ class FileController extends ModelController {
 	 * 
 	 */
 	private ArrayList<? extends Serializable> saveFile() {
-		String path = theModel.getFileOperator().saveFile(fileMessage);
+		String path;
 		if(fileMessage.getTable() == 3) {
 			Assignment newAssignment = (Assignment) fileMessage.getParams().get(0);
+			path = theModel.getFileOperator().saveFile(fileMessage);
 			newAssignment.setPath(path);
 			return theModel.getDatabase().getTableAt(3).addToDB(newAssignment);
 		}
