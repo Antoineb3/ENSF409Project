@@ -65,12 +65,12 @@ public class DownloadButtonListener implements ActionListener {
 			return;
 		}
 		
-		//save the file to the home directory
-		String homeDiriectory = System.getProperty("user.home");
-		//TODO will have to test this, idk if this is the right way to write a path
-		File newFile = new File(homeDiriectory +"\\" + fileName +"."+ext); 
-		System.out.println("File saving as: "+homeDiriectory +"\\" + fileName +"."+ext);
+
+		File newFile = new File( fileName +"."+ext); 
 		createFile(newFile, content);
+		System.out.println("File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath());
+		JOptionPane.showMessageDialog(null, "File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath(), "Assignment Downloaded", JOptionPane.INFORMATION_MESSAGE);
+
 
 	}
 	
