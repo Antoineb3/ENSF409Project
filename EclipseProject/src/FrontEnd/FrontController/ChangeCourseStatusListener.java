@@ -36,7 +36,9 @@ public class ChangeCourseStatusListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Course course = panel.getCourse();
+
 		boolean oldStatus = course.getActive();
+
 		String newStatusBitString = (oldStatus==false)? "b'1'":"b'0'";
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
@@ -48,16 +50,17 @@ public class ChangeCourseStatusListener implements ActionListener{
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
-		//get the new status of the course
-		boolean status = ((Course) response.get(0)).getActive();
-		if (status==oldStatus) {
-			System.out.println("Error: course status did not change in db...");
+		
+		if (response.size()!=1) {
 			JOptionPane.showMessageDialog(null, "Error: Course status could not be changed.", "Course Status Change Error", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Course status changed.", "Course Status Change ", JOptionPane.INFORMATION_MESSAGE);
-			//update the JLabel
-			panel.setActiveStatusText(status);
+
+			//update the panel's JLabel and status of its stored course
+			panel.setActiveStatusText(!oldStatus);
+			panel.getCourse().setActive(!oldStatus);
+			System.out.println("Course "+panel.getCourse().getName()+" has been set to active="+panel.getCourse().getActive());
 		}
 	}
 

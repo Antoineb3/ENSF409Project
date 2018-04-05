@@ -72,13 +72,13 @@ public class ClientSocketCommunicator {
 		try {
 			return (ArrayList<? extends Serializable>) socketIn.readObject();
 		} catch (EOFException e) {
-			System.err.println("Error, EOF");
+			System.err.println("Error, EOF: "+e.getStackTrace());
 		} catch (ClassNotFoundException e) {
 			System.out.println("error: class not found");
 		} catch (IOException e) {
 			System.out.println("error reading from file");
 		}
-		System.out.println("error getting response from server.");
+		System.out.println("ERROR getting response from server... in ClientSocketCommunicator");
 		return null;
 	}
 }

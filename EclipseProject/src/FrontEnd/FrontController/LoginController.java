@@ -80,6 +80,7 @@ public class LoginController extends ViewController{
 			if (temp.getPassword().equals(password)){
 				//logged in 
 				ClientSocketCommunicator csc = ((ClientSocketCommunicator) communicator); 
+				System.out.println("Logged in as: "+temp.getFirstName()+" "+temp.getLastName());
 				if(temp instanceof Professor) {
 					ProfGUI pg = new ProfGUI((Professor)temp);
 			        ProfController controller = new ProfController(pg, csc);	

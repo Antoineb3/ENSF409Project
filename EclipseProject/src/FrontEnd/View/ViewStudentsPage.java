@@ -230,7 +230,7 @@ public class ViewStudentsPage extends JPanel{
 	 */
 	public void setEnrollmentStatusMessage(boolean enrolled){
 		String message = selectedStudent.getFirstName()+" is currently ";
-		message+= (enrolled==true)? "":"NOT";
+		message+= (enrolled==true)? "":"NOT ";
 		message+= "enrolled in this course.";
 		enrollmentStatusMessage.setText(message);
 	}

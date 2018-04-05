@@ -33,6 +33,7 @@ public class CourseTable extends Table {
 	@Override
 	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
 		Course course  = (Course) addition;
+		System.out.println("id= "+course.getID()+", profID = "+course.getProfID()+", name="+course.getName()+" active="+course.getActive());
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 
 				course.getProfID() + ", '" +

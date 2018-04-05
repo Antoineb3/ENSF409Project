@@ -50,7 +50,7 @@ public class Server {
 	
 	public static void main(String[] args) {
 		Server theServer = new Server(7800);
-		System.out.println("the srever is running...");
+		System.out.println("the server is running...");
 		theServer.makeConnection();
 	}
 

@@ -48,16 +48,18 @@ public class ChangeAssignmentStatusListener implements ActionListener{
 
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
-		//get the new status of the assignment
-		boolean status = ((Assignment) response.get(0)).getActive();
-		if (status==oldStatus) {
+		
+		if (response.size()!=1) {
 			System.out.println("Error: assignment status did not change in db...");
 			JOptionPane.showMessageDialog(null, "Error: Assignment status could not be changed.", "Assignment Status Change Error", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Assignment status changed.", "Assignment Status Change ", JOptionPane.INFORMATION_MESSAGE);
-			//update the JLabel
-			panel.setActiveStatusText(status);
+			
+			//update the panel's JLabel and status of its stored assignment
+			panel.setActiveStatusText(!oldStatus);
+			panel.getAssignment().setActive(!oldStatus);
+			System.out.println("assignment "+panel.getAssignment().getTitle()+" has been set to active="+panel.getAssignment().getActive());
 		}
 	}
 

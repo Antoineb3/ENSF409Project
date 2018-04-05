@@ -76,7 +76,7 @@ public class Course implements Serializable{
 
 	@Override
 	public String toString() {
-		return name +"\t active = "+active;
+		return name +"      active = "+active;
 	}
 	
 	
