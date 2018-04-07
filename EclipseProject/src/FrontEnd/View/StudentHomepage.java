@@ -1,14 +1,11 @@
 package FrontEnd.View;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
 
-import SharedObjects.Assignment;
 import SharedObjects.Course;
-import SharedObjects.Professor;
+import SharedObjects.Student;
 
 /*
  * Ross Bartlett
@@ -17,23 +14,18 @@ import SharedObjects.Professor;
  */
 
 /**
- * Creates the ProfHomepage GUI panel
+ * Creates the StudentHomepage GUI panel
  * @author 	Antoine Bizon & Ross Bartlett
  */
-public class ProfHomepage extends JPanel{
+public class StudentHomepage extends JPanel{
 
 	/**
-	 * The prof that logged in 
+	 * The Student that logged in 
 	 */
-	private Professor prof;
+	private Student Student;
 
 	/**
-	 * The create new course button
-	 */
-	private JButton createNewCourseButton = new JButton("Create New Course");
-
-	/**
-	 * The list of the prof's Courses
+	 * The list of the Student's Courses
 	 */
 	private DefaultListModel<Course> listModel = new DefaultListModel<>(); 
 	private JList<Course> courseList;
@@ -44,11 +36,10 @@ public class ProfHomepage extends JPanel{
 	private JLabel welcomeText= new JLabel();
 	
 
-
 	/**
 	 * Constructor that creates the visible panel 
 	 */
-	public ProfHomepage() { 
+	public StudentHomepage() { 
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 		fillContentPane();
@@ -61,7 +52,7 @@ public class ProfHomepage extends JPanel{
 	private void fillContentPane() {
 		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
-
+		setWelcomeText("testFirst", "testLast");//TODO remove? the cardChanger sets this when go to this page
 		welcomeText.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(welcomeText);
 
@@ -70,8 +61,6 @@ public class ProfHomepage extends JPanel{
 		add(GuiUtilities.centeredJLabel("Courses:"));
 		setupCourseList();
 
-		createNewCourseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		add(createNewCourseButton);
 	}
 
 
@@ -91,30 +80,26 @@ public class ProfHomepage extends JPanel{
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
-	public void setCreateNewCourseButtonListener(ActionListener e) {
-		createNewCourseButton.addActionListener(e);
-	}
 	public void setListListener(MouseAdapter e) {
 		courseList.addMouseListener(e);
 	}
-	
 	
 	/**
 	 * sets the panels Assignment and updates the name, dueDate JLabels
 	 * @param c the Assignment to set
 	 */
-	public void setProf(Professor p) {
-		prof = p;
-		setWelcomeText(p.getFirstName() , p.getLastName());//update the "welcome, name!" JLabel
+	public void setStudent(Student s) {
+		Student = s;
+		setWelcomeText(s.getFirstName() , s.getLastName());//update the "welcome, name!" JLabel
 	}
 
 	/**
 	 * Sets the welcome message at top of panel
-	 * @param first profs first name
-	 * @param last profs last name
+	 * @param first Students first name
+	 * @param last Students last name
 	 */
 	private void setWelcomeText(String first, String last) {
-		String message = "Welcome, Professor ";
+		String message = "Welcome, Student: ";
 		message+= first+" "+last+"!";
 		welcomeText.setText(message);
 	}
@@ -130,7 +115,6 @@ public class ProfHomepage extends JPanel{
 	}
 
 	
-
 	/**
 	 * @return the courseList
 	 */
@@ -138,12 +122,11 @@ public class ProfHomepage extends JPanel{
 		return courseList;
 	}
 
-
 	/**
-	 * @return the prof
+	 * @return the Student
 	 */
-	public Professor getProf() {
-		return prof;
+	public Student getStudent() {
+		return Student;
 	}
 
 

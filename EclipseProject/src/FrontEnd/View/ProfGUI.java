@@ -44,13 +44,13 @@ public class ProfGUI extends JFrame{
 		profHomePagePanel.setProf(prof);
 		cards.add(profHomePagePanel, "PROFHOMEPAGE"); //the cardName of the homePagePanel is PROFHOMEPAGE
 
-		profCoursePagePanel = new ProfCoursePage();// TODO set the CoursePage's course every time you go to it 
+		profCoursePagePanel = new ProfCoursePage();
 		cards.add(profCoursePagePanel, "PROFCOURSEPAGE"); //the cardName of the homePagePanel is PROFCOURSEPAGE
 
-		viewStudentsPanel = new ViewStudentsPage();// TODO set the ViewStudents's course every time you go to it 
+		viewStudentsPanel = new ViewStudentsPage();
 		cards.add(viewStudentsPanel, "VIEWSTUDENTSPAGE"); //the cardName is VIEWSTUDENTSPAGE
 
-		profAssignmentPanel = new ProfAssignmentPage();// TODO set the assignment page's file every time you go to it 
+		profAssignmentPanel = new ProfAssignmentPage();
 		cards.add(profAssignmentPanel, "PROFASSIGNMENTPAGE"); //the cardName is PROFASSIGNMENTPAGE
 
 		add(cards);

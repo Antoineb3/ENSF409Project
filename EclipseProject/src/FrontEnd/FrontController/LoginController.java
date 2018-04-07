@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import FrontEnd.View.LoginGUI;
 import FrontEnd.View.ProfGUI;
+import FrontEnd.View.StudentGUI;
 import SharedObjects.DBMessage;
 import SharedObjects.Professor;
 import SharedObjects.Student;
@@ -90,8 +91,8 @@ public class LoginController extends ViewController{
 			        gui.dispose(); //close the LoginGUI
 				}
 				else if(temp instanceof Student) {
-//					StudentGUI sg = new StudentGUI((Student)temp);
-//			        StudentController controller = new StudentController(sg, csc);
+					StudentGUI sg = new StudentGUI((Student)temp);
+			        StudentController controller = new StudentController(sg, csc);
 					gui.dispose(); //close the LoginGUI
 				}
 			}

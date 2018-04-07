@@ -1,0 +1,42 @@
+Table Nums
+user = 0
+course = 1
+grade = 5
+submission = 4
+student enrolment = 2
+assignment = 3
+
+
+Table method op codes
+search = 0
+edit row = 1
+add = 2
+remove = 3
+
+
+------- TODO ---------
+
+loadFile methods in FileOperator
+
+handle submissions in loadFile() and saveFile() in FileController
+
+DownloadButtonListener - have different ones for prof and student?
+
+Email - GUI (prof and student) and backend
+
+Dropbox gui
+
+figure out how to set "final assignment grade", calculate average 
+
+Grade Page gui
+
+
+
+
+
+
+
+
+
+
+

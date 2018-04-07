@@ -16,8 +16,6 @@ import FrontEnd.View.ViewStudentsPage;
 import SharedObjects.*;
 
 
-//TODO what relationship between actionListeners and ProfController ? ViewController?
-
 /**
  * 
  * @author 	Antoine Bizon & Ross Bartlett
@@ -97,10 +95,8 @@ public class ProfController extends ViewController{
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
 		
 		
-//		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(pg.getProfHomePagePanel(), this ));
 		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
 
-//		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageAssignmentListListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageListListener(this));
 		
 		
@@ -168,7 +164,7 @@ public class ProfController extends ViewController{
 	/**	
 	 * helper method to fill the homepage courseList using the DB table. 
 	 * package scope so that CreateNewCourseButton listener can use it helper method to fill the coursePage's assignmentList using the DB table. 
-	 * @param coursePage the course page
+	 * @param homepagePanel the homepagePanel
 	 */
 	void fillHomePageCourseList(ProfHomepage homepagePanel) {
 		//make a message to query all the courses for this prof

@@ -1,6 +1,0 @@
-search 0
-edit 1
-add2
-
-
-finish everything else

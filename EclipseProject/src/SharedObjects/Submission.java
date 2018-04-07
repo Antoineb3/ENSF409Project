@@ -86,6 +86,17 @@ public class Submission implements Serializable{
 	public String getTimestamp() {
 		return timestamp;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Submission [id=" + id + ", assignID=" + assignID + ", studentID=" + studentID + ", title=" + title
+				+ ", submissionGrade=" + submissionGrade + ", timestamp=" + timestamp + "]";
+	}
+	
+	
 	
 	
 
