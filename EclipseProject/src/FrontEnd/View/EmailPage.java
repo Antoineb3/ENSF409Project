@@ -34,7 +34,7 @@ public class EmailPage extends JPanel{
 	 */
     private JButton sendButton = new JButton("Send");
     /**
-     * The subjext field
+     * The subject field
      */
     private JTextField subjectField = new JTextField(30);
     /**
