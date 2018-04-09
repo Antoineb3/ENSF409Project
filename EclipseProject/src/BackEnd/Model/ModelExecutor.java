@@ -16,7 +16,7 @@ public class ModelExecutor {
 	 */
 	public ModelExecutor() {
 		theDatabase = new DB();
-		theFileOperator = new FileOperator("C:\\ENSF409dir");//add this directory to your computer
+		theFileOperator = new FileOperator();
 		theEmailOperator = new EmailOperator();
 	}
 
