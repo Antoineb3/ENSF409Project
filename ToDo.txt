@@ -24,8 +24,6 @@ use remove() instead of setting studentID to -1 for un-enrolling a student
 
 DownloadButtonListener - have different ones for prof and student? - received message is Arraylist of FileContents objets 
 
-change EmailMessage class, make ProfEmail and StudentEmail that inherit it
-
 Email - GUI (prof and student) 
 
 Email - SEND button listener 

@@ -14,17 +14,21 @@ public class EmailMessage extends Message implements Serializable {
 	static final long serialVersionUID = 13;
 	private String subject;
 	private String contents;
-	private String sender;
-	private ArrayList<String> receivers;
+
 	
-	public EmailMessage(String subject, String contents, String sender, ArrayList<String> r) {
+	public EmailMessage(String subject, String contents) {
 		super();
 		this.subject = subject;
 		this.contents = contents;
-		this.sender = sender;
-		this.receivers = r;
 	}
 	
 	
+	public String getSubject() {
+		return subject;
+	}
 
+
+	public String getContents() {
+		return contents;
+	}
 }
