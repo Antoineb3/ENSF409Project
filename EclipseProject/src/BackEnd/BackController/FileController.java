@@ -12,10 +12,10 @@ import SharedObjects.Assignment;
 import SharedObjects.DBMessage;
 import SharedObjects.FileMessage;
 import SharedObjects.Message;
+import SharedObjects.Submission;
 
 /**
  * @author 	Antoine Bizon & Ross Bartlett
- *
  */
 class FileController extends ModelController {
 	private FileMessage fileMessage;
@@ -38,10 +38,10 @@ class FileController extends ModelController {
 			return saveFile();
 		}
 		else if(fileMessage.getOp() == 0) {
-			loadFile();
+			return loadFile();
 		}
 		
-		return null;
+		return new ArrayList<Integer>();
 	}
 
 	/**
@@ -56,7 +56,10 @@ class FileController extends ModelController {
 			returnMessage.add(theModel.getFileOperator().loadFile(loadedAssign.getPath()));
 		}
 		else if (fileMessage.getTable() == 4 ) {
-			//TODO file controller for submissions
+			Submission loadedSubmission = (Submission) theModel.getDatabase().getTableAt(4).search
+					((String)fileMessage.getParams().get(0), (String)fileMessage.getParams().get(1)).get(0);
+			
+			returnMessage.add(theModel.getFileOperator().loadFile(loadedSubmission.getPath()));
 		}
 		return returnMessage;
 	}
@@ -74,7 +77,11 @@ class FileController extends ModelController {
 			return theModel.getDatabase().getTableAt(3).addToDB(newAssignment);
 		}
 		else if (fileMessage.getTable() == 4 ) {
-			//TODO file controller for submissions
+			Submission newSubmission = (Submission) fileMessage.getParams().get(0);
+			path = theModel.getFileOperator().saveFile(newSubmission.getTitle(), fileMessage.getExt(),
+					fileMessage.getContents());
+			newSubmission.setPath(path);
+			return theModel.getDatabase().getTableAt(4).addToDB(newSubmission);
 		}
 		return new ArrayList<Integer>();
 	}

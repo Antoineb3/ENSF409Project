@@ -63,6 +63,12 @@ public class Submission implements Serializable{
 		return path;
 	}
 	/**
+	 * @param path the path.
+	 */
+	public void setPath(String path) {
+		this.path = path;
+	}
+	/**
 	 * @return the title
 	 */
 	public String getTitle() {
