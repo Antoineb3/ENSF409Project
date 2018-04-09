@@ -18,10 +18,11 @@ remove = 3
 
 -------------- TODO ---------
 
+Ross: change ViewController fields to private
 
 use remove() instead of setting studentID to -1 for un-enrolling a student 
 
-DownloadButtonListener - have different ones for prof and student?
+DownloadButtonListener - have different ones for prof and student? - received message is Arraylist of FileContents objets 
 
 change EmailMessage class, make ProfEmail and StudentEmail that inherit it
 
@@ -37,6 +38,7 @@ figure out how to set "final assignment grade", calculate average
 
 Grade Page gui
 
+Commenting, JavaDocs
 
 
 

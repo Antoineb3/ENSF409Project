@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfHomepage;
+import SharedObjects.FileContents;
 import SharedObjects.FileMessage;
 
 /**
@@ -51,34 +52,27 @@ public class DownloadButtonListener implements ActionListener {
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 
-		//response will be an arrayList containing the FileContents object
+		//response will be an arrayList containing a FileContents object
+		if(response.size()<1) {
+			JOptionPane.showMessageDialog(null, "Error getting File response from server", "Download Error", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		FileContents fileContents = (FileContents) response.get(0);
 		
-		
-		
-		System.out.println("TODO need to implmement downloading a file still");
-		//TODO need a FileMessage containing a byte [] contents sent back to me 
-//		if(response.size()<1) {
-//			JOptionPane.showMessageDialog(null, "Error fetching assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
-//			return;
-//		}
-//		byte [] content;
-//		String ext;
-//		try {
-//			content = (byte[]) ((FileMessage)response.get(0)).getContents();
-//			ext =  (String) ((FileMessage)response.get(0)).getExt();
-//		}
-//		catch(Exception e1) {
-//			JOptionPane.showMessageDialog(null, "Error extracting assignment file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
-//			return;
-//		}
-		
-//
-//		File newFile = new File( fileName +"."+ext); 
-//		createFile(newFile, content);
-//		System.out.println("File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath());
-//		JOptionPane.showMessageDialog(null, "File saved as: "+ fileName +"."+ext+" to: "+newFile.getAbsolutePath(), "Assignment Downloaded", JOptionPane.INFORMATION_MESSAGE);
+		saveFile(fileContents.getTitle(), fileContents.getExtention(), fileContents.getContents());
 
-
+	}
+	
+	/**
+	 * Saves a file to the local directory  
+	 * @param fileName the name of the file.
+	 * @param extention the extension of the file (Example, .pdf, .docx) 
+	 * @param fileContents the byte contents of the file.
+	 */
+	public void saveFile(String fileName, String extention, byte[] fileContents) {
+		File newFile = new File( fileName + "." + extention); 
+		System.out.println("Saving download as: "+ fileName +"."+extention+" to: "+newFile.getAbsolutePath()+" ...");
+		createFile(newFile, fileContents);
 	}
 	
 	/**
@@ -91,8 +85,13 @@ public class DownloadButtonListener implements ActionListener {
 			BufferedOutputStream bos = new BufferedOutputStream(writer); 
 			bos.write(content);
 			bos.close();
-		} catch(IOException ex){ ex.printStackTrace();
+		} catch(IOException ex){ 
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error extracting download file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
+			return;
 		}
+		//success
+		JOptionPane.showMessageDialog(null, "File saved as: "+ newFile.getName() +" to: "+newFile.getAbsolutePath(), "Download Success", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
