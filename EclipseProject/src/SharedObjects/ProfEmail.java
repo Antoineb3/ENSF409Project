@@ -9,6 +9,7 @@ package SharedObjects;
  */
 public class ProfEmail extends EmailMessage {
 	private Course theCourse;
+	private Professor theProf;
 	
 	
 	/**
@@ -24,5 +25,12 @@ public class ProfEmail extends EmailMessage {
 	public Course getCourse() {
 		return theCourse;
 	}
+
+
+	public Professor getTheProf() {
+		return theProf;
+	}
+	
+	
 
 }
