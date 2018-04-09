@@ -62,7 +62,8 @@ class DBController extends ModelController {
 		}
 		//Remove(parameter, key)
 		else if(dbMessage.getOp() == 3) {
-			return theTable.remove((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
+			return theTable.remove((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1),
+					(String)dbMessage.getParams().get(2), (String)dbMessage.getParams().get(3));
 		}
 		
 		return new ArrayList<Integer>();
