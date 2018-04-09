@@ -47,7 +47,7 @@ class DBController extends ModelController {
 		if(dbMessage.getOp() == 0) {
 			if(dbMessage.getParams().size()==2)
 				return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
-			else if(dbMessage.getParams().size()==2)
+			else if(dbMessage.getParams().size()==4)
 				return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1),
 										(String)dbMessage.getParams().get(2), (String)dbMessage.getParams().get(3));
 		}
