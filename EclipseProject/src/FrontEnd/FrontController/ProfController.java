@@ -91,15 +91,13 @@ public class ProfController extends ViewController{
 
 		//change enrollment button
 		pg.getViewStudentsPanel().setChangeEnrollmentButton(new ChangeStudentEnrollmentListener(pg.getViewStudentsPanel(), this));
-
+		//send email button 
+		pg.getEmailPage().setSendButtonListener(new SendEmailListener(pg.getEmailPage(), this));
 		//download assignment button
 		pg.getProfAssignmentPanel().setDownloadButtonListener(new DownloadButtonListener(pg.getProfAssignmentPanel(), this));
 		//set list listeners
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
-		
-		
 		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
-
 		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageListListener(this));
 		
 		

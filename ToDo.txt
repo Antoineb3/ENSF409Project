@@ -18,12 +18,9 @@ remove = 3
 
 -------------- TODO ---------
 
-
-Email - GUI (prof and student) 
-
-Email - SEND button listener 
-
 Email backend
+
+Test Emailing 
 
 Dropbox gui
 

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+import FrontEnd.FrontController.ProfController.CardChangerListener;
 import FrontEnd.View.StudentCoursePage;
 //import FrontEnd.View.StudentAssignmentPage;
 //import FrontEnd.View.StudentCoursePage;
@@ -30,12 +31,15 @@ public class StudentController extends ViewController{
 //		//set all the back to homepage buttons
 		sg.getStudentCoursePagePanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
 		sg.getStudentAssignmentPanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
+		sg.getEmailPage().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
 
 		//set all the back buttons
 		sg.getStudentAssignmentPanel().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
+		sg.getEmailPage().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
 
 
 		//set other navigator buttons
+		sg.getStudentCoursePagePanel().setEmailButtonListener(new CardChangerListener("EMAILPAGE"));
 		// TODO go to grades page
 
 		//set upload submission listener
@@ -54,7 +58,8 @@ public class StudentController extends ViewController{
 		
 		//download assignment button
 		sg.getStudentAssignmentPanel().setDownloadButtonListener(new DownloadButtonListener(sg.getStudentAssignmentPanel(), this));
-				
+		//send email button 
+		sg.getEmailPage().setSendButtonListener(new SendEmailListener(sg.getEmailPage(), this));
 		
 		//update the courseList on the homepage , as this is the first active card 
 		fillHomePageCourseList(sg.getStudentHomePagePanel()); //TODO uncomment this when connections are ready

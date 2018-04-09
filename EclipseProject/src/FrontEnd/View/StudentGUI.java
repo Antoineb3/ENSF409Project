@@ -32,6 +32,7 @@ public class StudentGUI extends JFrame{
 	private StudentHomepage studentHomePagePanel;
 	private StudentCoursePage studentCoursePagePanel;
 	private StudentAssignmentPage studentAssignmentPanel;
+	private EmailPage emailPage;
 
 	public StudentGUI(Student s) {
 		student=s;
@@ -49,6 +50,9 @@ public class StudentGUI extends JFrame{
 		studentAssignmentPanel = new StudentAssignmentPage();// TODO set the assignment page's file every time you go to it 
 		cards.add(studentAssignmentPanel, "STUDASSIGNMENTPAGE"); //the cardName is STUDASSIGNMENTPAGE
 
+		emailPage = new EmailPage();
+		cards.add(emailPage, "EMAILPAGE"); //the cardName is EMAILPAGE
+		
 		add(cards);
 		pack();
 		setResizable(false);
@@ -85,6 +89,13 @@ public class StudentGUI extends JFrame{
 		return studentAssignmentPanel;
 	}
 
+
+	/**
+	 * @return the emailPage
+	 */
+	public EmailPage getEmailPage() {
+		return emailPage;
+	}
 
 	/**
 	 * @return the student
