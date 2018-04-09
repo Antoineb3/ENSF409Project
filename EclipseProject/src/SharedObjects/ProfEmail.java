@@ -15,6 +15,8 @@ public class ProfEmail extends EmailMessage {
 	/**
 	 * @param subject
 	 * @param contents
+	 * @param course
+	 * @param p
 	 */
 	public ProfEmail(String subject, String contents, Course course, Professor p) {
 		super(subject, contents);
