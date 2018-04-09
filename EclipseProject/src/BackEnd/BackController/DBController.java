@@ -45,7 +45,11 @@ class DBController extends ModelController {
 	private ArrayList<? extends Serializable> preformOperation(Table theTable) {
 		//search(parameter, key)
 		if(dbMessage.getOp() == 0) {
-			return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
+			if(dbMessage.getParams().size()==2)
+				return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1));
+			else if(dbMessage.getParams().size()==2)
+				return theTable.search((String)dbMessage.getParams().get(0), (String)dbMessage.getParams().get(1),
+										(String)dbMessage.getParams().get(2), (String)dbMessage.getParams().get(3));
 		}
 		//edit(parameter, key, condition, value)
 		else if(dbMessage.getOp() == 1) {
