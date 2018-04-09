@@ -43,6 +43,7 @@ class DBController extends ModelController {
 	 * @return
 	 */
 	private ArrayList<? extends Serializable> preformOperation(Table theTable) {
+		
 		//search(parameter, key)
 		if(dbMessage.getOp() == 0) {
 			if(dbMessage.getParams().size()==2)

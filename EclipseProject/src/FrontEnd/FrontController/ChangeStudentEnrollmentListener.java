@@ -60,13 +60,13 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 		//make a message to edit the DB
 		ArrayList<String> params = new ArrayList<>();
 
-		params.add("STUDENTID"); // the column to change
-		params.add("'"+Integer.toString(-1)+"'"); // the new data 
-		params.add("ID"); // the column in the table to search by (condition)
+		params.add("ID"); // the column to change
 		params.add("'"+Integer.toString(selectedStudentEnrollmentID)+"'"); // the conditionVal
-		DBMessage msg = new DBMessage(2, 1, params); // 2, 1 is studentEnrollmentTableNum, editRowOp
+		DBMessage msg = new DBMessage(2, 3, params); // 2, 3 is studentEnrollmentTableNum, removeRowOp
+		
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+		System.out.println(response.get(0));
 		if((int)response.get(0)!=1) { // number of affected rows
 			JOptionPane.showMessageDialog(null, "Error un-enrolling "+student.getFirstName()+".", "Enrollment Status Change ERROR ", JOptionPane.WARNING_MESSAGE);
 			return;

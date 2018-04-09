@@ -19,8 +19,6 @@ remove = 3
 -------------- TODO ---------
 
 
-use remove() instead of setting studentID to -1 for un-enrolling a student 
-
 Email - GUI (prof and student) 
 
 Email - SEND button listener 
