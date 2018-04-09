@@ -95,10 +95,9 @@ public abstract class Table {
 	 * @param key the value of the parameter 
 	 * @return the number of rows removed.
 	 */
-	public ArrayList<? extends Serializable> remove(String param1, String key1 , String param2, String key2){
+	public ArrayList<? extends Serializable> remove(String param, String key){
 		String update = "DELETE FROM " + tableName + 
-						" WHERE " + param1 + "=" + key1 +
-						" AND " + param2 + "=" + key2;
+						" WHERE " + param + "=" + key;
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		result.add(execute.preformUpdate(update));
 		return result;
