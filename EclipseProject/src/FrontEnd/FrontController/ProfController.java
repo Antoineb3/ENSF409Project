@@ -32,14 +32,17 @@ public class ProfController extends ViewController{
 		pg.getProfCoursePagePanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
 		pg.getViewStudentsPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
 		pg.getProfAssignmentPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		pg.getEmailPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		
 
 		//set all the back buttons
 		pg.getProfAssignmentPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
 		pg.getViewStudentsPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
-
+		pg.getEmailPage().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
 
 		//set other navigator buttons
 		pg.getProfCoursePagePanel().setViewStudentsButtonListener(new CardChangerListener("VIEWSTUDENTSPAGE"));
+		pg.getProfCoursePagePanel().setEmailButtonListener(new CardChangerListener("EMAILPAGE"));
 
 		//set new item listeners 
 		pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentButtonListener(pg.getProfCoursePagePanel(), this));
@@ -133,6 +136,9 @@ public class ProfController extends ViewController{
 			else if(card.equals("VIEWSTUDENTSPAGE")){
 				pg.getViewStudentsPanel().setCourse(pg.getProfCoursePagePanel().getCourse()); // update the course as the most recent course of the CorusePage
 				fillViewStudentsList(pg.getViewStudentsPanel()); // the results list starts as full of all students
+			}
+			else if (card.equals("EMAILPAGE")) {
+				pg.getEmailPage().clearFields();
 			}
 			pg.setActiveCard(card);
 		}

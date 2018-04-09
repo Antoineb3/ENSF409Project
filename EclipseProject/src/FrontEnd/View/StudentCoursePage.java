@@ -86,7 +86,7 @@ public class StudentCoursePage extends JPanel{
     /**
      * make a panel of the top buttons on the frame
      */
-    public void setButtonPanel(){
+    private void setButtonPanel(){
         JPanel buttonPanel = new JPanel();
         buttonPanel.setMaximumSize(new Dimension(800,40));
         buttonPanel.setLayout(new FlowLayout());

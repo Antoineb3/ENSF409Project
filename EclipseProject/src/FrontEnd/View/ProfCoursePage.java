@@ -36,7 +36,7 @@ public class ProfCoursePage extends JPanel{
     /**
 	 * The create new course button
 	 */
-    private JButton emailButton = new JButton("Email");
+    private JButton emailButton = new JButton("Email Students");
     /**
 	 * The create new course button
 	 */

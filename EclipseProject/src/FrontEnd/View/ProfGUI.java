@@ -33,6 +33,7 @@ public class ProfGUI extends JFrame{
 	private ProfCoursePage profCoursePagePanel;
 	private ViewStudentsPage viewStudentsPanel;
 	private ProfAssignmentPage profAssignmentPanel;
+	private EmailPage emailPage;
 
 	public ProfGUI(Professor p) {
 		prof=p;
@@ -53,6 +54,9 @@ public class ProfGUI extends JFrame{
 		profAssignmentPanel = new ProfAssignmentPage();
 		cards.add(profAssignmentPanel, "PROFASSIGNMENTPAGE"); //the cardName is PROFASSIGNMENTPAGE
 
+		emailPage = new EmailPage();
+		cards.add(emailPage, "EMAILPAGE"); //the cardName is EMAILPAGE
+		
 		add(cards);
 		pack();
 		setResizable(false);
@@ -95,6 +99,13 @@ public class ProfGUI extends JFrame{
 		return profAssignmentPanel;
 	}
 
+
+	/**
+	 * @return the emailPage
+	 */
+	public EmailPage getEmailPage() {
+		return emailPage;
+	}
 
 	/**
 	 * @return the prof
