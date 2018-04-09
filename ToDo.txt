@@ -1,4 +1,5 @@
-Table Nums
+-------Table Nums-------------
+
 user = 0
 course = 1
 grade = 5
@@ -7,22 +8,28 @@ student enrolment = 2
 assignment = 3
 
 
-Table method op codes
+------Table method op codes------
+
 search = 0
 edit row = 1
 add = 2
 remove = 3
 
 
-------- TODO ---------
+-------------- TODO ---------
 
-loadFile methods in FileOperator
 
-handle submissions in loadFile() and saveFile() in FileController
+use remove() instead of setting studentID to -1 for un-enrolling a student 
 
 DownloadButtonListener - have different ones for prof and student?
 
-Email - GUI (prof and student) and backend
+change EmailMessage class, make ProfEmail and StudentEmail that inherit it
+
+Email - GUI (prof and student) 
+
+Email - SEND button listener 
+
+Email backend
 
 Dropbox gui
 

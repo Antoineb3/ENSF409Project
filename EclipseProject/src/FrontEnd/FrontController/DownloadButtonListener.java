@@ -51,6 +51,10 @@ public class DownloadButtonListener implements ActionListener {
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 
+		//response will be an arrayList containing the FileContents object
+		
+		
+		
 		System.out.println("TODO need to implmement downloading a file still");
 		//TODO need a FileMessage containing a byte [] contents sent back to me 
 //		if(response.size()<1) {

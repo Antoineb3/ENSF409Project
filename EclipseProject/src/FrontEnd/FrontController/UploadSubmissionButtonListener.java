@@ -113,9 +113,14 @@ public class UploadSubmissionButtonListener implements ActionListener{
 				clearInputs();
 				return;
 			}
+			
+			if(comments.length()>=140) {
+				JOptionPane.showMessageDialog(null, "Error: Comment field must be <140 chars.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			
 
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-
+			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm").format(new java.util.Date());
 			
 			//construct the new submission
 			Submission submission = new Submission(-1, panel.getAssignment().getID(), student.getID(), null, name, -1, comments, timeStamp); // path is null, grade is -1
@@ -127,6 +132,10 @@ public class UploadSubmissionButtonListener implements ActionListener{
 
 			//send the message, get response
 			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+			if(response==null) {
+				System.out.println("null response");
+			}
+			System.out.println("size is " + response.size());
 			checkResponse(response);
 
 		}
