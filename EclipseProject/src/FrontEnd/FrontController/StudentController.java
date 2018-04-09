@@ -51,7 +51,11 @@ public class StudentController extends ViewController{
 //
 		sg.getStudentCoursePagePanel().setListListener(new StudentCoursePageListListener(this));
 //		
-//		
+		
+		//download assignment button
+		sg.getStudentAssignmentPanel().setDownloadButtonListener(new DownloadButtonListener(sg.getStudentAssignmentPanel(), this));
+				
+		
 		//update the courseList on the homepage , as this is the first active card 
 		fillHomePageCourseList(sg.getStudentHomePagePanel()); //TODO uncomment this when connections are ready
 	}

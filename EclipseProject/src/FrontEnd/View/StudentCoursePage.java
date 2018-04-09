@@ -74,7 +74,7 @@ public class StudentCoursePage extends JPanel{
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
         
-        add(GuiUtilities.centeredJLabel("Assignments:"));
+        add(GuiUtilities.centeredJLabel("Active Assignments:"));
         setupAssignmentsList();
 
         add(Box.createRigidArea(new Dimension(0,50))); //empty spacing 

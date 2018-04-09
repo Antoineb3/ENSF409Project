@@ -3,6 +3,7 @@
  */
 package BackEnd.BackController;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -52,7 +53,10 @@ public class ServerSocketCommunicator implements Runnable{
 			System.out.println("Connection to client lost");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
 			try {
 				socketOut.close();
 				socketIn.close();
