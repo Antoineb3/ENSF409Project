@@ -72,7 +72,7 @@ public class StudentController extends ViewController{
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			StudentGUI sg = ((StudentGUI) frame); // from super
+			StudentGUI sg = ((StudentGUI) getFrame()); // from super
 //			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("STUDASSIGNMENTPAGE")){
 				refreshStudentAssignmentPage(sg);
@@ -121,7 +121,7 @@ public class StudentController extends ViewController{
 		DBMessage msg = new DBMessage(2, 0, params); // 2, 0 is studentEnrollmentTableNum, searchOpNum
 
 		//send the message, get response of all student enrollment this student is associated with  
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 		
 		//for each studentEnrollment of this student
 		for(Object se : response) {
@@ -133,7 +133,7 @@ public class StudentController extends ViewController{
 			DBMessage msg2 = new DBMessage(1, 0, params2); // 1, 0 is courseTableNum, searchOpNum
 
 			//send the message, get response containing that course
-			ArrayList<? extends Serializable> response2 = communicator.communicate(msg2);
+			ArrayList<? extends Serializable> response2 = getCommunicator().communicate(msg2);
 			for(Object co : response2) { // should just be one course returned 
 				if(((Course) co).getActive() == true) // only show active courses that the student is enrolled in 
 					listModel.addElement((Course)co);
@@ -158,7 +158,7 @@ public class StudentController extends ViewController{
 		DBMessage msg = new DBMessage(3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 
 		// convert the returned arraylist to a listmodel 
 		DefaultListModel<Assignment> listModel = new DefaultListModel<>();

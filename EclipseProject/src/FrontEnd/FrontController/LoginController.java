@@ -37,7 +37,7 @@ public class LoginController extends ViewController{
 		String userID, password;
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			LoginGUI gui = ((LoginGUI) frame);
+			LoginGUI gui = ((LoginGUI) getFrame());
 			//get the login credential inputs
 			if( getInputs(gui) == -1) return;
 			
@@ -49,7 +49,7 @@ public class LoginController extends ViewController{
 			DBMessage msg = new DBMessage(0, 0, params); // 0, 0 is userTableNum, searchOpNum
 
 			//send the message, get response
-			ArrayList<? extends Serializable> response = communicator.communicate(msg);
+			ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 			if (response.size()==0) {
 				JOptionPane.showMessageDialog(null, "User ID not found.", "Login Error", JOptionPane.WARNING_MESSAGE);
 				gui.clearLoginFields();
@@ -83,7 +83,7 @@ public class LoginController extends ViewController{
 		public void tryLogin(LoginGUI gui, User temp) {
 			if (temp.getPassword().equals(password)){
 				//logged in 
-				ClientSocketCommunicator csc = ((ClientSocketCommunicator) communicator); 
+				ClientSocketCommunicator csc = ((ClientSocketCommunicator) getCommunicator()); 
 				System.out.println("Logged in as: "+temp.getFirstName()+" "+temp.getLastName());
 				if(temp instanceof Professor) {
 					ProfGUI pg = new ProfGUI((Professor)temp);

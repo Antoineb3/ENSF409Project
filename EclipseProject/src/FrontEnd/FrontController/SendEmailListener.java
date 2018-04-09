@@ -47,7 +47,7 @@ public class SendEmailListener implements ActionListener{
 			return;
 		}
 		EmailMessage emailMessage;
-		if(controller.frame instanceof ProfGUI) {
+		if(controller.getFrame() instanceof ProfGUI) {
 			
 			//TODO maybe this would be easier on the back end, instead of sending message full of reciepients, on backend use instanceOf profEmail or studentEmail
 //			String sender = ((ProfGUI) controller.frame).getProf().getEmail();

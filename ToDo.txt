@@ -18,11 +18,8 @@ remove = 3
 
 -------------- TODO ---------
 
-Ross: change ViewController fields to private
 
 use remove() instead of setting studentID to -1 for un-enrolling a student 
-
-DownloadButtonListener - have different ones for prof and student? - received message is Arraylist of FileContents objets 
 
 Email - GUI (prof and student) 
 

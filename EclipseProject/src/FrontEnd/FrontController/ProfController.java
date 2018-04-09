@@ -69,7 +69,7 @@ public class ProfController extends ViewController{
 				params.add("'"+key+"'"); // the search key  
 				DBMessage msg = new DBMessage(0, 0, params); // 0, 0 is userTableNum, searchOpNum
 				//send the message, get response
-				ArrayList<? extends Serializable> response = communicator.communicate(msg);
+				ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 				// convert the returned arraylist to a listmodel 
 				DefaultListModel<Student> listModel = new DefaultListModel<>();
 				for(Object s : response) {
@@ -121,7 +121,7 @@ public class ProfController extends ViewController{
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ProfGUI pg = ((ProfGUI) frame); // from super
+			ProfGUI pg = ((ProfGUI) getFrame()); // from super
 //			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				refreshProfAssignmentPage(pg);
@@ -180,7 +180,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 
 		// convert the returned arraylist to a listmodel
 		DefaultListModel<Course> listModel = new DefaultListModel<>();
@@ -207,7 +207,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(3, 0, params); // 3, 0 is assignemntTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 
 		// convert the returned arraylist to a listmodel 
 		DefaultListModel<Assignment> listModel = new DefaultListModel<>();
@@ -231,7 +231,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(1, 0, params); // 1, 0 is courseTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 		if(response.size()>1) {
 			System.out.println("Unexpected error in updateCoursePageStatusLabel(): search for a course by ID returned "+response.size()+" courses");
 		}
@@ -259,7 +259,7 @@ public class ProfController extends ViewController{
 		DBMessage msg = new DBMessage(3, 0, params); //TODO change -1, -1 to assignmentTableNum, searchOpNum
 
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 		if(response.size()>1) {
 			System.out.println("Unexpected error in updateAssignmentPageStatusLabel(): search for an assignment by ID returned "+response.size()+" assignments");
 		}
@@ -285,7 +285,7 @@ public class ProfController extends ViewController{
 		params.add("'S'"); // the search key  
 		DBMessage msg = new DBMessage(0, 0, params); // 0, 0 is userTableNum, searchOpNum
 		//send the message, get response
-		ArrayList<? extends Serializable> response = communicator.communicate(msg);
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
 		// convert the returned arraylist to a listmodel 
 		DefaultListModel<Student> listModel = new DefaultListModel<>();
 		for(Object s : response) {
