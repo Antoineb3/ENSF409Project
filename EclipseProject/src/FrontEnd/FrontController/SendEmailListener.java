@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package FrontEnd.FrontController;
 
 import java.awt.event.ActionEvent;
@@ -12,16 +10,19 @@ import javax.swing.JOptionPane;
 
 import FrontEnd.View.EmailPage;
 import FrontEnd.View.ProfGUI;
+import FrontEnd.View.StudentGUI;
 import FrontEnd.View.ViewStudentsPage;
 import SharedObjects.DBMessage;
 import SharedObjects.EmailMessage;
+import SharedObjects.ProfEmail;
+import SharedObjects.StudentEmail;
 
 /**
  * @author Ross
  *
  */
 public class SendEmailListener implements ActionListener{
-	
+
 	/**
 	 * the panel with this button
 	 */
@@ -46,35 +47,23 @@ public class SendEmailListener implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Error, cannot send an email with empty field(s).", "Email error", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		EmailMessage emailMessage;
-		if(controller.getFrame() instanceof ProfGUI) {
-			
-			//TODO maybe this would be easier on the back end, instead of sending message full of reciepients, on backend use instanceOf profEmail or studentEmail
-//			String sender = ((ProfGUI) controller.frame).getProf().getEmail();
-//			
-//			//send message to get student ID's of enrolled students
-//			ArrayList<String> params = new ArrayList<>();
-//			params.add("COURSEID"); // the column in the table to search
-//			params.add("'"+Integer.toString(((ProfGUI) controller.getFrame()).getProfCoursePagePanel().getCourse().getID())+"'"); // the search key
-//			DBMessage msg = new DBMessage(2, 0, params); // 2, 10 is studentEnrollmentTableNum, searchRowOp
-//			//send the message, get response
-//			ArrayList<? extends Serializable> response = controller.communicator.communicate(msg);
-//			
-//			//send message to get the emails of those students 
-//			ArrayList<String> params2 = new ArrayList<>();
-//			params.add("COURSEID"); // the column in the table to search
-//			params.add("'"+Integer.toString(((ProfGUI) controller.getFrame()).getProfCoursePagePanel().getCourse().getID())+"'"); // the search key
-//
-//			//send the message, get response
-//			ArrayList<? extends Serializable> response2 = controller.communicator.communicate(msg2);
-//			
-//			
-//			
-//			
-//			
-//			emailMessage = new EmailMessage(subject, text, sender, receiver)
+		EmailMessage email;
+		if(controller.getFrame() instanceof ProfGUI) 
+			email = new ProfEmail(subject, text, ((ProfGUI) controller.getFrame()).getProfCoursePagePanel().getCourse(), ((ProfGUI) controller.getFrame()).getProf());
+		else if(controller.getFrame() instanceof StudentGUI) 
+			email = new StudentEmail(subject, text, ((StudentGUI) controller.getFrame()).getStudentCoursePagePanel().getCourse(), ((StudentGUI) controller.getFrame()).getStudent());
+		else {
+			System.err.println("error getting user type in SendEmailListener...");
+			return;
 		}
+		//send email
+		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(email);
+		if(response==null || (int)response.get(0)!=0) {
+			JOptionPane.showMessageDialog(null, "Error sending email.", "Email Error", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		JOptionPane.showMessageDialog(null, "Email sent.", "Send Email", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	
 }
+
