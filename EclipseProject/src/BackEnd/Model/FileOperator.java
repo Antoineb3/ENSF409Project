@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import SharedObjects.FileContents;
 import SharedObjects.FileMessage;
 
 /**
@@ -58,18 +59,32 @@ public class FileOperator {
 	
 	
 	/**
-	 * Creates a file message with the extension and byte contents of the file given the files path. 
+	 * Creates a FileContents object given the files path. 
 	 * @param path the path to the file.
 	 * @return the fileMessage containing the files information. 
 	 */
-	public FileMessage loadFile(String path) {
+	public FileContents loadFile(String path) {
 		returnFile = new File(path); 
 		String ext = getFileExtension();
+		String title = getTitle();
 		byte[] content = getFileContents();
-		FileMessage returnMessage = new FileMessage(-1, -1, null, content, ext);
+		FileContents returnMessage = new FileContents(title , ext, content);
 		return returnMessage;
 	}
 	
+	/**
+	 * Helper method that returns the file title.
+	 * @return the file title
+	 */
+	private String getTitle() {
+		String s = "";
+		int i = returnFile.getName().lastIndexOf('.');
+		if (i >= 0) {
+			s = returnFile.getName().substring(0,i-1);
+		}
+		return s;
+	}
+
 	/**
 	 * Helper method to extract the file extension from the file.
 	 * example: file "foo.pdf" will have extension "pdf"

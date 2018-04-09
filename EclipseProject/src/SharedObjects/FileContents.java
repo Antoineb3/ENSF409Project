@@ -3,11 +3,15 @@
  */
 package SharedObjects;
 
+import java.io.Serializable;
+
 /**
  * @author Antoine
  *
  */
-public class FileContents {
+public class FileContents implements Serializable{
+
+	private static final long serialVersionUID = 100;
 	private String title, extention;
 	private byte[] contents;
 	

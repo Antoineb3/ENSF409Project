@@ -10,6 +10,7 @@ import BackEnd.Model.ModelExecutor;
 import BackEnd.Model.Table;
 import SharedObjects.Assignment;
 import SharedObjects.DBMessage;
+import SharedObjects.FileContents;
 import SharedObjects.FileMessage;
 import SharedObjects.Message;
 import SharedObjects.Submission;
@@ -48,7 +49,7 @@ class FileController extends ModelController {
 	 * 
 	 */
 	private ArrayList<? extends Serializable> loadFile() {
-		ArrayList<FileMessage> returnMessage = new ArrayList<FileMessage>();
+		ArrayList<FileContents> returnMessage = new ArrayList<FileContents>();
 		if(fileMessage.getTable() == 3) {
 			Assignment loadedAssign = (Assignment) theModel.getDatabase().getTableAt(3).search
 					((String)fileMessage.getParams().get(0), (String)fileMessage.getParams().get(1)).get(0);
