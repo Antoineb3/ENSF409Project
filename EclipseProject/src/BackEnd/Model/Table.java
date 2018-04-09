@@ -55,6 +55,21 @@ public abstract class Table {
 		return listFromResultSet(results);
 	}
 	
+	/**
+	 * @param string
+	 * @param string2
+	 * @param string3
+	 * @param string4
+	 * @return
+	 */
+	public ArrayList<? extends Serializable> search(String param1, String key1, String param2, String key2) {
+		String query = "SELECT * FROM " + tableName + 
+				   " WHERE " + param1 + "=" + key1 +
+				   " AND " + param2 + "=" + key2;
+		ResultSet results = execute.preformQuery(query);
+		return listFromResultSet(results);
+	}
+	
 	
 	/**
 	 * Updates the table with specified values and conditions. 
@@ -87,4 +102,6 @@ public abstract class Table {
 		result.add(execute.preformUpdate(update));
 		return result;
 	}
+
+
 }
