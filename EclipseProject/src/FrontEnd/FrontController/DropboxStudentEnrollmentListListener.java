@@ -50,14 +50,11 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		params.add("'"+panel.getAssignment().getID()+"'"); // the search key 
 		params.add("STUDENTID");
 		params.add("'"+selectedStudentEnrollment.getStudentID()+"'");
-		
-		System.out.println("searching for subs with assignID="+params.get(1)+" and studentID="+params.get(3));
-		
+				
 		DBMessage msg = new DBMessage(4, 0, params); // 4, 0 is submissionTableNum, searchOpNum
 		//response should be a list of submissions
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		DefaultListModel<Submission> submissionListModel = new DefaultListModel<>();
-		System.out.println("response of submissions: "+response);
 		for(Object sub : response) {
 			submissionListModel.addElement((Submission)sub);
 		}
@@ -79,6 +76,11 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		if(response2==null) {
 			System.err.println("response2 is null getting Grade in DropboxStudentEnrollmentListLIstener");
 			return;
+		}
+		if(response2.size()==0) {
+			//no submissions yet 
+			System.out.println("response2 size is 0 in DropboxStudentEnrollmentListListener");
+			panel.setFinalGradeField("N/A");
 		}
 		try {
 			panel.setFinalGradeField(""+((Grade) response2.get(0)).getAssignmentGrade());

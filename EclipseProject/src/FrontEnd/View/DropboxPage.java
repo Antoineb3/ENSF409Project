@@ -134,6 +134,7 @@ public class DropboxPage extends JPanel{
         
         add(GuiUtilities.centeredJLabel("Student's Final Grade:"));
         finalGradeField.setMaximumSize( finalGradeField.getPreferredSize() );
+        finalGradeField.setEditable(false);
         add(finalGradeField);
         setFinalGradeButton.setAlignmentX(CENTER_ALIGNMENT);
         add(setFinalGradeButton);

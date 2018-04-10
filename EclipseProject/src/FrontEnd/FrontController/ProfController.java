@@ -98,8 +98,9 @@ public class ProfController extends ViewController{
 		pg.getViewStudentsPanel().setChangeEnrollmentButton(new ChangeStudentEnrollmentListener(pg.getViewStudentsPanel(), this));
 		//send email button 
 		pg.getEmailPage().setSendButtonListener(new SendEmailListener(pg.getEmailPage(), this));
-		//download assignment button
+		//download  button
 		pg.getProfAssignmentPanel().setDownloadButtonListener(new DownloadButtonListener(pg.getProfAssignmentPanel(), this));
+		pg.getDropboxPage().setDownloadButtonListener(new DownloadButtonListener(pg.getDropboxPage(), this));
 		//set list listeners
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
 		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
@@ -107,7 +108,7 @@ public class ProfController extends ViewController{
 
 		//TODO set button,list listeners on dropbox page
 		pg.getDropboxPage().setStudentEnrollmentListListener(new DropboxStudentEnrollmentListListener(pg.getDropboxPage(),this));
-		
+		pg.getDropboxPage().setSubmissionListListener(new DropboxSubmissionListListener(pg.getDropboxPage()));
 
 		//update the courseList on the homepage , as this is the first active card 
 		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready

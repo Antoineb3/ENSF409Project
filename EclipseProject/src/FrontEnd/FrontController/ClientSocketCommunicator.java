@@ -72,7 +72,7 @@ public class ClientSocketCommunicator {
 		try {
 			return (ArrayList<? extends Serializable>) socketIn.readObject();
 		} catch (EOFException e) {
-			System.err.println("Error, EOF: "+e.getStackTrace());
+			System.out.println("Error, EOF");
 		} catch (ClassNotFoundException e) {
 			System.out.println("error: class not found");
 		} catch (IOException e) {

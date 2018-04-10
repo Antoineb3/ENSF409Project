@@ -98,8 +98,5 @@ public class Submission implements Serializable{
 	public String toString() {
 		return  title + ", submitted: " + timestamp;
 	}
-	
-	
-	
 
 }

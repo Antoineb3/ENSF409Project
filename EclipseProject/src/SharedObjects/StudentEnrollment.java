@@ -52,7 +52,7 @@ public class StudentEnrollment implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "studentID = " + studentID ;
+		return "student ID = " + studentID ;
 	}
 
 	

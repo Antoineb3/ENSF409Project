@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import com.sun.glass.ui.View;
 
+import FrontEnd.View.DropboxPage;
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfHomepage;
 import FrontEnd.View.StudentAssignmentPage;
@@ -47,10 +48,19 @@ public class DownloadButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String fileName="";
-		if(panel instanceof ProfAssignmentPage)
+		int tableNum=-1;
+		if(panel instanceof ProfAssignmentPage) {
 			 fileName = ((ProfAssignmentPage) panel).getAssignment().getTitle();
-		else if (panel instanceof StudentAssignmentPage)
+			 tableNum=3; // use assignmentTable
+		}
+		else if (panel instanceof StudentAssignmentPage) {
 			 fileName = ((StudentAssignmentPage) panel).getAssignment().getTitle();
+			 tableNum=3;// use assignmentTable
+		}
+		else if (panel instanceof DropboxPage) {
+			 fileName = ((DropboxPage) panel).getSelectedSubmission().getTitle();
+			 tableNum=4;// use submissionTable
+		}
 		else {
 			System.err.println("error getting panel type in download button listener..");
 			return;
@@ -59,7 +69,7 @@ public class DownloadButtonListener implements ActionListener {
 		ArrayList<String> params = new ArrayList<String>();
 		params.add("TITLE"); 
 		params.add("'"+fileName+"'");
-		FileMessage msg = new FileMessage(3, 0, params, null, null); // 3, 0 is assingmentTableNum, searchOpNum
+		FileMessage msg = new FileMessage(tableNum, 0, params, null, null); // 0 is searchOpNum
 		//send the message, get response
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 

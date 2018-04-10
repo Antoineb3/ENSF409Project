@@ -13,18 +13,10 @@ import SharedObjects.Submission;
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class DropboxSubmissionListListener extends MouseAdapter{
-	/**
-	 * the controller constructing this listener
-	 */
-	private ProfController controller;
-	/**
-	 * the panel with this list 
-	 */
 	private DropboxPage panel;
 
-	public DropboxSubmissionListListener(ProfController c) {
-		controller=c;
-
+	public DropboxSubmissionListListener(DropboxPage p) {
+		panel=p;
 	}
 
 	/**
