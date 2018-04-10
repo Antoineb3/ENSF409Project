@@ -19,9 +19,6 @@ remove = 3
 -------------- TODO ---------
 
 
-
-Grade Page gui
-
 figure out how to set "final assignment grade", calculate average 
 
 GradePage listeners

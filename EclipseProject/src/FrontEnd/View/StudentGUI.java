@@ -33,6 +33,7 @@ public class StudentGUI extends JFrame{
 	private StudentCoursePage studentCoursePagePanel;
 	private StudentAssignmentPage studentAssignmentPanel;
 	private EmailPage emailPage;
+	private GradePage gradePage;
 
 	public StudentGUI(Student s) {
 		student=s;
@@ -53,6 +54,10 @@ public class StudentGUI extends JFrame{
 		emailPage = new EmailPage();
 		cards.add(emailPage, "EMAILPAGE"); //the cardName is EMAILPAGE
 		
+		gradePage = new GradePage();
+		cards.add(gradePage, "GRADEPAGE"); //the cardName is GRADEPAGE
+		
+		
 		add(cards);
 		pack();
 		setResizable(false);
@@ -67,6 +72,13 @@ public class StudentGUI extends JFrame{
 		CardLayout cl = (CardLayout)(cards.getLayout());
 		cl.show(cards, CARDNAME);
 		//note: if cardname is passed in that doesnt exist, nothing happens
+	}
+
+	/**
+	 * @return the gradePage
+	 */
+	public GradePage getGradePage() {
+		return gradePage;
 	}
 
 	/**

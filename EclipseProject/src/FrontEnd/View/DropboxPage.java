@@ -7,8 +7,6 @@ import java.awt.event.MouseAdapter;
 import javax.swing.*;
 
 import SharedObjects.Assignment;
-import SharedObjects.Course;
-import SharedObjects.Student;
 import SharedObjects.StudentEnrollment;
 import SharedObjects.Submission;
 
@@ -55,7 +53,7 @@ public class DropboxPage extends JPanel{
     private JTextField gradeField = new JTextField("000");
 
     /**
-     *  tells and can change the selected submisison's grade
+     *  tells the selected student's grade
      */
     private JTextField finalGradeField = new JTextField("000");
    
@@ -226,7 +224,7 @@ public class DropboxPage extends JPanel{
 	}
 	/**
 	 * helper method to set and update the studentenrollment list 
-	 * @param s the list of results to display 
+	 * @param s the list to display 
 	 */
 	public void updateStudentEnrollentList(DefaultListModel<StudentEnrollment> s) { //TODO change to type Student
 		listModel1=s;

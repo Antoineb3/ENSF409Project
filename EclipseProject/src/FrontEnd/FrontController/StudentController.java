@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+import com.sun.javafx.font.PGFont;
+
 import FrontEnd.FrontController.ProfController.CardChangerListener;
 import FrontEnd.View.StudentCoursePage;
 //import FrontEnd.View.StudentAssignmentPage;
@@ -40,7 +42,7 @@ public class StudentController extends ViewController{
 
 		//set other navigator buttons
 		sg.getStudentCoursePagePanel().setEmailButtonListener(new CardChangerListener("EMAILPAGE"));
-		// TODO go to grades page
+		sg.getStudentCoursePagePanel().setViewGradesButtonListener(new CardChangerListener("GRADEPAGE"));
 
 		//set upload submission listener
 		sg.getStudentAssignmentPanel().setUploadSubmissionButtonListener(new UploadSubmissionButtonListener(sg.getStudentAssignmentPanel(), sg.getStudent(),this));
@@ -88,6 +90,9 @@ public class StudentController extends ViewController{
 			else if(card.equals("STUDHOMEPAGE")){
 				//note: homepage's welcomeText with the student's name never needs to be refreshed
 				fillHomePageCourseList(sg.getStudentHomePagePanel()); // update/refresh the course list
+			}
+			else if (card.equals("GRADEPAGE")) {
+				sg.getGradePage().setCourse(sg.getStudentCoursePagePanel().getCourse());
 			}
 			sg.setActiveCard(card);
 		}
