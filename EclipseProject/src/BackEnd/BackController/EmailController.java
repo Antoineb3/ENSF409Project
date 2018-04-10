@@ -25,7 +25,6 @@ class EmailController extends ModelController {
 	 */
 	EmailController(ModelExecutor theModel) {
 		super(theModel);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
