@@ -19,13 +19,17 @@ remove = 3
 -------------- TODO ---------
 
 
-Dropbox gui
+Dropbox - setGrade listener, uncomment setGradeField (uses submission Table)
 
-figure out how to set "final assignment grade", calculate average 
+Grade Page gui
 
 implement grades - create grade if first submission for assigns
 
-Grade Page gui
+figure out how to set "final assignment grade", calculate average 
+
+Dropbox- setFinalGrade buttons, uncomment  setFinalGradeField in list listener
+
+GradePage listeners
 
 Commenting, JavaDocs
 
