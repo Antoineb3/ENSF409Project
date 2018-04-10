@@ -18,9 +18,6 @@ remove = 3
 
 -------------- TODO ---------
 
-Email backend
-
-Test Emailing 
 
 Dropbox gui
 
