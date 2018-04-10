@@ -23,8 +23,6 @@ Dropbox - setGrade listener, uncomment setGradeField (uses submission Table)
 
 Grade Page gui
 
-implement grades - create grade if first submission for assigns
-
 figure out how to set "final assignment grade", calculate average 
 
 Dropbox- setFinalGrade buttons, uncomment  setFinalGradeField in list listener

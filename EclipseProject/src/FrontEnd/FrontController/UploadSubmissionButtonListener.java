@@ -4,7 +4,11 @@ package FrontEnd.FrontController;
 import javax.swing.*;
 
 import FrontEnd.View.StudentAssignmentPage;
+import SharedObjects.Assignment;
+import SharedObjects.Course;
+import SharedObjects.DBMessage;
 import SharedObjects.FileMessage;
+import SharedObjects.Grade;
 import SharedObjects.Student;
 import SharedObjects.Submission;
 
@@ -136,11 +140,62 @@ public class UploadSubmissionButtonListener implements ActionListener{
 				System.out.println("null response");
 			}
 			System.out.println("size is " + response.size());
-			checkResponse(response);
+			if(checkResponse(response)&&newGradeNeeded()) {
+				addNewGrade();
+			}
 
 		}
 		clearInputs();
 
+	}
+
+	/**
+	 * Helper method to add a new grade row to the database.
+	 */
+	private void addNewGrade() {
+		Grade grade = new Grade(-1, panel.getAssignment().getID(), student.getID(), panel.getAssignment().getCourseID(), 0);
+		ArrayList<Grade> params = new ArrayList<>();
+		params.add(grade);
+		DBMessage msg = new DBMessage(5, 2, params); // 5,2 is gradeTableNum, addOpNum
+		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+		if(response==null) {
+			System.out.println("null response");
+		}
+		checkGradeResponse(response);
+	}
+
+	/**
+	 * @param response
+	 */
+	private void checkGradeResponse(ArrayList<? extends Serializable> response) {
+		if(response.size()>1) {
+			System.out.println("Unexpected error adding a Grade: addToDB returned "+response.size()+" sized arrayList");
+			JOptionPane.showMessageDialog(null, "Error: Submission "+name+" may not have been created.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
+		}
+		else if (response.size()==0 || (Integer)response.get(0)!=1) {
+			System.out.println("Error adding Grade - addToDB returned empty arrayList or returned not 1");
+			JOptionPane.showMessageDialog(null, "Error: Submission "+name+" could not be created.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
+		}			
+	}
+
+	/**
+	 * Helper method to check if a new row in the grade table needs to be added for the submission.
+	 * @return true if it's the students first submission, false otherwise. 
+	 */
+	private boolean newGradeNeeded() {
+		ArrayList<String> params = new ArrayList<>();
+		params.add("ASSIGNID"); // the column in the table to search
+		params.add("'"+panel.getAssignment().getID()+"'"); // the search key 
+		params.add("STUDENTID");
+		params.add("'"+student.getID()+"'");
+				
+		DBMessage msg = new DBMessage(4, 0, params); // 4, 0 is submissionTableNum, searchOpNum
+		//response should be a list of submissions
+		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
+		if(response.size()==1)
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -198,22 +253,25 @@ public class UploadSubmissionButtonListener implements ActionListener{
 	/**
 	 * Helper method to determine if add to DB was successful
 	 * @param response the arrayList returned by addToDB()
+	 * @return 
 	 */
-	private void checkResponse(ArrayList<? extends Serializable> response) {
+	private boolean checkResponse(ArrayList<? extends Serializable> response) {
 		//DB will return the number of rows added/affected
 		if(response.size()>1) {
 			System.out.println("Unexpected error adding a Submission: addToDB returned "+response.size()+" sized arrayList");
 			JOptionPane.showMessageDialog(null, "Error: Submission "+name+" may not have been created.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
+			return false;
 		}
 		else if (response.size()==0 || (Integer)response.get(0)!=1) {
 			System.out.println("Error adding Submission - addToDB returned empty arrayList or returned not 1");
 			JOptionPane.showMessageDialog(null, "Error: Submission "+name+" could not be created.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
-
+			return false;
 		}	
 		else {
 			//success, DB added 1 row 
 			System.out.println("Submission "+name+" successfuly uploaded.");
 			JOptionPane.showMessageDialog(null,"Submission "+name+" from file "+newFile.getName()+" successfuly uploaded.", "Submission Uploaded", JOptionPane.INFORMATION_MESSAGE);
+			return true;
 		}
 	}
 
