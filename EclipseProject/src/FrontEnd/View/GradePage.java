@@ -195,5 +195,13 @@ public class GradePage extends JPanel{
 		setCourseNameText(course.getName());
 	}
 
+
+	/**
+	 * @param d the averageField to set
+	 */
+	public void setAverageField(double d) {
+		this.averageField.setText(d+"");;
+	}
+
 }
 

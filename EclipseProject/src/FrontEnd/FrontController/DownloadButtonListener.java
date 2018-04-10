@@ -101,18 +101,18 @@ public class DownloadButtonListener implements ActionListener {
 	 */
 	private void createFile(File newFile, byte[] content) {
 		try{
-			if(newFile.exists()) newFile.createNewFile();
+			newFile.createNewFile();
 			FileOutputStream writer = new FileOutputStream(newFile); 
 			BufferedOutputStream bos = new BufferedOutputStream(writer); 
 			bos.write(content);
+			//success
+			JOptionPane.showMessageDialog(null, "File saved as: "+ newFile.getName() +" to: "+newFile.getAbsolutePath(), "Download Success", JOptionPane.INFORMATION_MESSAGE);
 			bos.close();
 		} catch(IOException ex){ 
 			ex.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error extracting download file.", "Error downloading assignment", JOptionPane.WARNING_MESSAGE);
-			return;
 		}
-		//success
-		JOptionPane.showMessageDialog(null, "File saved as: "+ newFile.getName() +" to: "+newFile.getAbsolutePath(), "Download Success", JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 
 }

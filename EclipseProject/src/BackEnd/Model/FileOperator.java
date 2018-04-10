@@ -48,7 +48,7 @@ public class FileOperator {
 	 */
 	private void createFile(File newFile, byte[] content) {
 		try{
-			if(! newFile.exists()) newFile.createNewFile();
+			newFile.createNewFile();
 			FileOutputStream writer = new FileOutputStream(newFile); 
 			BufferedOutputStream bos = new BufferedOutputStream(writer); 
 			bos.write(content);

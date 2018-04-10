@@ -18,11 +18,6 @@ remove = 3
 
 -------------- TODO ---------
 
-
-figure out how to set "final assignment grade", calculate average 
-
-GradePage listeners
-
 Commenting, JavaDocs
 
 
