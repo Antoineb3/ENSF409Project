@@ -22,7 +22,6 @@ import SharedObjects.User;
  *
  */
 public class EmailOperator {
-	private Properties properties;
 	
 	/**
 	 * 
@@ -33,13 +32,8 @@ public class EmailOperator {
 	 * @return
 	 */
 	public int sendEmail(User sender, ArrayList<User> recipients, String subject, String contents) {
-		createProperties();
-		Session session = Session.getInstance(properties,
-				new javax.mail.Authenticator(){
-				 protected PasswordAuthentication getPasswordAuthentication() {
-				 return new PasswordAuthentication(sender.getEmail(), sender.getPassword());
-				 }
-				});
+		System.out.println("sending emial");
+		Session session = creatSessionObject(sender.getEmail(), sender.getPassword());
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(sender.getEmail()));
@@ -48,9 +42,36 @@ public class EmailOperator {
 			message.setText(contents);
 			Transport.send(message); // Send the Email Message
 			} catch (MessagingException e) {
-			e.printStackTrace();
+				e.printStackTrace();
+				return -1;
 			}
 		return 0;
+	}
+
+
+	/**
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	private Session creatSessionObject(String email, String password) {
+		try {
+			System.out.println("Creating system properties");
+			Properties properties = new Properties();
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.starttls.enable", "true");
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.port", "587");
+			System.out.println("System properties created");
+	        return Session.getInstance(properties, new javax.mail.Authenticator() {
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(email, password);
+	            }
+	        });
+		}catch(NullPointerException e) {e.printStackTrace();}
+		System.out.println("returnig null");
+		return null;
+				
 	}
 
 
@@ -65,15 +86,4 @@ public class EmailOperator {
 		}
 	}
 
-
-	/**
-	 * 
-	 */
-	private void createProperties() {
-		properties.put("mail.smtp.starttls.enable", "true"); // Using TLS
-		properties.put("mail.smtp.auth", "true"); // Authenticate
-		properties.put("mail.smtp.host", "smtp.gmail.com"); // Using Gmail Account
-		properties.put("mail.smtp.port", "587"); // TLS uses port 587
-		
-	}
 }

@@ -3,11 +3,14 @@
  */
 package SharedObjects;
 
+import java.io.Serializable;
+
 /**
  * @author Antoine
  *
  */
-public class StudentEmail extends EmailMessage {
+public class StudentEmail extends EmailMessage implements Serializable{
+	private static final long serialVersionUID = 102;
 	private Course theCourse;
 	private Student theStudent;
 	

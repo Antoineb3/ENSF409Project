@@ -30,7 +30,6 @@ public class StudentEnrollmentTable extends Table {
 	 */
 	@Override
 	public <T extends Serializable>  ArrayList<Integer> addToDB(T addition) {
-		System.out.println("addition is : "+addition);
 		StudentEnrollment enrolment = (StudentEnrollment) addition;
 		String update = "INSERT INTO " + tableName +
 				" VALUES ( " + IDGenerator.generateID() + ", " + 

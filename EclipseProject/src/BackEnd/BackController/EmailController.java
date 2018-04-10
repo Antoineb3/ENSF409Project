@@ -42,6 +42,7 @@ class EmailController extends ModelController {
 		else {
 			sucess.add(-1);
 		}
+		System.out.println(sucess.get(0));
 		return sucess;
 	}
 	
