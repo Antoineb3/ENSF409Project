@@ -81,6 +81,15 @@ public class Submission implements Serializable{
 		return submissionGrade;
 	}
 	/**
+	 * @param submissionGrade the submissionGrade to set
+	 */
+	public void setSubmissionGrade(int submissionGrade) {
+		this.submissionGrade = submissionGrade;
+	}
+
+
+
+	/**
 	 * @return the comments
 	 */
 	public String getComments() {

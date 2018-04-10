@@ -47,7 +47,7 @@ public class DropboxPage extends JPanel{
     /**
 	 * The setGrade button
 	 */
-    private JButton setFinalGradeButton = new JButton("Set as Final Grade");
+    private JButton setFinalGradeButton = new JButton("Use Selected Submission for Student's Final Grade");
 
     /**
      *  tells and can change the selected submisison's grade
@@ -111,13 +111,13 @@ public class DropboxPage extends JPanel{
         add(downloadButton);
         add(GuiUtilities.horizontalLine());
         
-        add(GuiUtilities.centeredJLabel("Grade:"));
+        add(GuiUtilities.centeredJLabel("Grade (%):"));
         gradeField.setMaximumSize( gradeField.getPreferredSize() );
         add(gradeField);
         setGradeButton.setAlignmentX(CENTER_ALIGNMENT);
         add(setGradeButton);
         
-        add(GuiUtilities.centeredJLabel("Student's Final Grade:"));
+        add(GuiUtilities.centeredJLabel("Student's Final Grade (%):"));
         finalGradeField.setMaximumSize( finalGradeField.getPreferredSize() );
         finalGradeField.setEditable(false);
         add(finalGradeField);
@@ -206,7 +206,15 @@ public class DropboxPage extends JPanel{
     public void setGradeField(String g) {
     		gradeField.setText(g);
     }
-    public void setFinalGradeField(String g) {
+    /**
+	 * @return the gradeField
+	 */
+	public JTextField getGradeField() {
+		return gradeField;
+	}
+
+
+	public void setFinalGradeField(String g) {
     		finalGradeField.setText(g);
     }
 

@@ -32,7 +32,7 @@ public class DropboxSubmissionListListener extends MouseAdapter{
 		panel.setSelectedSubmission(selectedSub);
 		
 		//update the gradeField to the submissionGrade of the selected Submission
-//		panel.setGradeField(selectedSub.getSubmissionGrade()+""); // TODO uncomment when grade is implemented
+		panel.setGradeField(selectedSub.getSubmissionGrade()+""); // TODO uncomment when grade is implemented
 	}
 	
 }

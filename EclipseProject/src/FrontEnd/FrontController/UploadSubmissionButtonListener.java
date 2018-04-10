@@ -146,7 +146,6 @@ public class UploadSubmissionButtonListener implements ActionListener{
 
 		}
 		clearInputs();
-
 	}
 
 	/**
@@ -176,6 +175,7 @@ public class UploadSubmissionButtonListener implements ActionListener{
 			System.out.println("Error adding Grade - addToDB returned empty arrayList or returned not 1");
 			JOptionPane.showMessageDialog(null, "Error: Submission "+name+" could not be created.", "Submission Creation Error", JOptionPane.WARNING_MESSAGE);
 		}			
+		else System.out.println("new grade row added to grade table");
 	}
 
 	/**

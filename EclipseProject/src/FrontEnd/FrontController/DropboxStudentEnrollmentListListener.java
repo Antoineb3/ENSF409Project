@@ -42,6 +42,8 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		JList<StudentEnrollment> list = (JList<StudentEnrollment>) evt.getSource();
 		int index = list.locationToIndex(evt.getPoint());
 		if (index<0) return;
+		panel.getGradeField().setText("");
+		panel.setSelectedSubmission(null);
 		StudentEnrollment selectedStudentEnrollment = (StudentEnrollment) list.getSelectedValue();
 		
 		//query all the submissions of the selected student for that assignment
@@ -61,14 +63,18 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		panel.updateSubmissionList(submissionListModel);
 		
 		//update the finalGradeField to the finalGrade of the selected student
-//		updateFinalGradeField(selectedStudentEnrollment); // TOOD uncomment when grade is implmemented
+		updateFinalGradeField(selectedStudentEnrollment); // TOOD uncomment when grade is implmemented
 	}
-
+	/**
+	 * 
+	 * @param selectedStudentEnrollment
+	 */
 	private void updateFinalGradeField(StudentEnrollment selectedStudentEnrollment) {
+		//2 param search
 		ArrayList<String> params2 = new ArrayList<>();
 		params2.add("ASSIGNID"); // the column in the table to search
 		params2.add("'"+panel.getAssignment().getID()+"'"); // the search key 
-		params2.add("STUDENTID");
+		params2.add("STUDENTID"); 
 		params2.add("'"+selectedStudentEnrollment.getStudentID()+"'");
 		DBMessage msg2 = new DBMessage(5, 0, params2); // 5, 0 is gradeTableNum, searchOpNum
 		//response should be a grade
@@ -79,8 +85,9 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		}
 		if(response2.size()==0) {
 			//no submissions yet 
-			System.out.println("response2 size is 0 in DropboxStudentEnrollmentListListener");
-			panel.setFinalGradeField("N/A");
+			System.out.println("response2 size is 0 in DropboxStudentEnrollmentListListener so student made no submissions yet ");
+			panel.setFinalGradeField("000");
+			return;
 		}
 		try {
 			panel.setFinalGradeField(""+((Grade) response2.get(0)).getAssignmentGrade());
