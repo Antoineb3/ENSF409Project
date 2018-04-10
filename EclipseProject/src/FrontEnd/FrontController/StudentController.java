@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import com.sun.javafx.font.PGFont;
 
 import FrontEnd.FrontController.ProfController.CardChangerListener;
+import FrontEnd.View.GradePage;
 import FrontEnd.View.StudentCoursePage;
 //import FrontEnd.View.StudentAssignmentPage;
 //import FrontEnd.View.StudentCoursePage;
@@ -93,6 +94,7 @@ public class StudentController extends ViewController{
 			}
 			else if (card.equals("GRADEPAGE")) {
 				sg.getGradePage().setCourse(sg.getStudentCoursePagePanel().getCourse());
+				refreshGradePage(sg.getGradePage());
 			}
 			sg.setActiveCard(card);
 		}
@@ -108,6 +110,32 @@ public class StudentController extends ViewController{
 	 */
 	void refreshStudentCoursePage(StudentGUI sg) {
 		fillCoursePageAssignmentList(sg.getStudentCoursePagePanel()); // update/refresh the assignment list
+	}
+
+	/**
+	 * updates the assignment list on the grade page
+	 * @param panel the GradePage
+	 */
+	public void refreshGradePage(GradePage panel) {
+		//fill the list with active assignments of that course 
+		DefaultListModel<Assignment> listModel = new DefaultListModel<>();
+		//make a message to query all the assignments in this course
+		ArrayList<String> params = new ArrayList<>();
+		params.add("COURSEID"); // the column in the table to search
+		params.add("'"+panel.getCourse().getID()+"'"); // the search key 
+		DBMessage msg = new DBMessage(3, 0, params); // 3, 0 is assignmentTableNum, searchOpNum
+
+		//send the message, get response of all student enrollment this student is associated with  
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
+		
+		//for each assignment of this course
+		for(Object a : response) {
+				if(((Assignment) a).getActive() == true) // only show active assignments
+					listModel.addElement((Assignment)a);
+			}
+		
+		// then do the update: 
+		panel.updateAssignmentList(listModel);
 	}
 
 	/**
@@ -127,7 +155,7 @@ public class StudentController extends ViewController{
 		//make a message to query all the courses this student is enrolled in 
 		ArrayList<String> params = new ArrayList<>();
 		params.add("STUDENTID"); // the column in the table to search
-		params.add("'"+Integer.toString(homepagePanel.getStudent().getID())+"'"); // the search key 
+		params.add("'"+homepagePanel.getStudent().getID()+"'"); // the search key 
 		DBMessage msg = new DBMessage(2, 0, params); // 2, 0 is studentEnrollmentTableNum, searchOpNum
 
 		//send the message, get response of all student enrollment this student is associated with  
