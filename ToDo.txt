@@ -26,6 +26,8 @@ Dropbox gui
 
 figure out how to set "final assignment grade", calculate average 
 
+implement grades - create a row in gradeTable for every student / assignment, but what if a new student is enrolled, etc...
+
 Grade Page gui
 
 Commenting, JavaDocs

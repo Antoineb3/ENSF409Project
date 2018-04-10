@@ -94,14 +94,10 @@ public class Submission implements Serializable{
 	}
 
 
-
-
 	@Override
 	public String toString() {
-		return "Submission [id=" + id + ", assignID=" + assignID + ", studentID=" + studentID + ", title=" + title
-				+ ", submissionGrade=" + submissionGrade + ", timestamp=" + timestamp + "]";
+		return  title + ", submitted: " + timestamp;
 	}
-	
 	
 	
 	

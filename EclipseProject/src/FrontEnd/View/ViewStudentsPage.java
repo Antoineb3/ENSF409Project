@@ -198,7 +198,7 @@ public class ViewStudentsPage extends JPanel{
 
 	/**
 	 * helper method to set and update the results list 
-	 * @param c the list of results to display 
+	 * @param s the list of results to display 
 	 */
 	public void updateResultsList(DefaultListModel<Student> s) { //TODO change to type Student
 		listModel=s;

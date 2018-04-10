@@ -3,6 +3,8 @@ package FrontEnd.View;
 import java.awt.*;
 import javax.swing.*;
 
+import com.sun.xml.internal.ws.transport.http.DeploymentDescriptorParser;
+
 import SharedObjects.Professor;
 
 /*
@@ -34,6 +36,8 @@ public class ProfGUI extends JFrame{
 	private ViewStudentsPage viewStudentsPanel;
 	private ProfAssignmentPage profAssignmentPanel;
 	private EmailPage emailPage;
+	private DropboxPage dropboxPage;
+
 
 	public ProfGUI(Professor p) {
 		prof=p;
@@ -56,6 +60,9 @@ public class ProfGUI extends JFrame{
 
 		emailPage = new EmailPage();
 		cards.add(emailPage, "EMAILPAGE"); //the cardName is EMAILPAGE
+		
+		dropboxPage = new DropboxPage();
+		cards.add(dropboxPage, "DROPBOXPAGE"); //the cardName is DROPBOXPAGE
 		
 		add(cards);
 		pack();
@@ -105,6 +112,13 @@ public class ProfGUI extends JFrame{
 	 */
 	public EmailPage getEmailPage() {
 		return emailPage;
+	}
+
+	/**
+	 * @return the dropboxPage
+	 */
+	public DropboxPage getDropboxPage() {
+		return dropboxPage;
 	}
 
 	/**

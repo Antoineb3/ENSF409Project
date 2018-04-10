@@ -45,7 +45,16 @@ public class StudentEnrollment implements Serializable{
 	public int getCourseID() {
 		return courseID;
 	}
-	
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "studentID = " + studentID ;
+	}
+
 	
 
 }

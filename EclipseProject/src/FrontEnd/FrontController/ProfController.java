@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+import com.sun.javafx.font.PGFont;
+
+import FrontEnd.View.DropboxPage;
 import FrontEnd.View.ProfAssignmentPage;
 import FrontEnd.View.ProfCoursePage;
 import FrontEnd.View.ProfGUI;
@@ -33,17 +36,19 @@ public class ProfController extends ViewController{
 		pg.getViewStudentsPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
 		pg.getProfAssignmentPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
 		pg.getEmailPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-		
+		pg.getDropboxPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+
 
 		//set all the back buttons
 		pg.getProfAssignmentPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
 		pg.getViewStudentsPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
 		pg.getEmailPage().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+		pg.getDropboxPage().setBackButtonListener(new CardChangerListener("PROFASSIGNMENTPAGE"));
 
 		//set other navigator buttons
 		pg.getProfCoursePagePanel().setViewStudentsButtonListener(new CardChangerListener("VIEWSTUDENTSPAGE"));
 		pg.getProfCoursePagePanel().setEmailButtonListener(new CardChangerListener("EMAILPAGE"));
-
+		pg.getProfAssignmentPanel().setDropboxButtonListener(new CardChangerListener("DROPBOXPAGE"));
 		//set new item listeners 
 		pg.getProfCoursePagePanel().setNewAssignmentButtonListener(new NewAssignmentButtonListener(pg.getProfCoursePagePanel(), this));
 		pg.getProfHomePagePanel().setCreateNewCourseButtonListener(new NewCourseButtonListener(pg.getProfHomePagePanel(), this));
@@ -99,10 +104,11 @@ public class ProfController extends ViewController{
 		pg.getViewStudentsPanel().setListListener(new ViewStudentsListListener(pg.getViewStudentsPanel(), this));
 		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
 		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageListListener(this));
+
+		//TODO set button,list listeners on dropbox page
+		pg.getDropboxPage().setStudentEnrollmentListListener(new DropboxStudentEnrollmentListListener(pg.getDropboxPage(),this));
 		
-		
-		
-		
+
 		//update the courseList on the homepage , as this is the first active card 
 		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
 	}
@@ -120,7 +126,7 @@ public class ProfController extends ViewController{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ProfGUI pg = ((ProfGUI) getFrame()); // from super
-//			System.out.println("Card changer button pressed. going to: "+card);
+			//			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				refreshProfAssignmentPage(pg);
 			}
@@ -138,11 +144,18 @@ public class ProfController extends ViewController{
 			else if (card.equals("EMAILPAGE")) {
 				pg.getEmailPage().clearFields();
 			}
+			else if (card.equals("DROPBOXPAGE")) {
+				fillDropboxStudentEnrollmentList(pg.getDropboxPage());
+				pg.getDropboxPage().clearSubmissionList();
+				pg.getDropboxPage().setAssignment(pg.getProfAssignmentPanel().getAssignment());
+				pg.getDropboxPage().getStudentEnrollmentList().setSelectedIndex(-1);
+				pg.getDropboxPage().getSubmissionList().setSelectedIndex(-1);
+			}
 			pg.setActiveCard(card);
 		}
 
-	}
 
+	}
 
 
 
@@ -214,6 +227,29 @@ public class ProfController extends ViewController{
 		}
 		// then do the update: 
 		coursePage.updateAssignmentList(listModel);
+	}
+
+	/**
+	 * refreshes the list of studentEnrollemnts on the dropbox page
+	 */
+	private void fillDropboxStudentEnrollmentList(DropboxPage panel) {
+		
+		//make a message to query all the studntEnrollments with a certain courseID
+		ArrayList<String> params = new ArrayList<>();
+		params.add("COURSEID"); // the column in the table to search
+		params.add("'"+panel.getAssignment().getCourseID()+"'"); // the search key // will have to convert this string to int in the model?
+		DBMessage msg = new DBMessage(2, 0, params); // 2, 0 is studentEnrollmentTableNum, searchOpNum
+
+		//send the message, get response
+		ArrayList<? extends Serializable> response = getCommunicator().communicate(msg);
+
+		// convert the returned arraylist to a listmodel 
+		DefaultListModel<StudentEnrollment> listModel = new DefaultListModel<>();
+		for(Object co : response) {
+			listModel.addElement((StudentEnrollment)co);
+		}
+		// then do the update: 
+		panel.updateStudentEnrollentList(listModel);
 	}
 
 	/**

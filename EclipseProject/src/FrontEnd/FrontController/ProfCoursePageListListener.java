@@ -42,6 +42,7 @@ public class ProfCoursePageListListener extends MouseAdapter{
 			ProfGUI pg = ((ProfGUI) controller.getFrame());
 			pg.getProfAssignmentPanel().setAssignment(selected);
 			controller.refreshProfAssignmentPage(pg);
+			pg.getDropboxPage().setAssignment(selected);
 			pg.setActiveCard("PROFASSIGNMENTPAGE"); // go to the assignmentPage
 
 		} 
