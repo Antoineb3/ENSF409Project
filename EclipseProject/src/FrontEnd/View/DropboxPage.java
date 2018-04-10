@@ -102,29 +102,14 @@ public class DropboxPage extends JPanel{
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
         // student enrollment list 
-        add(GuiUtilities.centeredJLabel("Enrolled Students:"));
-        studentEnrollmentList = new JList<>(listModel1);
-        studentEnrollmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        studentEnrollmentList.setLayoutOrientation(JList.VERTICAL);
-		JScrollPane scroller1 = new JScrollPane(studentEnrollmentList);
-		scroller1.setMaximumSize(new Dimension(400,300));
-		scroller1.setAlignmentX(CENTER_ALIGNMENT);
-		add(scroller1);
+        makeEnrollmentList();
 		
 		 // submissions list 
-        add(GuiUtilities.centeredJLabel("Submissions"));
-        submissionList = new JList<>(listModel2);
-        submissionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        submissionList.setLayoutOrientation(JList.VERTICAL);
-		JScrollPane scroller2 = new JScrollPane(submissionList);
-		scroller2.setMaximumSize(new Dimension(400,300));
-		scroller2.setAlignmentX(CENTER_ALIGNMENT);
-		add(scroller2);
+        makeSubmissionList();
 
         downloadButton.setAlignmentX(CENTER_ALIGNMENT);
         add(downloadButton);
         add(GuiUtilities.horizontalLine());
-//        add(Box.createRigidArea(new Dimension(0,10))); //empty spacing  
         
         add(GuiUtilities.centeredJLabel("Grade:"));
         gradeField.setMaximumSize( gradeField.getPreferredSize() );
@@ -142,7 +127,27 @@ public class DropboxPage extends JPanel{
     }
 
 
-   
+	private void makeEnrollmentList() {
+		add(GuiUtilities.centeredJLabel("Enrolled Students:"));
+        studentEnrollmentList = new JList<>(listModel1);
+        studentEnrollmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        studentEnrollmentList.setLayoutOrientation(JList.VERTICAL);
+		JScrollPane scroller1 = new JScrollPane(studentEnrollmentList);
+		scroller1.setMaximumSize(new Dimension(400,300));
+		scroller1.setAlignmentX(CENTER_ALIGNMENT);
+		add(scroller1);
+	}
+	
+	private void makeSubmissionList() {
+		add(GuiUtilities.centeredJLabel("Submissions"));
+        submissionList = new JList<>(listModel2);
+        submissionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        submissionList.setLayoutOrientation(JList.VERTICAL);
+		JScrollPane scroller2 = new JScrollPane(submissionList);
+		scroller2.setMaximumSize(new Dimension(400,300));
+		scroller2.setAlignmentX(CENTER_ALIGNMENT);
+		add(scroller2);
+	}
 
 
 	/**
