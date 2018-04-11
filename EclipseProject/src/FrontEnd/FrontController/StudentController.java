@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
+
 import FrontEnd.View.GradePage;
 import FrontEnd.View.StudentCoursePage;
 import FrontEnd.View.StudentGUI;
@@ -162,12 +164,13 @@ public class StudentController extends ViewController{
 			//send the message, get response grade 
 			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 			if(response==null || response.size()<1) {
-//				System.err.println("error getting assignment grade in calcGradeAvg");
-//				return -1;
 				count--;
 				continue;
 			}
 			sum += ((Grade) response.get(0)).getAssignmentGrade();
+		}
+		if(count<=0) {
+			return 0; 
 		}
 		return sum/(double)count;
 	}

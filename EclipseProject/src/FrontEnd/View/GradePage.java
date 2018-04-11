@@ -36,7 +36,7 @@ public class GradePage extends JPanel{
     /**
      *  tells the students average for the course
      */
-    private JTextField averageField = new JTextField("00.000");
+    private JTextField averageField = new JTextField("00.0");
    
     /**
 	 * The list of student enrollments

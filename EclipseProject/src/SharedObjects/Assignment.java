@@ -1,13 +1,9 @@
-/**
- * 
- */
 package SharedObjects;
 
 import java.io.Serializable;
 
 /**
  * @author 	Antoine Bizon & Ross Bartlett
- *
  */
 public class Assignment implements Serializable{
 	
