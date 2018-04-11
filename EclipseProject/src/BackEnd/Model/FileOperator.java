@@ -40,9 +40,19 @@ public class FileOperator {
 	public String saveFile(String fileName, String extention, byte[] fileContents) {
 		File newFile = new File( fileName + "." + extention); 
 		createFile(newFile, fileContents);
-		return newFile.getAbsolutePath();
+		return convertPath(newFile.getAbsolutePath());
 	}
 	
+	/**
+	 * Replaces all "\" "/" in a string.
+	 * @param absolutePath the string that needs to be converted.
+	 * @return the converted string.
+	 */
+	private String convertPath(String absolutePath) {
+		// TODO Auto-generated method stub
+		return absolutePath.replace("\\", "/");
+	}
+
 	/**
 	 * Helper method to create a file and fill it with contents
 	 */
