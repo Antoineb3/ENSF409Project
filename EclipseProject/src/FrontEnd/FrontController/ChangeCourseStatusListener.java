@@ -27,12 +27,19 @@ public class ChangeCourseStatusListener implements ActionListener{
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * init the page and the controller	
+	 * @param p the page
+	 * @param c the controller
+	 */
 	public ChangeCourseStatusListener(ProfCoursePage p, ProfController c) {
 		panel = p;
 		controller=c;
 	}
 
+	/**
+	 * toggle the ACTIVE field of a course in the DB 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Course course = panel.getCourse();

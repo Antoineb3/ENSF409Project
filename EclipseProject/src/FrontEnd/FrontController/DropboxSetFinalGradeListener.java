@@ -14,8 +14,8 @@ import SharedObjects.Grade;
 
 
 /**
- * @author Ross
- *
+ * Listener to set the final grade of an assignment thru the Dropbox page 
+ * @author Ross Bartlett and Antoine Bizon
  */
 public class DropboxSetFinalGradeListener implements ActionListener {
 	/**
@@ -26,14 +26,18 @@ public class DropboxSetFinalGradeListener implements ActionListener {
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * constructor to initialize the fields
+	 * @param p the frame/panel
+	 * @param c the controller
+	 */
 	public DropboxSetFinalGradeListener(DropboxPage p, ProfController c) {
 		panel = p;
 		controller=c;
 	}
 
 	/**
-	 * Sets the submissionGrade of a submission
+	 * Sets the final grade of an assignment 
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -18,8 +18,8 @@ import SharedObjects.ProfEmail;
 import SharedObjects.StudentEmail;
 
 /**
- * @author Ross
- *
+ * Listener for the send email button
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class SendEmailListener implements ActionListener{
 
@@ -38,6 +38,9 @@ public class SendEmailListener implements ActionListener{
 	}
 
 
+	/**
+	 * tells the DB to send an email with given subject/contents
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String subject = panel.getSubjectField().getText();

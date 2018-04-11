@@ -11,7 +11,7 @@ import FrontEnd.View.ProfGUI;
 import SharedObjects.Assignment;
 
 /**
- * Listener for the assignmentList on the ProfCoursePage using MouseAdapter instead of ListSelectionListener
+ * Listener for the assignmentList on the ProfCoursePage using MouseAdapter 
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ProfCoursePageListListener extends MouseAdapter{
@@ -19,10 +19,12 @@ public class ProfCoursePageListListener extends MouseAdapter{
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * constructor to initialize the controller
+	 * @param c the controller
+	 */
 	public ProfCoursePageListListener(ProfController c) {
 		controller=c;
-
 	}
 
 	/**

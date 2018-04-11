@@ -16,8 +16,8 @@ import SharedObjects.Student;
 import SharedObjects.StudentEnrollment;
 
 /**
+ * Listener for the studentList on the ViewStudents pagea
  * @author 	Antoine Bizon & Ross Bartlett
- *
  */
 public class ViewStudentsListListener implements ListSelectionListener {
 	/**
@@ -28,12 +28,19 @@ public class ViewStudentsListListener implements ListSelectionListener {
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * Constructor that inits the listener's fields
+	 * @param p the calling JPanel
+	 * @param c the controller
+	 */
 	public ViewStudentsListListener(ViewStudentsPage p, ProfController c) {
 		panel = p;
 		controller=c;
 	}
 
+	/**
+	 * sets the selected student enrollment of the ViewStudentsPage
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		JList<Student> list = panel.getResultsList();
@@ -57,8 +64,6 @@ public class ViewStudentsListListener implements ListSelectionListener {
 		}
 		//update the panel fields
 		panel.setSelectedStudentEnrollmentID(enrollmentID);
-
-
 
 	}
 }

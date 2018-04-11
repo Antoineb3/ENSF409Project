@@ -17,7 +17,7 @@ import SharedObjects.User;
 
 
 /**
- * 
+ * Sets the listeners for the buttons on the LoginGUI
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class LoginController extends ViewController{
@@ -40,7 +40,6 @@ public class LoginController extends ViewController{
 			LoginGUI gui = ((LoginGUI) getFrame());
 			//get the login credential inputs
 			if( getInputs(gui) == -1) return;
-			
 			
 			//make a message to query the DB user table for the username 
 			ArrayList<String> params = new ArrayList<>();
@@ -78,6 +77,7 @@ public class LoginController extends ViewController{
 
 		/**
 		 * helper method to verify correct password, start the prof/student gui
+		 * @param gui the loginGUI
 		 * @param temp the User returned from the DB
 		 */
 		public void tryLogin(LoginGUI gui, User temp) {
@@ -104,9 +104,6 @@ public class LoginController extends ViewController{
 		}
 	}//end of inner class LoginButtonListener
 
-	
-	
-	
 	
 	
 }

@@ -40,9 +40,13 @@ public class NewAssignmentButtonListener implements ActionListener{
 	 * The user's inputs
 	 */
 	private String name, dueDate, ext;
-
+	/**
+	 * the file choose
+	 */
 	private JFileChooser fc = new JFileChooser();
-
+	/**
+	 * the button to launch the file chooser
+	 */
 	private JButton chooseFileButton = new JButton("choose file");
 
 	/**
@@ -50,7 +54,9 @@ public class NewAssignmentButtonListener implements ActionListener{
 	 * Used for displaying multiple input textFields on frame
 	 */
 	private Object[] items = {"New Assignment", "Name:", assignmentNameField, "Due Date:", dueDateField, "File Upload:", chooseFileButton};
-
+	/**
+	 * the created file 
+	 */
 	private File newFile=null;
 
 	/**
@@ -175,7 +181,7 @@ public class NewAssignmentButtonListener implements ActionListener{
 	}
 
 	/**
-	 * Helper method to determine if add to DB was successfull
+	 * Helper method to determine if add to DB was successful
 	 * @param response the arrayList returned by addToDB()
 	 */
 	private void checkResponse(ArrayList<? extends Serializable> response) {

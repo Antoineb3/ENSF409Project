@@ -9,7 +9,7 @@ import FrontEnd.View.StudentGUI;
 import SharedObjects.Course;
 
 /**
- * Listener for the CourseList on the StudentHomePage using MouseAdapter instead of 
+ * Listener for the CourseList on the StudentHomePage using MouseAdapter
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class StudentHomepageListListener extends MouseAdapter{
@@ -17,7 +17,10 @@ public class StudentHomepageListListener extends MouseAdapter{
 	 * the controller constructing this listener
 	 */
 	private StudentController controller;
-
+	/**
+	 * Constructor that inits the controller
+	 * @param c the controller to
+	 */
 	public StudentHomepageListListener(StudentController c) {
 		controller=c;
 	}

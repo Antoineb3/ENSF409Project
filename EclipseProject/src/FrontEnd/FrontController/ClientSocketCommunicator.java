@@ -1,4 +1,3 @@
-
 package FrontEnd.FrontController;
 
 import java.io.EOFException;
@@ -14,13 +13,21 @@ import SharedObjects.*;
 
 
 /**
- * 
+ * Sends and receives Messages to/from a socket 
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class ClientSocketCommunicator {
-
+	/**
+	 * the socket 
+	 */
 	private Socket socket;
+	/**
+	 * the socket in stream 
+	 */
 	private ObjectInputStream socketIn;
+	/**
+	 * the socket out stream 
+	 */
 	private ObjectOutputStream socketOut;
 
 	/**
@@ -38,15 +45,12 @@ public class ClientSocketCommunicator {
 		}
 	}
 
-
-	//NOTE this returns ArrayList instead of Message as shown on our class diagram. and it now has packge visibility instead of private
 	/**
 	 * sends a message to the socket and returns its response
 	 * @param m the message to send
-	 * @return the response
+	 * @return an arraylist containing the response elements 
 	 */
 	ArrayList<? extends Serializable> communicate(Message m) {
-		//do i need a while loop here? or can the ActionListeners just call this method any time to send a message 
 		writeToSocket(m);
 		return getResponse();
 	}
@@ -67,6 +71,7 @@ public class ClientSocketCommunicator {
 
 	/**
 	 * helper method to read a serialized Message object from socket
+	 * @return an arraylist of the response elements
 	 */
 	private ArrayList<? extends Serializable> getResponse() {
 		try {

@@ -10,11 +10,7 @@ import SharedObjects.Assignment;
 import SharedObjects.StudentEnrollment;
 import SharedObjects.Submission;
 
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
+
 
 /**
  * Creates the Dropbox GUI panel 
@@ -124,7 +120,9 @@ public class DropboxPage extends JPanel{
 
     }
 
-
+	/**
+	 * format and add the StudentEnrollment list to the DropBox page
+	 */
 	private void makeEnrollmentList() {
 		add(GuiUtilities.centeredJLabel("Enrolled Students:"));
         studentEnrollmentList = new JList<>(listModel1);
@@ -135,7 +133,9 @@ public class DropboxPage extends JPanel{
 		scroller1.setAlignmentX(CENTER_ALIGNMENT);
 		add(scroller1);
 	}
-	
+	/**
+	 * format and add the subission list to the DropBox page
+	 */
 	private void makeSubmissionList() {
 		add(GuiUtilities.centeredJLabel("Submissions"));
         submissionList = new JList<>(listModel2);
@@ -165,7 +165,6 @@ public class DropboxPage extends JPanel{
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
 	 */
-
 	public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
     }
@@ -188,7 +187,6 @@ public class DropboxPage extends JPanel{
 		submissionList.addMouseListener(e);
 	}
     
-   
 
 
 	/**
@@ -201,6 +199,10 @@ public class DropboxPage extends JPanel{
         assignmentNameLabel.setText(message);
    	}
     
+    /**
+     * set the grade field text
+     * @param g the grade
+     */
     public void setGradeField(String g) {
     		gradeField.setText(g);
     }
@@ -211,7 +213,10 @@ public class DropboxPage extends JPanel{
 		return gradeField;
 	}
 
-
+	/**
+	 * set the text on the final grade field 
+	 * @param g the grade
+	 */
 	public void setFinalGradeField(String g) {
     		finalGradeField.setText(g);
     }
@@ -247,6 +252,9 @@ public class DropboxPage extends JPanel{
 		submissionList.setModel(listModel2);
 	}
 	
+	/**
+	 * clears the submission list 
+	 */
 	public void clearSubmissionList() {
 		listModel2.clear();
 		submissionList.setModel(listModel2);

@@ -20,30 +20,21 @@ import SharedObjects.*;
 
 
 /**
- * 
+ * Sets all the button listeners on the Prof GUIs
  * @author 	Antoine Bizon & Ross Bartlett
- *
  */
-
 public class ProfController extends ViewController{
 
-
+	/**
+	 * constructor that inits the page and the socketCommunicator and sets all the listeners
+	 * @param pg the GUI
+	 * @param c the socketCommunicator
+	 */
 	public ProfController(ProfGUI pg, ClientSocketCommunicator c){
 		super(pg, c); 
 
-		//set all the back to homepage buttons
-		pg.getProfCoursePagePanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-		pg.getViewStudentsPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-		pg.getProfAssignmentPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-		pg.getEmailPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-		pg.getDropboxPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
-
-
-		//set all the back buttons
-		pg.getProfAssignmentPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
-		pg.getViewStudentsPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
-		pg.getEmailPage().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
-		pg.getDropboxPage().setBackButtonListener(new CardChangerListener("PROFASSIGNMENTPAGE"));
+		setHomepageButtons(pg);
+		setBackButtons(pg);
 
 		//set other navigator buttons
 		pg.getProfCoursePagePanel().setViewStudentsButtonListener(new CardChangerListener("VIEWSTUDENTSPAGE"));
@@ -106,15 +97,44 @@ public class ProfController extends ViewController{
 		pg.getProfHomePagePanel().setListListener(new ProfHomepageListListener(this));
 		pg.getProfCoursePagePanel().setListListener(new ProfCoursePageListListener(this));
 
-		//set buttons and list listeners on Dropbox page
+		setDropboxListeners(pg);
+		
+		//update the courseList on the homepage , as this is the first active card 
+		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
+	}
+
+	/**
+	 * set the listeners for the buttons and lists on the dropbox page
+	 * @param pg the profgui
+	 */
+	private void setDropboxListeners(ProfGUI pg) {
 		pg.getDropboxPage().setStudentEnrollmentListListener(new DropboxStudentEnrollmentListListener(pg.getDropboxPage(),this));
 		pg.getDropboxPage().setSubmissionListListener(new DropboxSubmissionListListener(pg.getDropboxPage()));
 		pg.getDropboxPage().setSetGradeButtonListener(new DropBoxSetGradeListener(pg.getDropboxPage(),this));
 		pg.getDropboxPage().setSetFinalGradeButtonListener(new DropboxSetFinalGradeListener(pg.getDropboxPage(),this));
-		
-		
-		//update the courseList on the homepage , as this is the first active card 
-		fillHomePageCourseList(pg.getProfHomePagePanel()); //TODO uncomment this when connections are ready
+	}
+
+	/**
+	 * set all the back button listeners of the student GUI
+	 * @param pg the prof gui
+	 */
+	private void setBackButtons(ProfGUI pg) {
+		pg.getProfAssignmentPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+		pg.getViewStudentsPanel().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+		pg.getEmailPage().setBackButtonListener(new CardChangerListener("PROFCOURSEPAGE"));
+		pg.getDropboxPage().setBackButtonListener(new CardChangerListener("PROFASSIGNMENTPAGE"));
+	}
+
+	/**
+	 * set all the "back to homepage" listeners on all the student GUIs
+	 * @param pg the prof gui
+	 */
+	private void setHomepageButtons(ProfGUI pg) {
+		pg.getProfCoursePagePanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		pg.getViewStudentsPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		pg.getProfAssignmentPanel().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		pg.getEmailPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
+		pg.getDropboxPage().setHomepageButtonListener(new CardChangerListener("PROFHOMEPAGE"));
 	}
 
 
@@ -130,7 +150,6 @@ public class ProfController extends ViewController{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ProfGUI pg = ((ProfGUI) getFrame()); // from super
-			//			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("PROFASSIGNMENTPAGE")){
 				refreshProfAssignmentPage(pg);
 			}
@@ -160,9 +179,6 @@ public class ProfController extends ViewController{
 
 
 	}
-
-
-
 
 	/**
 	 * refreshes the asssignmentList and the JLabel on the ProfCoursePage
@@ -207,7 +223,6 @@ public class ProfController extends ViewController{
 	}
 
 
-
 	/**
 	 * helper method to fill the coursePage's assignmentList using the DB table. 
 	 * package scope so that CreateNewAssignmentButton listener can use it 
@@ -235,6 +250,7 @@ public class ProfController extends ViewController{
 
 	/**
 	 * refreshes the list of studentEnrollemnts on the dropbox page
+	 * @param panel the dropbox page 
 	 */
 	private void fillDropboxStudentEnrollmentList(DropboxPage panel) {
 		

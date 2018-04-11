@@ -16,8 +16,8 @@ import SharedObjects.DBMessage;
 
 
 /**
- * @author Ross
- *
+ * Listener to set the grade of a submission thru the Dropbox page 
+ * @author Ross Bartlett and Antoine Bizon
  */
 public class DropBoxSetGradeListener implements ActionListener {
 	/**
@@ -28,7 +28,11 @@ public class DropBoxSetGradeListener implements ActionListener {
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * constructor to initialize the fields
+	 * @param p the frame/panel
+	 * @param c the controller
+	 */
 	public DropBoxSetGradeListener(DropboxPage p, ProfController c) {
 		panel = p;
 		controller=c;
@@ -70,7 +74,7 @@ public class DropBoxSetGradeListener implements ActionListener {
 	}
 
 	/**
-	 * @return the grade or -1 for error converting the input string
+	 * @return the grade or -1 if error converting the input string
 	 */
 	private int getGradeFromInput(String input) {
 		int grade=-1;

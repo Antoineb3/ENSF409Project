@@ -15,7 +15,7 @@ import SharedObjects.StudentEnrollment;
 import SharedObjects.Submission;
 
 /**
- * Listener for the 
+ * Listener for the student enrollment list on the dropbox page 
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class DropboxStudentEnrollmentListListener extends MouseAdapter{
@@ -27,7 +27,11 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 	 * the panel with this list 
 	 */
 	private DropboxPage panel;
-
+	/**
+	 * constructor to initialize the fields
+	 * @param p the frame/panel
+	 * @param c the controller
+	 */
 	public DropboxStudentEnrollmentListListener(DropboxPage p, ProfController c) {
 		controller=c;
 		panel=p;
@@ -63,10 +67,9 @@ public class DropboxStudentEnrollmentListListener extends MouseAdapter{
 		panel.updateSubmissionList(submissionListModel);
 		
 		//update the finalGradeField to the finalGrade of the selected student
-		updateFinalGradeField(selectedStudentEnrollment); // TOOD uncomment when grade is implmemented
-	}
+		updateFinalGradeField(selectedStudentEnrollment); 	}
 	/**
-	 * 
+	 * updates the texField to show the final grade  of the selected student 
 	 * @param selectedStudentEnrollment
 	 */
 	private void updateFinalGradeField(StudentEnrollment selectedStudentEnrollment) {

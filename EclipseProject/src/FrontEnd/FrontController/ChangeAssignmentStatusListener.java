@@ -28,11 +28,19 @@ public class ChangeAssignmentStatusListener implements ActionListener{
 	 */
 	private ProfController controller;
 
+	/**
+	 * init the page and the controller	
+	 * @param p the page
+	 * @param c the controller
+	 */
 	public ChangeAssignmentStatusListener(ProfAssignmentPage p, ProfController c) {
 		panel = p;
 		controller=c;
 	}
 
+	/**
+	 * toggles the ACTIVE field of an assignment in the DB 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Assignment assignment = panel.getAssignment();
