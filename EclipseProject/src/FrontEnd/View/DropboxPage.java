@@ -10,8 +10,6 @@ import SharedObjects.Assignment;
 import SharedObjects.StudentEnrollment;
 import SharedObjects.Submission;
 
-
-
 /**
  * Creates the Dropbox GUI panel 
  * @author 	Antoine Bizon & Ross Bartlett
@@ -95,10 +93,8 @@ public class DropboxPage extends JPanel{
         setButtonPanel();
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
-        // student enrollment list 
         makeEnrollmentList();
 		
-		 // submissions list 
         makeSubmissionList();
 
         downloadButton.setAlignmentX(CENTER_ALIGNMENT);

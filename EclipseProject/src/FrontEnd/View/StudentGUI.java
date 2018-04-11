@@ -5,11 +5,6 @@ import javax.swing.*;
 
 import SharedObjects.Student;
 
-/*
- * Ross Bartlett
- * ENSF 409 - project
- * March 24 2018
- */
 
 /**
  * Creates the student GUI 
@@ -35,6 +30,10 @@ public class StudentGUI extends JFrame{
 	private EmailPage emailPage;
 	private GradePage gradePage;
 
+	/**
+	 * Contructor that creates each page and adds it to the list of cards 
+	 * @param s the student 
+	 */
 	public StudentGUI(Student s) {
 		student=s;
 		setTitle("B&B Learning");

@@ -52,7 +52,6 @@ public class GradePage extends JPanel{
 	 * Constructor that creates the visible panel 
 	 */
 	public GradePage() {
-        
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 

@@ -1,7 +1,6 @@
 package FrontEnd.View;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -30,10 +29,8 @@ public class ViewStudentsPage extends JPanel{
 	 */
 	JButton homepageButton = new JButton("Back to Homepage");
 	JButton backButton = new JButton("Back");
-
 	JButton searchButton = new JButton("Search");
 	JButton clearSearchButton = new JButton("Clear Search");
-
 	JButton changeEnrollmentButton = new JButton("Change Enrollment Status");
 
 	/**
@@ -60,8 +57,6 @@ public class ViewStudentsPage extends JPanel{
 	 * if the selected student is enrolled
 	 */
 	int selectedStudentEnrollmentID; // TODO set this in list listener
-
-
 
 	/**
 	 *  tells course name
@@ -236,7 +231,9 @@ public class ViewStudentsPage extends JPanel{
 		enrollmentStatusMessage.setText(message);
 	}
 
-
+	/**
+	 * clears the enrollment status message
+	 */
 	public void clearEnrollmentStatusMessage() {
 		enrollmentStatusMessage.setText("Select a student to view their enrollment status.");
 	}

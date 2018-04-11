@@ -63,14 +63,14 @@ public class StudentHomepage extends JPanel{
 
 	}
 
-
+	/**
+	 * setup and add the courseList to the panel
+	 */
 	private void setupCourseList(){
 		courseList = new JList<>(listModel);
 		courseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		courseList.setLayoutOrientation(JList.VERTICAL);
-
-		// courseList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view course page. update JLabel of CoursePage to show course name
-
+		
 		JScrollPane scroller = new JScrollPane(courseList);
 		scroller.setMaximumSize(new Dimension(400,300));
 		add(scroller);

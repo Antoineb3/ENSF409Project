@@ -3,8 +3,6 @@ package FrontEnd.View;
 import java.awt.*;
 import javax.swing.*;
 
-import com.sun.xml.internal.ws.transport.http.DeploymentDescriptorParser;
-
 import SharedObjects.Professor;
 
 /*
@@ -38,7 +36,10 @@ public class ProfGUI extends JFrame{
 	private EmailPage emailPage;
 	private DropboxPage dropboxPage;
 
-
+	/**
+	 * Contructor that creates each page and adds it to the list of cards 
+	 * @param p the professor 
+	 */
 	public ProfGUI(Professor p) {
 		prof=p;
 		setTitle("B&B Learning");
