@@ -3,7 +3,6 @@
  */
 package BackEnd.BackController;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,15 +15,24 @@ import BackEnd.Model.ModelExecutor;
 import SharedObjects.Message;
 
 /**
+ * This class enables communication between the client and the back end controller.
  * @author 	Antoine Bizon & Ross Bartlett
- *
+ * @version 1.0
+ * @since	2018-04-03
  */
 public class ServerSocketCommunicator implements Runnable{
+	/**
+	 * The input stream used to read objects from the client.
+	 */
 	private ObjectInputStream socketIn;
+	/**
+	 * The output stream used to send objects to the client.
+	 */
 	private ObjectOutputStream socketOut;
 	
 	/**
-	 * @param accept
+	 * Constructs a new ServerSocketCommunicator by constructing the ObjectInputStream and ObjectOutputStream fields.
+	 * @param aSocket the socket that connects this to the client.
 	 */
 	public ServerSocketCommunicator(Socket aSocket) {
 		try {
@@ -36,7 +44,7 @@ public class ServerSocketCommunicator implements Runnable{
 	}
 	
 	/**
-	 * 
+	 * Communicates with the client by waiting for a message to be sent and sending back the response.
 	 */
 	void communicate() {
 		try {
@@ -69,6 +77,7 @@ public class ServerSocketCommunicator implements Runnable{
 	}
 
 	/**
+	 * Constructs the message decoder used by the ServerSocketCommunicator object.
 	 * @return
 	 */
 	private MessageDecoder createMessageDecoder() {

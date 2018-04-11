@@ -15,13 +15,16 @@ import SharedObjects.StudentEnrollment;
 import SharedObjects.User;
 
 /**
+ * This class implements the abstract methods in ModelController to control the EmialOperator class.
  * @author 	Antoine Bizon & Ross Bartlett
- *
+ * @version 1.0
+ * @since	2018-04-11
  */
 class EmailController extends ModelController {
 
 	/**
-	 * @param theModel
+	 * Constructs a EmailController object by calling the classes super constructor. 
+	 * @param theModel the ModelExecutor object used by the controller.
 	 */
 	EmailController(ModelExecutor theModel) {
 		super(theModel);
@@ -48,8 +51,10 @@ class EmailController extends ModelController {
 	
 
 	/**
-	 * @param theMessage
-	 * @return
+	 * Sends a prof email by retrieving all necessary information from the database sending the information 
+	 * as parameters to the sendEmail method in the EmailOperator class.
+	 * @param profEmail the prof email message with information on needed to send an email.
+	 * @return 0 if the email was sent successfully, -1 otherwise. 
 	 */
 	private int sendProfEmail(ProfEmail profEmail){
 		ArrayList <StudentEnrollment> students =(ArrayList<StudentEnrollment>) theModel.getDatabase().getTableAt(2)
@@ -65,8 +70,10 @@ class EmailController extends ModelController {
 	}
 	
 	/**
-	 * @param theMessage
-	 * @return
+	 * Sends a student email by retrieving all necessary information from the database sending the information 
+	 * as parameters to the sendEmail method in the EmailOperator class.
+	 * @param studentEmail the student email message with information on needed to send an email.
+	 * @return 0 if the email was sent successfully, -1 otherwise. 
 	 */
 	private Integer sendStudentEmail(StudentEmail studentEmail) {
 		ArrayList <User> recipients = new ArrayList <User>();

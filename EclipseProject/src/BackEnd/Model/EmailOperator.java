@@ -18,18 +18,20 @@ import javax.mail.internet.MimeMessage;
 import SharedObjects.User;
 
 /**
+ * This class is for sending emails.
  * @author 	Antoine Bizon & Ross Bartlett
- *
+ * @version 1.0
+ * @since	2018-04-11
  */
 public class EmailOperator {
 	
 	/**
-	 * 
-	 * @param sender
-	 * @param recipients
-	 * @param subject
-	 * @param contents
-	 * @return
+	 * Sends an email given all the necessary information.
+	 * @param sender the User object sending the email.
+	 * @param recipients the ArrayList of User objects receiving the email. 
+	 * @param subject the subject of the email.
+	 * @param contents the contents of the email.
+	 * @return 0 if the email was sent successfully, -1 otherwise.
 	 */
 	public int sendEmail(User sender, ArrayList<User> recipients, String subject, String contents) {
 		System.out.println("sending email");
@@ -51,9 +53,10 @@ public class EmailOperator {
 
 
 	/**
-	 * @param email
-	 * @param password
-	 * @return
+	 * Helper method to create a session.
+	 * @param email the senders email.
+	 * @param password the senders password.
+	 * @return the created Session object.
 	 */
 	private Session creatSessionObject(String email, String password) {
 		try {
@@ -77,6 +80,7 @@ public class EmailOperator {
 
 
 	/**
+	 * Adds all the recipients to the emails recipient list.
 	 * @param message
 	 * @param recipients
 	 */

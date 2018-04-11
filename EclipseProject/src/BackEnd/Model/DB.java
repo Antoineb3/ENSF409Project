@@ -7,6 +7,9 @@ package BackEnd.Model;
  * @since	2018-04-03
  */
 public class DB {
+	/**
+	 * An array of table objects that correspond to all the tables in the database.
+	 */
 	private Table [] tables;
 	
 	/**

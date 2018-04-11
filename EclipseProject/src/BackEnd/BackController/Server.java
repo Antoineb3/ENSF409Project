@@ -9,11 +9,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * This class is for connecting clients to a worker thread.
  * @author 	Antoine Bizon & Ross Bartlett
- *
+ * @version 1.0
+ * @since	2018-04-03
  */
 public class Server {
+	/**
+	 * The server socket.
+	 */
 	private ServerSocket serverSocket;
+	/**
+	 * The ExecutorServise used to start new worker threads.
+	 */
 	private ExecutorService pool;
 	
 	/**
@@ -30,7 +38,7 @@ public class Server {
 	}
 	
 	/**
-	 * 
+	 * Waits for a client to connect and starts a new worker thread.
 	 */
 	public void makeConnection() {
 		try 

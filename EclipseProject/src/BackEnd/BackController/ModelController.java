@@ -13,6 +13,9 @@ import SharedObjects.Message;
  * @since	2018-04-03
  */
 abstract class ModelController {
+	/**
+	 * The model executor used by all controller classes.
+	 */
 	protected ModelExecutor theModel;
 	
 	/**

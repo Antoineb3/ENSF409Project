@@ -7,8 +7,17 @@ package BackEnd.Model;
  * @since	2018-04-03
  */
 public class ModelExecutor {
+	/**
+	 * The database object.
+	 */
 	private DB theDatabase;
+	/**
+	 * The file operator. 
+	 */
 	private FileOperator theFileOperator;
+	/**
+	 * The email operator.
+	 */
 	private EmailOperator theEmailOperator;
 	
 	/**

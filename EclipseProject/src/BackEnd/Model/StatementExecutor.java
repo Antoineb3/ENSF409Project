@@ -10,8 +10,14 @@ import java.sql.*;
  */
 public class StatementExecutor {
 
+	/**
+	 * The connection to the database.
+	 */
 	private Connection jdbc_connection;
 	
+	/**
+	 * The statement used to perform updates and querys to the database.
+	 */
 	private Statement statement;
 	
 	/**

@@ -17,12 +17,11 @@ public class GradeTable extends Table {
 
 	/**
 	 * Constructs an object of class GradeTable.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the Statement executor object.
+	 * @param tableName the name of the table.
 	 */
 	public GradeTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)

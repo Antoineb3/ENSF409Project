@@ -7,22 +7,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import BackEnd.Model.ModelExecutor;
-import BackEnd.Model.Table;
 import SharedObjects.Assignment;
-import SharedObjects.DBMessage;
 import SharedObjects.FileContents;
 import SharedObjects.FileMessage;
 import SharedObjects.Message;
 import SharedObjects.Submission;
 
 /**
+ * This class implements the abstract methods in ModelController to control the FileOperator class.
  * @author 	Antoine Bizon & Ross Bartlett
+ * @version 1.0
+ * @since	2018-04-11
  */
 class FileController extends ModelController {
+	/**
+	 * The file message sent to the controller.
+	 */
 	private FileMessage fileMessage;
 	
 	/**
-	 * @param theModel
+	 * Constructs a FileController object by calling the classes super constructor. 
+	 * @param theModel the ModelExecutor object used by the controller.
 	 */
 	FileController(ModelExecutor theModel) {
 		super(theModel);
@@ -46,7 +51,8 @@ class FileController extends ModelController {
 	}
 
 	/**
-	 * 
+	 * Loads a file from the database by calling the FileOperator's load file method.
+	 * @return an ArrayList containing a FileContents object
 	 */
 	private ArrayList<? extends Serializable> loadFile() {
 		ArrayList<FileContents> returnMessage = new ArrayList<FileContents>();
@@ -66,7 +72,8 @@ class FileController extends ModelController {
 	}
 
 	/**
-	 * 
+	 * Saves a file from the database by calling the FileOperator's save file method.
+	 * @return an ArrayList containing 1 if the file was saved, 0 otherwise.
 	 */
 	private ArrayList<? extends Serializable> saveFile() {
 		String path;

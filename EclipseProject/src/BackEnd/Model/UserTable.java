@@ -19,8 +19,8 @@ public class UserTable extends Table{
 
 	/**
 	 * Constructs an object of class UserTable.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the Statement executor object.
+	 * @param tableName the name of the table.
 	 */
 	public UserTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
@@ -45,6 +45,11 @@ public class UserTable extends Table{
 		return result;
 	}
 
+	/**
+	 * Private method to determine what type of user it is before saving it to the database.
+	 * @param toInsert the User object being added to the database.
+	 * @return 'S' for student, 'P' for prefessor.
+	 */
 	private char derterminUserType(User toInsert) {
 		if(toInsert instanceof Student) {
 			return 'S';

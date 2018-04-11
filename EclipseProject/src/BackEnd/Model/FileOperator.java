@@ -21,6 +21,9 @@ import SharedObjects.FileMessage;
  * @since	2018-04-03
  */
 public class FileOperator {
+	/**
+	 * The file being returned.
+	 */
 	private File returnFile;
 	
 	/**

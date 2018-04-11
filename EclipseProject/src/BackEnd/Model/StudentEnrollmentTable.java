@@ -18,8 +18,8 @@ public class StudentEnrollmentTable extends Table {
 
 	/**
 	 * Constructs an object of class StudentEnrollmentTable.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the Statement executor object.
+	 * @param tableName the name of the table.
 	 */
 	public StudentEnrollmentTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);

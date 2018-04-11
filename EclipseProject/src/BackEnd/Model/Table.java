@@ -13,8 +13,14 @@ import java.util.ArrayList;
  */
 public abstract class Table {
 
+	/**
+	 * The statement executor object used to access the database.
+	 */
 	protected StatementExecutor execute;
 	
+	/**
+	 * The name of the table.
+	 */
 	protected String tableName;
 	
 	/**
@@ -27,15 +33,14 @@ public abstract class Table {
 	/**
 	 * Generates a arrayList from a result set returned after a query.
 	 * @param results the result of the query.
-	 * 
 	 * @return the arrayList generated from the result set. 
 	 */
 	protected abstract ArrayList<? extends Serializable> listFromResultSet(ResultSet results);
 	
 	/**
 	 * Constructs a table object.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the statement executor.
+	 * @param tableName the table's name.
 	 */
 	protected Table(StatementExecutor execute, String tableName) {
 		this.execute = execute;
@@ -44,9 +49,9 @@ public abstract class Table {
 	
 	/**
 	 * Searches the table of this object for all parameters with the matching key.
-	 * @param param
-	 * @param key
-	 * @return
+	 * @param param the column being searched.
+	 * @param key the value to search.
+	 * @return the result of the search in an ArrayList
 	 */
 	public ArrayList<? extends Serializable> search(String param, String key){
 		String query = "SELECT * FROM " + tableName + 
@@ -56,11 +61,12 @@ public abstract class Table {
 	}
 	
 	/**
-	 * @param string
-	 * @param string2
-	 * @param string3
-	 * @param string4
-	 * @return
+	 * Searches the table of this object for all parameters with the matching key.
+	 * @param param1 the first column being searched.
+	 * @param key1 the first value to search.
+	 * @param param2 the second column being searched.
+	 * @param key2 the second value to search.
+	 * @return the result of the search in an ArrayList
 	 */
 	public ArrayList<? extends Serializable> search(String param1, String key1, String param2, String key2) {
 		String query = "SELECT * FROM " + tableName + 

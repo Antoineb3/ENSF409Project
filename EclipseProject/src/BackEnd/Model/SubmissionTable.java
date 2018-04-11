@@ -18,8 +18,8 @@ public class SubmissionTable extends Table {
 
 	/**
 	 * Constructs an object of class SubmissionTable.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the Statement executor object.
+	 * @param tableName the name of the table.
 	 */
 	public SubmissionTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);

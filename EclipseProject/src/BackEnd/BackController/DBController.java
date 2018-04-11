@@ -15,11 +15,14 @@ import SharedObjects.Message;
  * @since	2018-04-03
  */
 class DBController extends ModelController {
+	/**
+	 * The DBMessahe that has the information which says what operations to perform. 
+	 */
 	private DBMessage dbMessage;
 	
 	/**
-	 * Constructs s DBController object by calling the classes super constructor. 
-	 * @param theModel
+	 * Constructs a DBController object by calling the classes super constructor. 
+	 * @param theModel the ModelExecutor object used by the controller.
 	 */
 	DBController(ModelExecutor theModel) {
 		super(theModel);
@@ -39,8 +42,8 @@ class DBController extends ModelController {
 
 	/**
 	 * Decides what operation needs to be performed on the table and returns the appropriate ArrayList.
-	 * @param theTable
-	 * @return
+	 * @param theTable the table on which the operation is being performed.
+	 * @return the result of the operation.
 	 */
 	private ArrayList<? extends Serializable> preformOperation(Table theTable) {
 		

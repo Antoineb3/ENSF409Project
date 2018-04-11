@@ -8,13 +8,19 @@ import java.sql.SQLException;
 
 
 /**
- * This class has a static method that 
+ * This class has a static method that generates a new and unique id.
  * @author 	Antoine Bizon & Ross Bartlett
  * @version 1.0
  * @since	2018-04-02
  */
 public class IDGenerator {
+	/**
+	 * The prepared statement being used.
+	 */
 	private static PreparedStatement preparedStatement;
+	/**
+	 * The connection to the database.
+	 */
 	private static Connection jdbc_connection;
 	
 	//Configure these variables for your own MySQL environment
@@ -26,7 +32,6 @@ public class IDGenerator {
 	/**
 	 * Returns the incremented highest id value in the database.
 	 * @return Highest id value + 1
-	 * @throws SQLException
 	 */
 	public synchronized static int generateID() {
 		int rv = 0;

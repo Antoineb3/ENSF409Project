@@ -18,12 +18,11 @@ public class AssignmentTable extends Table {
 
 	/**
 	 * Constructs an object of class AssignmentTable.
-	 * @param execute
-	 * @param tableName
+	 * @param execute the Statement executor object.
+	 * @param tableName the name of the table.
 	 */
 	public AssignmentTable(StatementExecutor execute, String tableName) {
 		super(execute, tableName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
