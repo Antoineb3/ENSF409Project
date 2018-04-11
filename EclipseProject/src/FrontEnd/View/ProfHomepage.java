@@ -4,17 +4,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
 
-import SharedObjects.Assignment;
 import SharedObjects.Course;
 import SharedObjects.Professor;
 
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
 
 /**
  * Creates the ProfHomepage GUI panel
@@ -61,7 +54,6 @@ public class ProfHomepage extends JPanel{
 	private void fillContentPane() {
 		add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
 
-
 		welcomeText.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(welcomeText);
 
@@ -74,13 +66,13 @@ public class ProfHomepage extends JPanel{
 		add(createNewCourseButton);
 	}
 
-
+	/**
+	 * make and add the courseList to the panel 
+	 */
 	private void setupCourseList(){
 		courseList = new JList<>(listModel);
 		courseList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		courseList.setLayoutOrientation(JList.VERTICAL);
-
-		// courseList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view course page. update JLabel of CoursePage to show course name
 
 		JScrollPane scroller = new JScrollPane(courseList);
 		scroller.setMaximumSize(new Dimension(400,300));
@@ -145,7 +137,6 @@ public class ProfHomepage extends JPanel{
 	public Professor getProf() {
 		return prof;
 	}
-
 
 
 

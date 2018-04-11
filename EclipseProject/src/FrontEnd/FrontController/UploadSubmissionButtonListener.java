@@ -54,9 +54,13 @@ public class UploadSubmissionButtonListener implements ActionListener{
 	 * The user's inputs
 	 */
 	private String name, comments, ext;
-
+	/**
+	 * the file chooser
+	 */
 	private JFileChooser fc = new JFileChooser();
-
+	/**
+	 * the button to launch the file chooser
+	 */
 	private JButton chooseFileButton = new JButton("choose file");
 
 	/**
@@ -64,7 +68,10 @@ public class UploadSubmissionButtonListener implements ActionListener{
 	 * Used for displaying multiple input textFields on frame
 	 */
 	private Object[] items = {"New Submission", "Name:", submissionNameField, "Comments:",commentsScroller, "File Upload:", chooseFileButton};
-
+	
+	/**
+	 * the submission 
+	 */
 	private File newFile=null;
 
 	/**

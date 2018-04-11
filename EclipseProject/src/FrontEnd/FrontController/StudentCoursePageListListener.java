@@ -9,7 +9,7 @@ import FrontEnd.View.StudentGUI;
 import SharedObjects.Assignment;
 
 /**
- * Listener for the assignmentList on the StudentCoursePage using MouseAdapter instead of ListSelectionListener
+ * Listener for the assignmentList on the StudentCoursePage using MouseAdapter
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class StudentCoursePageListListener extends MouseAdapter{
@@ -18,9 +18,12 @@ public class StudentCoursePageListListener extends MouseAdapter{
 	 */
 	private StudentController controller;
 
+	/**
+	 * initializes the controller 
+	 * @param c the controller
+	 */
 	public StudentCoursePageListListener(StudentController c) {
 		controller=c;
-
 	}
 
 	/**

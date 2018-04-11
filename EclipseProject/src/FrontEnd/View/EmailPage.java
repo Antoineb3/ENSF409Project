@@ -1,6 +1,3 @@
-/**
- * 
- */
 package FrontEnd.View;
 
 import java.awt.Dimension;
@@ -17,8 +14,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * @author Ross
- *
+ * Creates the Email GUI panel 
+ * @author 	Antoine Bizon & Ross Bartlett
  */
 public class EmailPage extends JPanel{
 	/**
@@ -43,6 +40,9 @@ public class EmailPage extends JPanel{
     private JTextArea textArea = new JTextArea(20,30);
 	JScrollPane scroller = new JScrollPane(textArea);
     
+	/**
+	 * button to clear the subject, contents field 
+	 */
 	private JButton clearFieldsButton = new JButton("Clear Fields");
     
     /**
@@ -66,7 +66,7 @@ public class EmailPage extends JPanel{
 		setButtonPanel();
 		add(GuiUtilities.centeredJLabel("Subject:"));
 		add(subjectField);
-		add(GuiUtilities.centeredJLabel("Text:"));
+		add(GuiUtilities.centeredJLabel("Contents:"));
 		add(scroller);		
 		
 		clearFieldsButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -91,6 +91,10 @@ public class EmailPage extends JPanel{
 
     }
 	
+    /**
+     * methods to set the listeners
+     * @param e action lsitener 
+     */
     public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
     }
@@ -135,9 +139,5 @@ public class EmailPage extends JPanel{
 		return textArea;
 	}
 	
-	
-	
-	
-
 	
 }

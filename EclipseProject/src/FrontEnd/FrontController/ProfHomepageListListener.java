@@ -17,7 +17,10 @@ public class ProfHomepageListListener extends MouseAdapter{
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * constructor to initialize the controller
+	 * @param c the controller
+	 */
 	public ProfHomepageListListener(ProfController c) {
 		controller=c;
 	}

@@ -5,11 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import SharedObjects.Assignment;
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
+
 
 /**
  * Creates the ProfAssignmentPage GUI panel -  the Assignment page as viewed from a Professor
@@ -64,7 +60,6 @@ public class ProfAssignmentPage extends JPanel{
 	 * Constructor that creates the visible panel 
 	 */
 	public ProfAssignmentPage() {
-        
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 
@@ -81,7 +76,6 @@ public class ProfAssignmentPage extends JPanel{
         setAssignmentNameText("testAssignmentName");//TODO remove? the cardChanger sets this when go to this page
         assignmentNameMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(assignmentNameMessage);
-        
 
         setButtonPanel();
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
@@ -109,8 +103,6 @@ public class ProfAssignmentPage extends JPanel{
     }
 
 
-   
-
 
 	/**
      * make a panel of the top buttons on the frame
@@ -131,8 +123,6 @@ public class ProfAssignmentPage extends JPanel{
      * Generate a scrollable text area to display the file 
      */
     private void addFileArea(){
-
-		// assignmentList.addListSelectionListener(new ListListener(this)); // TODO make ListListener, double click to view Assignment page
     		fileArea = new JTextArea();
     		fileArea.setEditable(false);
 		JScrollPane scroller = new JScrollPane(fileArea);
@@ -208,7 +198,7 @@ public class ProfAssignmentPage extends JPanel{
 
     /**
      * sets the panels Assignment and updates the name, dueDate JLabels
-     * @param c the Assignment to set
+     * @param a the Assignment to set
      */
     public void setAssignment(Assignment a) {
         assignment = a;

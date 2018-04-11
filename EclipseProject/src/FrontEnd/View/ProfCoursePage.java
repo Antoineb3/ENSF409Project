@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
 
 import SharedObjects.Assignment;
 import SharedObjects.Course;
@@ -128,9 +127,6 @@ public class ProfCoursePage extends JPanel{
 		assignmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		assignmentList.setLayoutOrientation(JList.VERTICAL);
 
-		// assignmentList.addListSelectionListener(new ListListener(this)); //  TODO make ListListener, double click to go to assignment page. update JLabel of assignmentPage to show the assignment name
-
-
 		JScrollPane scroller = new JScrollPane(assignmentList);
         scroller.setMaximumSize(new Dimension(400,300));
 		add(scroller);
@@ -155,9 +151,6 @@ public class ProfCoursePage extends JPanel{
 	public void setChangeActiveButtonListener(ActionListener e) {
         changeActiveButton.addActionListener(e);
     }
-//	public void setListListener(ListSelectionListener e) {
-//		assignmentList.addListSelectionListener(e);
-//	}
 	public void setListListener(MouseAdapter e) {
 		assignmentList.addMouseListener(e);
 	}

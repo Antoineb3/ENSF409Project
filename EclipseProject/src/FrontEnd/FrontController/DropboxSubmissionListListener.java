@@ -9,12 +9,19 @@ import FrontEnd.View.DropboxPage;
 import SharedObjects.Submission;
 
 /**
- * Listener for the 
+ * Listener for the submissions list on the dropbox page 
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class DropboxSubmissionListListener extends MouseAdapter{
+	/** 
+	 * the dropbox page
+	 */
 	private DropboxPage panel;
-
+	/**
+	 * constructor to initialize the fields
+	 * @param p the frame/panel
+	 * @param c the controller
+	 */
 	public DropboxSubmissionListListener(DropboxPage p) {
 		panel=p;
 	}

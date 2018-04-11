@@ -27,39 +27,41 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 	 * the controller constructing this listener
 	 */
 	private ProfController controller;
-
+	/**
+	 * init the page and the controller	
+	 * @param p the page
+	 * @param c the controller
+	 */
 	public ChangeStudentEnrollmentListener(ViewStudentsPage p, ProfController c) {
 		panel = p;
 		controller=c;
 	}
 
+	/**
+	 * changes the studen'ts enrollment status in the course 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Course course = panel.getCourse();
 		Student student = panel.getSelectedStudent();
 		int oldEnrollmentID = panel.getSelectedStudentEnrollmentID(); //  if oldEnrollmentID is -1, student is not enrolled in this course
 		if (oldEnrollmentID<0) {
-			//enrolling the student
 			enroll(student, course);
 		}
 		else {
-			//un-enrolling the student
 			unenroll(oldEnrollmentID, student, course);
 		}
-
 	}
 
 	/**
-	 * Un-Enrolls a student in a course by editing a row from the StudentEnrollmentTable to have studentID = -1
+	 * Un-Enrolls a student in a course by removing their row form the studentEnrollment table in the DB 
+	 * @param selectedStudentEnrollmentID the current enrollment ID of the student, -1 if unenrolled
 	 * @param student
 	 * @param course
 	 */
 	private void unenroll(int selectedStudentEnrollmentID, Student student, Course course) {
-		// to unenroll a student, set their student id in their enrollment row in the enrollment table to -1
-
-		//make a message to edit the DB
+		//make a message to the DB
 		ArrayList<String> params = new ArrayList<>();
-
 		params.add("ID"); // the column to change
 		params.add("'"+Integer.toString(selectedStudentEnrollmentID)+"'"); // the conditionVal
 		DBMessage msg = new DBMessage(2, 3, params); // 2, 3 is studentEnrollmentTableNum, removeRowOp
@@ -72,7 +74,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 			return;
 		}
 		JOptionPane.showMessageDialog(null, student.getFirstName()+" has been successfuly un-enrolled from "+course.getName(), "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
-		//update the panel fields
+		//update the panel field
 		panel.setSelectedStudentEnrollmentID(-1);
 
 	}
@@ -116,7 +118,7 @@ public class ChangeStudentEnrollmentListener implements ActionListener{
 			JOptionPane.showMessageDialog(null, student.getFirstName()+" has been successfuly enrolled in "+course.getName(), "Enrollment Status Change ", JOptionPane.INFORMATION_MESSAGE);
 		else 
 			JOptionPane.showMessageDialog(null, "Error enrolling "+student.getFirstName()+".", "Enrollment Status Change ERROR 2", JOptionPane.WARNING_MESSAGE);
-		//update the panel fields
+		//update the panel field
 		panel.setSelectedStudentEnrollmentID(enrollmentID);
 	}
 

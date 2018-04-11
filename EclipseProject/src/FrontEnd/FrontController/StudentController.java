@@ -1,6 +1,5 @@
 package FrontEnd.FrontController;
 
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
@@ -8,49 +7,34 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
-import com.sun.javafx.font.PGFont;
-
-import FrontEnd.FrontController.ProfController.CardChangerListener;
 import FrontEnd.View.GradePage;
 import FrontEnd.View.StudentCoursePage;
-//import FrontEnd.View.StudentAssignmentPage;
-//import FrontEnd.View.StudentCoursePage;
 import FrontEnd.View.StudentGUI;
 import FrontEnd.View.StudentHomepage;
 import SharedObjects.*;
 
 
 /**
- * 
+ * Sets all the button listeners on the Student GUIs
  * @author 	Antoine Bizon & Ross Bartlett
- *
  */
-
 public class StudentController extends ViewController{
 
-
+	/**
+	 * constructor that inits the page and the socketCommunicator and sets all the listeners
+	 * @param sg the GUI
+	 * @param c the socketCommunicator
+	 */
 	public StudentController(StudentGUI sg, ClientSocketCommunicator c){
 		super(sg, c); 
-
-		//set all the back to homepage buttons
-		sg.getStudentCoursePagePanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
-		sg.getStudentAssignmentPanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
-		sg.getEmailPage().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
-		sg.getGradePage().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
-		//set all the back buttons
-		sg.getStudentAssignmentPanel().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
-		sg.getEmailPage().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
-		sg.getGradePage().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
-
-
+		setHomepageButtons(sg);
+		setBackButtons(sg);
 		//set other navigator buttons
 		sg.getStudentCoursePagePanel().setEmailButtonListener(new CardChangerListener("EMAILPAGE"));
 		sg.getStudentCoursePagePanel().setViewGradesButtonListener(new CardChangerListener("GRADEPAGE"));
-
+		
 		//set upload submission listener
 		sg.getStudentAssignmentPanel().setUploadSubmissionButtonListener(new UploadSubmissionButtonListener(sg.getStudentAssignmentPanel(), sg.getStudent(),this));
-
-
 		//set list listeners
 		sg.getStudentHomePagePanel().setListListener(new StudentHomepageListListener(this));
 		sg.getStudentCoursePagePanel().setListListener(new StudentCoursePageListListener(this));
@@ -65,10 +49,31 @@ public class StudentController extends ViewController{
 		fillHomePageCourseList(sg.getStudentHomePagePanel()); //TODO uncomment this when connections are ready
 	}
 
+	/**
+	 * set all the back button listeners of the student GUI
+	 * @param sg the studentGUI
+	 */
+	private void setBackButtons(StudentGUI sg) {
+		sg.getStudentAssignmentPanel().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
+		sg.getEmailPage().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
+		sg.getGradePage().setBackButtonListener(new CardChangerListener("STUDCOURSEPAGE"));
+	}
+
+	/**
+	 * set all the "back to homepage" listeners on all the student GUIs
+	 * @param sg the studentGUI
+	 */
+	private void setHomepageButtons(StudentGUI sg) {
+		sg.getStudentCoursePagePanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
+		sg.getStudentAssignmentPanel().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
+		sg.getEmailPage().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
+		sg.getGradePage().setHomepageButtonListener(new CardChangerListener("STUDHOMEPAGE"));
+	}
+
 
 
 	/**
-	 * Inner class listener to switch the active card on the StudentGUI using either the BackToHomepage or Back buttons
+	 * Inner class listener to switch the active card on the StudentGUI 
 	 */
 	class CardChangerListener implements ActionListener {
 		String card;
@@ -78,7 +83,6 @@ public class StudentController extends ViewController{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			StudentGUI sg = ((StudentGUI) getFrame()); // from super
-			//			System.out.println("Card changer button pressed. going to: "+card);
 			if(card.equals("STUDASSIGNMENTPAGE")){
 				refreshStudentAssignmentPage(sg);
 			}
@@ -97,7 +101,6 @@ public class StudentController extends ViewController{
 		}
 
 	}
-
 
 
 

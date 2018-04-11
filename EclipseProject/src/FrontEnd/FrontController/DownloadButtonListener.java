@@ -15,16 +15,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.sun.glass.ui.View;
 
 import FrontEnd.View.DropboxPage;
 import FrontEnd.View.ProfAssignmentPage;
-import FrontEnd.View.ProfHomepage;
 import FrontEnd.View.StudentAssignmentPage;
 import SharedObjects.FileContents;
 import SharedObjects.FileMessage;
-import SharedObjects.Student;
-import sun.print.resources.serviceui;
 
 /**
  * Listener for the button to download an assignment/submission
@@ -40,11 +36,19 @@ public class DownloadButtonListener implements ActionListener {
 	 */
 	private ViewController controller;
 
+	/**
+	 * constructor to initialize the listener
+	 * @param p the frame/panel
+	 * @param c the controller
+	 */
 	public DownloadButtonListener(JPanel p, ViewController c) {
 		panel = p;
 		controller=c;
 	}
 
+	/**
+	 * queries the file from the DB and saves it to the local machine
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String fileName="";

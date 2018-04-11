@@ -4,10 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-/*
- * ENSF 409 - Project
- * March 24 2018
- */
+
 
 /**
  * Creates the Login GUI 
@@ -67,10 +64,6 @@ public class LoginGUI extends JFrame{
 	 */
 	public void setLoginButtonListener(ActionListener e) {
         loginButton.addActionListener(e);
-
-        //within the action listener:
-        //TODO use getUsernameInput() and getPasswordInput()
-        //TODO if entered incorrect credentials, show JOPtionPane, clear fields
 	}
 	
 	/**
@@ -81,18 +74,18 @@ public class LoginGUI extends JFrame{
 		passwordField.setText("");	
     }
     
+	/**
+	 * @return the text input in the userID field
+	 */
     public String getUsernameInput(){
         return userIDField.getText();
     }
+    /**
+	 * @return the text input in the password field
+	 */
     public String getPasswordInput(){
         return passwordField.getText();
     }
 
-
-
-    //Main for testing
-    public static void main(String[] args) {
-        LoginGUI gui = new LoginGUI();
-    }
 
 }

@@ -9,19 +9,11 @@ import javax.swing.*;
 import SharedObjects.Assignment;
 import SharedObjects.Course;
 
-
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
-
 /**
- * Creates the Dropbox GUI panel 
+ * Creates the Grade GUI panel 
  * @author 	Antoine Bizon & Ross Bartlett
  */
 public class GradePage extends JPanel{
-	
 
 	/**
      * The course of the grade page
@@ -60,7 +52,6 @@ public class GradePage extends JPanel{
 	 * Constructor that creates the visible panel 
 	 */
 	public GradePage() {
-        
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(800,600));
 
@@ -83,9 +74,7 @@ public class GradePage extends JPanel{
         setButtonPanel();
         add(Box.createRigidArea(new Dimension(0,10))); //empty spacing
         
-        // assingment list 
         makeAssignmentList();
-
         
         add(GuiUtilities.centeredJLabel("Final grade for the selected assignment (%):"));
         gradeField.setMaximumSize( gradeField.getPreferredSize() );
@@ -99,6 +88,9 @@ public class GradePage extends JPanel{
     }
 
 
+	/**
+	 * set up and add the assignmentList to the panel 
+	 */
 	private void makeAssignmentList() {
 		add(GuiUtilities.centeredJLabel("Assignments:"));
 		assignmentList = new JList<>(listModel);
@@ -152,6 +144,10 @@ public class GradePage extends JPanel{
         courseNameLabel.setText(message);
    	}
     
+    /**
+     * set the text on the gradeField
+     * @param g the grade 
+     */
     public void setGradeField(String g) {
     		gradeField.setText(g);
     }
@@ -161,7 +157,6 @@ public class GradePage extends JPanel{
 	public JTextField getGradeField() {
 		return gradeField;
 	}
-
 
     /**
 	 * @return the assignmentList
@@ -177,7 +172,6 @@ public class GradePage extends JPanel{
 		listModel=s;
 		assignmentList.setModel(listModel);
 	}
-
 
 	/**
 	 * @return the course

@@ -51,8 +51,6 @@ public class NewCourseButtonListener implements ActionListener{
 		controller=c;
 	}
 
-
-
 	/**
 	 * Displays a JOptionPane to add a new Course
 	 */
@@ -85,7 +83,7 @@ public class NewCourseButtonListener implements ActionListener{
 	}
 	
 	/**
-	 * Helper method to determine if add to DB was successfull
+	 * Helper method to determine if add to DB was successful
 	 * @param response the arrayList returned by addToDB()
 	 */
 	private void checkResponse(ArrayList<? extends Serializable> response) {
@@ -104,10 +102,5 @@ public class NewCourseButtonListener implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Course "+name+" successfuly created.", "Course Created", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
-
-
-
-
-
+	
 }

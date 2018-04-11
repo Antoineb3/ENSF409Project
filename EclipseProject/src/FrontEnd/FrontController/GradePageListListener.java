@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JList;
-import javax.swing.JOptionPane;
-
 import FrontEnd.View.GradePage;
 import FrontEnd.View.StudentGUI;
 import SharedObjects.Assignment;
@@ -28,13 +26,18 @@ public class GradePageListListener extends MouseAdapter{
 	 */
 	private StudentController controller;
 
+	/**
+	 * init the page and the controller
+	 * @param p the gradePage
+	 * @param c the controller 
+	 */
 	public GradePageListListener(GradePage p, StudentController c) {
 		controller=c;
 		panel=p;
 	}
 
 	/**
-	 * On click, updates the final grade label
+	 * On click, updates the final-grade label
 	 */
 	@Override
 	public void mouseClicked(MouseEvent evt) {
