@@ -159,8 +159,10 @@ public class StudentController extends ViewController{
 			//send the message, get response grade 
 			ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 			if(response==null || response.size()<1) {
-				System.err.println("error getting assignment grade in calcGradeAvg");
-				return -1;
+//				System.err.println("error getting assignment grade in calcGradeAvg");
+//				return -1;
+				count--;
+				continue;
 			}
 			sum += ((Grade) response.get(0)).getAssignmentGrade();
 		}

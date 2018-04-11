@@ -55,7 +55,8 @@ public class GradePageListListener extends MouseAdapter{
 		//send the message, get response grade 
 		ArrayList<? extends Serializable> response = controller.getCommunicator().communicate(msg);
 		if(response==null || response.size()<1) {
-			System.err.println("error getting assignment grade in GradePageLIistLIstener");
+			panel.setGradeField(0+"");
+
 			return;
 		}
 		panel.setGradeField( ((Grade) response.get(0)).getAssignmentGrade()+"");
