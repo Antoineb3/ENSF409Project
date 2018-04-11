@@ -32,7 +32,7 @@ public class EmailOperator {
 	 * @return
 	 */
 	public int sendEmail(User sender, ArrayList<User> recipients, String subject, String contents) {
-		System.out.println("sending emial");
+		System.out.println("sending email");
 		Session session = creatSessionObject(sender.getEmail(), sender.getPassword());
 		try {
 			Message message = new MimeMessage(session);
@@ -42,6 +42,7 @@ public class EmailOperator {
 			message.setText(contents);
 			Transport.send(message); // Send the Email Message
 			} catch (MessagingException e) {
+				System.out.println(e.getMessage());
 				e.printStackTrace();
 				return -1;
 			}
