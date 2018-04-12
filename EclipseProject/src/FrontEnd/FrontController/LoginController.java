@@ -61,7 +61,7 @@ public class LoginController extends ViewController{
 		
 		/**
 		 * helper method to get the login inputs and check if valid
-		 * @param the login gui
+		 * @param gui the login gui
 		 * @return -1 if invalid, else 0
 		 */
 		private int getInputs(LoginGUI gui ) {

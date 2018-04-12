@@ -81,8 +81,8 @@ public class EmailOperator {
 
 	/**
 	 * Adds all the recipients to the emails recipient list.
-	 * @param message
-	 * @param recipients
+	 * @param message the message
+	 * @param recipientList the list of recipient Users 
 	 */
 	private void addRecipients(Message message, ArrayList<User> recipientList) throws MessagingException{
 		Iterator<User> recipients = recipientList.iterator();

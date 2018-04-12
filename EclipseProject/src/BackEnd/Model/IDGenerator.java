@@ -66,7 +66,7 @@ public class IDGenerator {
 	
 	/**
 	 * Sets the highest id value in the database.
-	 * @param the new vale of the largest id in the database.
+	 * @param id the new vale of the largest id in the database.
 	 * @throws SQLException 
 	 */
 	private static void setCurrentIDValue(int id) throws SQLException {

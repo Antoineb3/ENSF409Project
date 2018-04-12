@@ -329,7 +329,7 @@ public class ProfController extends ViewController{
 
 	/**
 	 * helper method to fill the ViewStudentsPage's result list with all students in the DB table. 
-	 * @param coursePage the course page
+	 * @param page the course page
 	 */
 	void fillViewStudentsList(ViewStudentsPage page) {
 
