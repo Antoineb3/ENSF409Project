@@ -6,7 +6,7 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * This class corresponds to a row in the student emrollemnt table.
+ * This class corresponds to a row in the student enrollemnt table.
  * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentEnrollment implements Serializable{
