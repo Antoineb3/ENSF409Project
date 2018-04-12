@@ -66,10 +66,11 @@ public class StudentGUI extends JFrame{
 
 	/**
 	 * Changes the card/page shown on the JFrame
+	 * @param cardname the name of the card to display 
 	 */
-	public void setActiveCard(String CARDNAME){
+	public void setActiveCard(String cardname){
 		CardLayout cl = (CardLayout)(cards.getLayout());
-		cl.show(cards, CARDNAME);
+		cl.show(cards, cardname);
 		//note: if cardname is passed in that doesnt exist, nothing happens
 	}
 

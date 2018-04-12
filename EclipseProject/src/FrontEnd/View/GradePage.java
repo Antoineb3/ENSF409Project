@@ -119,8 +119,8 @@ public class GradePage extends JPanel{
     
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
+	 * @param e the actionListener
 	 */
-
 	public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
     }

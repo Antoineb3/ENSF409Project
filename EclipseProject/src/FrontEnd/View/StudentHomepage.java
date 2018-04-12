@@ -79,14 +79,15 @@ public class StudentHomepage extends JPanel{
 
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
+	 * @param e the mouseAdapter listener
 	 */
 	public void setListListener(MouseAdapter e) {
 		courseList.addMouseListener(e);
 	}
 	
 	/**
-	 * sets the panels Assignment and updates the name, dueDate JLabels
-	 * @param c the Assignment to set
+	 * sets the panels student and updates the welcome text
+	 * @param s the student to set
 	 */
 	public void setStudent(Student s) {
 		Student = s;
