@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import BackEnd.Model.IDGenerator;
 /**
+ * Run once to set up ID table.
  * @author Antoine
  *
  */
@@ -21,7 +22,7 @@ public class IDTableCreator {
 	//Configure these variables for your own MySQL environment
 	private String connectionInfo = "jdbc:mysql://localhost:3306/LearningPlatformDB?useSSL=false",  
 				  login          = "root",
-				  password       = "root";  //change password for your own machine
+				  password       = "bacon";  //change password for your own machine
 	
 	
 
@@ -100,7 +101,7 @@ public class IDTableCreator {
 		param = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "PRIMARY  KEY ( id ))";
-		//DB.removeTable();
+		DB.removeTable();
 		DB.createTable(param);
 		
 		DB.addItem(-1);

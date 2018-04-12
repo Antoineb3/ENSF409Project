@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 /**
  * Sets up the database for the program to use.
- * You must edit 
  * @author Antoine
  *
  */
@@ -78,7 +77,7 @@ public class DBTableCreator {
 		String tableParam;
 		
 		DB.tableName = "UserTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "PASSWORD VARCHAR(20) NOT NULL, " + 
@@ -91,7 +90,7 @@ public class DBTableCreator {
 		DB.createTable(tableParam);
 		
 		DB.tableName = "CourseTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "PROFID INT(8) NOT NULL, " +
@@ -101,7 +100,7 @@ public class DBTableCreator {
 		DB.createTable(tableParam);
 		
 		DB.tableName = "StudentEnrollmentTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "STUDENTID INT(8) NOT NULL, " +
@@ -111,7 +110,7 @@ public class DBTableCreator {
 
 		
 		DB.tableName = "AssignmentTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "COURSEID INT(8) NOT NULL, " +
@@ -123,7 +122,7 @@ public class DBTableCreator {
 		DB.createTable(tableParam);
 		
 		DB.tableName = "SubmissionTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
 			     "ASSIGNID INT(8) NOT NULL, " +
@@ -137,11 +136,11 @@ public class DBTableCreator {
 		DB.createTable(tableParam);
 		
 		DB.tableName = "GradeTable";
-		//DB.removeTable();
+		DB.removeTable();
 		tableParam = "CREATE TABLE " + DB.tableName + "(" +
 			     "ID INT(8) NOT NULL, " +
-			     "ASSIGN INT(8) NOT NULL, " +
-			     "STUDENT INT(8) NOT NULL, " +
+			     "ASSIGNID INT(8) NOT NULL, " +
+			     "STUDENTID INT(8) NOT NULL, " +
 			     "COURSEID INT(8) NOT NULL, " +
 			     "ASSIGNMENTGRADE INT(3) NOT NULL, " +
 			     "PRIMARY  KEY ( id ))";
