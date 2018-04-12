@@ -16,7 +16,7 @@ import SharedObjects.Message;
 
 /**
  * This class enables communication between the client and the back end controller.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-04-03
  */

@@ -4,7 +4,7 @@ import java.sql.*;
 
 /**
  * This class executes updates and query to any mySQL database.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-03-30
  */

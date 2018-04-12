@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 /**
  * This class is for connecting clients to a worker thread.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-04-03
  */
@@ -26,7 +26,7 @@ public class Server {
 	
 	/**
 	 * Constructs a Server object.
-	 * @param portNumber
+	 * @param portNumber the port number of the servever.
 	 */
 	public Server(int portNumber) {
 		try {

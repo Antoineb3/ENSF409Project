@@ -6,15 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import SharedObjects.Assignment;
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
+
 
 /**
  * Creates the StudentAssignmentPage GUI panel -  the Assignment page as viewed from a Student
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentAssignmentPage extends JPanel{
     /**

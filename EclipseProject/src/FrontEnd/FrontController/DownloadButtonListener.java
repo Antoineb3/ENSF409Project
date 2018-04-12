@@ -24,7 +24,7 @@ import SharedObjects.FileMessage;
 
 /**
  * Listener for the button to download an assignment/submission
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class DownloadButtonListener implements ActionListener {
 	/**

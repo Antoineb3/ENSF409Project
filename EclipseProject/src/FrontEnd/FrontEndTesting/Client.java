@@ -5,7 +5,7 @@ import FrontEnd.View.*;
 
 /**
  * FrontEnd client to run the application
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class Client{
 

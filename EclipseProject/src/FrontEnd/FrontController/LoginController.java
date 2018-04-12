@@ -18,7 +18,7 @@ import SharedObjects.User;
 
 /**
  * Sets the listeners for the buttons on the LoginGUI
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class LoginController extends ViewController{
 

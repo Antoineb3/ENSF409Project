@@ -11,7 +11,7 @@ import SharedObjects.Course;
 
 /**
  * Creates the Grade GUI panel 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class GradePage extends JPanel{
 

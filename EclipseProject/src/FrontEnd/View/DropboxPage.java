@@ -12,7 +12,7 @@ import SharedObjects.Submission;
 
 /**
  * Creates the Dropbox GUI panel 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class DropboxPage extends JPanel{
 	

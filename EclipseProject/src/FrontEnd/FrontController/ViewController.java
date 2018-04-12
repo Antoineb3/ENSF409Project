@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 /**
  * Abstract controller that has a JFrame (GUI) and a communication line to the socket 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public abstract class ViewController {
 	private JFrame frame;

@@ -13,7 +13,7 @@ import SharedObjects.Professor;
 
 /**
  * Creates the prof GUI 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ProfGUI extends JFrame{
 	/**

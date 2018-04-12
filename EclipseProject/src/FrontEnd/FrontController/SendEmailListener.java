@@ -19,7 +19,7 @@ import SharedObjects.StudentEmail;
 
 /**
  * Listener for the send email button
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class SendEmailListener implements ActionListener{
 

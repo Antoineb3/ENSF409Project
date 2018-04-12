@@ -6,8 +6,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author Antoine
- *
+ * Objects of this class are used to communicate messages for send student emails from the client to the server.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentEmail extends EmailMessage implements Serializable{
 	private static final long serialVersionUID = 102;

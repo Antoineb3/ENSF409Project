@@ -15,7 +15,7 @@ import SharedObjects.Student;
 
 /**
  * Creates the StudentHomepage GUI panel
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentHomepage extends JPanel{
 

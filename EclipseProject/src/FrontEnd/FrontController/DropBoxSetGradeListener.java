@@ -17,7 +17,7 @@ import SharedObjects.DBMessage;
 
 /**
  * Listener to set the grade of a submission thru the Dropbox page 
- * @author Ross Bartlett and Antoine Bizon
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class DropBoxSetGradeListener implements ActionListener {
 	/**

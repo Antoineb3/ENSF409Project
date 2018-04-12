@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * Objects of this class are used to communicate messages for saving and loading from the client to the server.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class FileMessage extends DBMessage implements Serializable{
 	static final long serialVersionUID = 11;

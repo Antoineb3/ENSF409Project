@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  * Creates the Email GUI panel 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class EmailPage extends JPanel{
 	/**

@@ -10,7 +10,7 @@ import SharedObjects.StudentEnrollment;
 
 /**
  * This class implements the abstract methods in the Table class for the student enrollment table.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-03-30
  */

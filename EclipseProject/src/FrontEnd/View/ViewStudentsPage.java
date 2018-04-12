@@ -16,7 +16,7 @@ import SharedObjects.Student;
 
 /**
  * Creates the ViewStudents page of the ProfGUI
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ViewStudentsPage extends JPanel{
 	/**

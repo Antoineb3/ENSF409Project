@@ -10,7 +10,7 @@ import SharedObjects.Submission;
 
 /**
  * Listener for the submissions list on the dropbox page 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class DropboxSubmissionListListener extends MouseAdapter{
 	/** 

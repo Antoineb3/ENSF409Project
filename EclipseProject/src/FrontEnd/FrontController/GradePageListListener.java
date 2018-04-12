@@ -14,7 +14,7 @@ import SharedObjects.Grade;
 
 /**
  * Listener for the assignmentList on the grade page
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class GradePageListListener extends MouseAdapter{
 	/**

@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 /**
  * Contains helper methods used my many of the JPanel classes to improve code-reuse.
  * Class and methods are package-scope
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 abstract class GuiUtilities {
 	

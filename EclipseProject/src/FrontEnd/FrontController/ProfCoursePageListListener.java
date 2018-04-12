@@ -12,7 +12,7 @@ import SharedObjects.Assignment;
 
 /**
  * Listener for the assignmentList on the ProfCoursePage using MouseAdapter 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ProfCoursePageListListener extends MouseAdapter{
 	/**

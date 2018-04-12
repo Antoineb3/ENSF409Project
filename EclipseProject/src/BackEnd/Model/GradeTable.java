@@ -9,7 +9,7 @@ import SharedObjects.Grade;
 
 /**
  * This class implements the abstract methods in the Table class for the grade table.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-03-30
  */

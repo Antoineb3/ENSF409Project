@@ -10,7 +10,7 @@ import SharedObjects.Assignment;
 
 /**
  * Listener for the assignmentList on the StudentCoursePage using MouseAdapter
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentCoursePageListListener extends MouseAdapter{
 	/**

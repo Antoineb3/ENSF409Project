@@ -18,7 +18,7 @@ import SharedObjects.*;
 
 /**
  * Sets all the button listeners on the Student GUIs
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentController extends ViewController{
 

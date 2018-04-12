@@ -8,7 +8,7 @@ import SharedObjects.Student;
 
 /**
  * Creates the student GUI 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentGUI extends JFrame{
 	/**

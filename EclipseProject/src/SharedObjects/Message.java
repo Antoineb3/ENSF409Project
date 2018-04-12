@@ -6,8 +6,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * All other 'Message' classes extend this class, it makes communication to the server simpler.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public abstract class Message implements Serializable{
 	static final long serialVersionUID = 10;	

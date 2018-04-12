@@ -2,7 +2,7 @@ package BackEnd.Model;
 
 /**
  * This is the class that the Model Controller communicates with, it contains all the operators for the model. 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-04-03
  */

@@ -4,8 +4,8 @@
 package SharedObjects;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * This class corresponds to a row user row of type professor table.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class Student extends User{
 

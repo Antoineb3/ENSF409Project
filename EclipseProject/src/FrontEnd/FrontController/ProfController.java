@@ -21,7 +21,7 @@ import SharedObjects.*;
 
 /**
  * Sets all the button listeners on the Prof GUIs
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ProfController extends ViewController{
 

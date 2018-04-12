@@ -10,7 +10,7 @@ import SharedObjects.Course;
 
 /**
  * Listener for the CourseList on the StudentHomePage using MouseAdapter
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentHomepageListListener extends MouseAdapter{
 	/**

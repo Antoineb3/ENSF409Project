@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * This abstract class has methods to perform operations common to all mySQL tables.
  * Methods that are very similar for all table are concrete and ones that are more unique are abstract.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-03-30
  */

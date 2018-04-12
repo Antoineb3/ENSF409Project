@@ -14,7 +14,7 @@ import SharedObjects.*;
 
 /**
  * Sends and receives Messages to/from a socket 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ClientSocketCommunicator {
 	/**

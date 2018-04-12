@@ -17,7 +17,7 @@ import SharedObjects.StudentEnrollment;
 
 /**
  * Listener for the studentList on the ViewStudents pagea
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ViewStudentsListListener implements ListSelectionListener {
 	/**

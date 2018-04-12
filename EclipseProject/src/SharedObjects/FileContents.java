@@ -6,8 +6,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author Antoine
- *
+ * This class contains all the fields necessary to reconstruct a file.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class FileContents implements Serializable{
 

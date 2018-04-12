@@ -3,7 +3,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
+ * This class corresponds to a row in the assignment table.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class Assignment implements Serializable{
 	

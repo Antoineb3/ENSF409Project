@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Listener class for the Create a New Assignment button
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class NewAssignmentButtonListener implements ActionListener{
 	/**

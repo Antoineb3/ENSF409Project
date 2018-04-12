@@ -6,8 +6,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * This class corresponds to a row in the user table.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 //class user should be abstract right?
 public abstract class User implements Serializable{

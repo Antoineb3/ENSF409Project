@@ -19,7 +19,7 @@ import SharedObjects.User;
 
 /**
  * This class is for sending emails.
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Antoine Bizon, Ross Bartlett 
  * @version 1.0
  * @since	2018-04-11
  */

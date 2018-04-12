@@ -6,8 +6,8 @@ package SharedObjects;
 import java.io.Serializable;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * This class corresponds to a row in the grade table.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class Grade implements Serializable{
 	static final long serialVersionUID = 20;	

@@ -9,15 +9,11 @@ import javax.swing.*;
 import SharedObjects.Assignment;
 import SharedObjects.Course;
 
-/*
- * Ross Bartlett
- * ENSF 409 - Project
- * March 24 2018
- */
+
 
 /**
  * Creates the ProfCoursePage GUI panel -  the course page as viewed from a Professor
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ProfCoursePage extends JPanel{
     /**

@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * Objects of this class are used to communicate messages for accessing sending emails from the client to the server.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public abstract class EmailMessage extends Message implements Serializable {
 	static final long serialVersionUID = 13;

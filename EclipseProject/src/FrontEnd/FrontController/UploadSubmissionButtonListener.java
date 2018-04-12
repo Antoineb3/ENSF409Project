@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 /**
  * Listener class for the Upload Submission button 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class UploadSubmissionButtonListener implements ActionListener{
 	/**

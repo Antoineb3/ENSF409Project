@@ -10,7 +10,7 @@ import SharedObjects.Course;
 
 /**
  * Listener for the CourseList on the ProfHomePage using MouseAdapter instead of 
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class ProfHomepageListListener extends MouseAdapter{
 	/**

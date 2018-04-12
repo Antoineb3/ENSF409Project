@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author 	Antoine Bizon & Ross Bartlett
- *
+ * Objects of this class are used to communicate messages for accessing the database from the client to the server.
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class DBMessage extends Message implements Serializable{
 	static final long serialVersionUID = 12;

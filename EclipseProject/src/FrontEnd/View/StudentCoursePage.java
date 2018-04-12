@@ -12,7 +12,7 @@ import SharedObjects.Course;
 
 /**
  * Creates the StudentCoursePage GUI panel -  the course page as viewed from a Student
- * @author 	Antoine Bizon & Ross Bartlett
+ * @author 	Ross Bartlett, Antoine Bizon
  */
 public class StudentCoursePage extends JPanel{
     /**
