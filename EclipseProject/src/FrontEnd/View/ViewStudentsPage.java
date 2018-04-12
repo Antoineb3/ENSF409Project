@@ -168,6 +168,7 @@ public class ViewStudentsPage extends JPanel{
 
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
+	 * @param e the actionListener
 	 */
 	public void setHomepageButtonListener(ActionListener e) {
 		homepageButton.addActionListener(e);
@@ -221,7 +222,6 @@ public class ViewStudentsPage extends JPanel{
 
 	/**
 	 * Changes the frame to tell whether the selected student is enrolled or not in this course
-	 * @param s the selected student
 	 * @param enrolled true if they are enrolled in this course
 	 */
 	public void setEnrollmentStatusMessage(boolean enrolled){

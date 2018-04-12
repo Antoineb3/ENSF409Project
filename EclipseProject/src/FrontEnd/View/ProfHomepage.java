@@ -82,6 +82,7 @@ public class ProfHomepage extends JPanel{
 
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
+	 * @param e the actionListener
 	 */
 	public void setCreateNewCourseButtonListener(ActionListener e) {
 		createNewCourseButton.addActionListener(e);
@@ -92,8 +93,8 @@ public class ProfHomepage extends JPanel{
 	
 	
 	/**
-	 * sets the panels Assignment and updates the name, dueDate JLabels
-	 * @param c the Assignment to set
+	 * sets the panels Prof and updates the welcom label
+	 * @param p the prof to set
 	 */
 	public void setProf(Professor p) {
 		prof = p;

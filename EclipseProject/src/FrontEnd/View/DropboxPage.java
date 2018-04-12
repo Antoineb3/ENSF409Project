@@ -160,6 +160,7 @@ public class DropboxPage extends JPanel{
     
 	/**
 	 * Helper functions for the CONTROLLER to initialize the listeners
+	 * @param e the actionListener
 	 */
 	public void setHomepageButtonListener(ActionListener e) {
         homepageButton.addActionListener(e);
@@ -267,7 +268,7 @@ public class DropboxPage extends JPanel{
 
     /**
      * sets the panels Assignment and updates the name, dueDate JLabels
-     * @param c the Assignment to set
+     * @param a the Assignment to set
      */
     public void setAssignment(Assignment a) {
         assignment = a;
