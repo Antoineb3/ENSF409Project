@@ -16,10 +16,7 @@ public class ProfEmail extends EmailMessage implements Serializable {
 	
 	
 	/**
-	 * @param subject
-	 * @param contents
-	 * @param course
-	 * @param p
+	 * Constructs a ProfEmail object.
 	 */
 	public ProfEmail(String subject, String contents, Course course, Professor p) {
 		super(subject, contents);
@@ -27,12 +24,16 @@ public class ProfEmail extends EmailMessage implements Serializable {
 		theProf=p;
 	}
 
-
+	/**
+	 * @return theCourse
+	 */
 	public Course getCourse() {
 		return theCourse;
 	}
 
-
+	/**
+	 * @return theProf
+	 */
 	public Professor getTheProf() {
 		return theProf;
 	}

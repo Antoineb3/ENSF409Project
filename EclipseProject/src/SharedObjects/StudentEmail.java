@@ -15,8 +15,7 @@ public class StudentEmail extends EmailMessage implements Serializable{
 	private Student theStudent;
 	
 	/**
-	 * @param subject
-	 * @param contents
+	 * Constructs a StudentEmail object.
 	 */
 	public StudentEmail(String subject, String contents, Course course, Student student) {
 		super(subject, contents);
@@ -24,12 +23,16 @@ public class StudentEmail extends EmailMessage implements Serializable{
 		theStudent = student;
 	}
 
-
+	/**
+	 * @return theCourse
+	 */
 	public Course getCourse() {
 		return theCourse;
 	}
 
-
+	/**
+	 * @return theStudent
+	 */
 	public Student getStudent() {
 		return theStudent;
 	}

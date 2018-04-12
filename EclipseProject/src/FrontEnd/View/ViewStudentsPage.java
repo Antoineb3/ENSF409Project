@@ -221,7 +221,6 @@ public class ViewStudentsPage extends JPanel{
 
 	/**
 	 * Changes the frame to tell whether the selected student is enrolled or not in this course
-	 * @param s the selected student
 	 * @param enrolled true if they are enrolled in this course
 	 */
 	public void setEnrollmentStatusMessage(boolean enrolled){
