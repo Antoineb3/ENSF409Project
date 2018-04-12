@@ -77,7 +77,7 @@ public class UploadSubmissionButtonListener implements ActionListener{
 	/**
 	 * Constructor that inits the calling JPanel and the listener for the file chooser
 	 * @param p the calling JPanel
-	 * @param student 
+	 * @param s the student 
 	 * @param c the controller to access the backend
 	 */
 	public UploadSubmissionButtonListener(StudentAssignmentPage p, Student s, StudentController c) {

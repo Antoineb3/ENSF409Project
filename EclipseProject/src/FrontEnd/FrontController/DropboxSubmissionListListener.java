@@ -20,7 +20,6 @@ public class DropboxSubmissionListListener extends MouseAdapter{
 	/**
 	 * constructor to initialize the fields
 	 * @param p the frame/panel
-	 * @param c the controller
 	 */
 	public DropboxSubmissionListListener(DropboxPage p) {
 		panel=p;

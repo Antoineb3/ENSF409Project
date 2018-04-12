@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Used once for creating the DB.
+ * @author Antoine
+ *
+ */
 public class DBCreator {
 	private Connection jdbc_connection;
 	private PreparedStatement preparedStatement;
